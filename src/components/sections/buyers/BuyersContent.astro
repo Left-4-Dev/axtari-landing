@@ -1,4 +1,4 @@
----
+﻿---
 import JourneyCard from "@components/ui/JourneyCard.astro";
 import { buyerCards } from "@data/buyers.data";
 ---
@@ -10,7 +10,7 @@ import { buyerCards } from "@data/buyers.data";
         <p class="buyer__label">Para</p>
         <h3 class="buyer__role">COMPRADORES</h3>
         <img
-          src="/images/sections/buyers/buyer1.svg"
+          src={import.meta.env.BASE_URL + "/images/sections/buyers/buyer1.svg"}
           alt="Herramientas para compradores"
           class="buyer__image"
         />
@@ -317,3 +317,5 @@ import { buyerCards } from "@data/buyers.data";
     }
   }
 </style>
+
+

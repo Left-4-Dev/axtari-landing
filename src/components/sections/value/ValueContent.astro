@@ -1,4 +1,4 @@
----
+﻿---
 import Eyebrow from "@components/ui/Eyebrow.astro";
 ---
 
@@ -29,7 +29,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       >
         <div class="value__scene-frame">
           <img
-            src="/images/ui/PropuestaValor1.svg"
+            src={import.meta.env.BASE_URL + "/images/ui/PropuestaValor1.svg"}
             alt="Proceso integral de gestión, verificación, negociación, pago, transporte y entrega del producto."
             class="value__scene-image"
           />
@@ -44,7 +44,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       >
         <div class="value__scene-frame">
           <img
-            src="/images/ui/PropuestaValor2.svg"
+            src={import.meta.env.BASE_URL + "/images/ui/PropuestaValor2.svg"}
             alt="Conexión directa con el proveedor y envío a cualquier región del Perú."
             class="value__scene-image"
           />
@@ -59,7 +59,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       >
         <div class="value__scene-frame">
           <img
-            src="/images/ui/PropuestaValor3.svg"
+            src={import.meta.env.BASE_URL + "/images/ui/PropuestaValor3.svg"}
             alt="Proceso de compra simplificado en tres pasos."
             class="value__scene-image"
           />
@@ -803,3 +803,5 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
     // });
   })();
 </script>
+
+

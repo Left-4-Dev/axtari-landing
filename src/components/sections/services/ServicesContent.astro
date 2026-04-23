@@ -1,4 +1,4 @@
----
+﻿---
 import Eyebrow from "@components/ui/Eyebrow.astro";
 ---
 
@@ -23,7 +23,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
     <article class="service-node service-node--center">
       <div class="service-node__bubble--center">
         <img
-          src="/images/ui/bubble-decor.svg"
+          src={import.meta.env.BASE_URL + "/images/ui/bubble-decor.svg"}
           alt="Ecosistema digital Axtari"
         />
       </div>
@@ -38,7 +38,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       <div class="service-node__bubble">
         <div class="service-node__bg"></div>
         <div class="service-node__stars" aria-hidden="true">
-          <img src="/images/ui/stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/stars.svg"} alt="" />
         </div>
         <div class="service-node__icon-wrap">
           <svg class="service-node__icon" aria-hidden="true">
@@ -63,7 +63,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       <div class="service-node__bubble">
         <div class="service-node__bg"></div>
         <div class="service-node__stars" aria-hidden="true">
-          <img src="/images/ui/stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/stars.svg"} alt="" />
         </div>
         <div class="service-node__icon-wrap">
           <svg class="service-node__icon" aria-hidden="true">
@@ -88,7 +88,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       <div class="service-node__bubble">
         <div class="service-node__bg"></div>
         <div class="service-node__stars" aria-hidden="true">
-          <img src="/images/ui/stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/stars.svg"} alt="" />
         </div>
         <div class="service-node__icon-wrap">
           <svg class="service-node__icon" aria-hidden="true">
@@ -113,7 +113,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       <div class="service-node__bubble">
         <div class="service-node__bg"></div>
         <div class="service-node__stars" aria-hidden="true">
-          <img src="/images/ui/stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/stars.svg"} alt="" />
         </div>
         <div class="service-node__icon-wrap">
           <svg class="service-node__icon" aria-hidden="true">
@@ -138,7 +138,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       <div class="service-node__bubble">
         <div class="service-node__bg"></div>
         <div class="service-node__stars" aria-hidden="true">
-          <img src="/images/ui/stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/stars.svg"} alt="" />
         </div>
         <div class="service-node__icon-wrap">
           <svg class="service-node__icon" aria-hidden="true">
@@ -978,3 +978,5 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
     initServicesEntrance();
   });
 </script>
+
+

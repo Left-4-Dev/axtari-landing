@@ -1,4 +1,4 @@
----
+﻿---
 import Eyebrow from "@components/ui/Eyebrow.astro";
 import JourneyCard from "@components/ui/JourneyCard.astro";
 import { sellerCards } from "@data/sellers.data";
@@ -21,7 +21,7 @@ import { sellerCards } from "@data/sellers.data";
         <p class="seller__label">Para</p>
         <h3 class="seller__role">VENDEDORES</h3>
         <img
-          src="/images/sections/sellers/seller1.svg"
+          src={import.meta.env.BASE_URL + "/images/sections/sellers/seller1.svg"}
           alt="Herramientas para vendedores"
           class="seller__image"
         />
@@ -327,3 +327,5 @@ import { sellerCards } from "@data/sellers.data";
     }
   }
 </style>
+
+

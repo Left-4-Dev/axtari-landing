@@ -1,4 +1,4 @@
----
+﻿---
 import Eyebrow from "@components/ui/Eyebrow.astro";
 ---
 
@@ -34,7 +34,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
 
       <div class="audience__image-shell">
         <img
-          src="/images/sections/audience/audience.svg"
+          src={import.meta.env.BASE_URL + "/images/sections/audience/audience.svg"}
           alt="Ilustración de conexión entre proveedores y compradores"
         />
       </div>
@@ -388,3 +388,5 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
     }
   }
 </style>
+
+

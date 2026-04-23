@@ -1,4 +1,4 @@
----
+﻿---
 import Eyebrow from "@components/ui/Eyebrow.astro";
 ---
 
@@ -41,7 +41,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
         <div class="assistant-card__triangle assistant-card__triangle--right">
         </div>
         <div class="assistant-card__sparkles">
-          <img src="/images/ui/axter-card-stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/axter-card-stars.svg"} alt="" />
         </div>
         <div class="assistant-card__content">
           <h3 class="assistant-card__title">
@@ -55,7 +55,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
         <div class="assistant-card__triangle assistant-card__triangle--right">
         </div>
         <div class="assistant-card__sparkles">
-          <img src="/images/ui/axter-card-stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/axter-card-stars.svg"} alt="" />
         </div>
         <div class="assistant-card__content">
           <h3 class="assistant-card__title">
@@ -71,7 +71,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
       <div class="assistant__avatar-shell">
         <div class="assistant__avatar-bg"></div>
         <div class="assistant__avatar-sparkles" aria-hidden="true">
-          <img src="/images/ui/axter-stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/axter-stars.svg"} alt="" />
         </div>
         <div class="assistant__avatar-wrap">
           <svg class="assistant__avatar-icon" aria-hidden="true">
@@ -87,7 +87,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
         <div class="assistant-card__triangle assistant-card__triangle--left">
         </div>
         <div class="assistant-card__sparkles">
-          <img src="/images/ui/axter-card-stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/axter-card-stars.svg"} alt="" />
         </div>
         <div class="assistant-card__content">
           <h3 class="assistant-card__title">
@@ -101,7 +101,7 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
         <div class="assistant-card__triangle assistant-card__triangle--left">
         </div>
         <div class="assistant-card__sparkles">
-          <img src="/images/ui/axter-card-stars.svg" alt="" />
+          <img src={import.meta.env.BASE_URL + "/images/ui/axter-card-stars.svg"} alt="" />
         </div>
         <div class="assistant-card__content">
           <h3 class="assistant-card__title">
@@ -501,3 +501,5 @@ import Eyebrow from "@components/ui/Eyebrow.astro";
     }
   }
 </style>
+
+

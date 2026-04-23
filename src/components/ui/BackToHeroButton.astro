@@ -1,4 +1,6 @@
-﻿---
+---
+import { uiImage } from "@lib/utils/asset.utils";
+
 interface Props {
   targetId?: string;
   ariaLabel?: string;
@@ -14,7 +16,7 @@ const { targetId = "hero", ariaLabel = "Volver al inicio" } = Astro.props;
   data-back-to-hero
 >
   <img
-    src="/images/ui/btn_icon.svg"
+    src={uiImage("btn_icon.svg")}
     alt=""
     aria-hidden="true"
     class="back-to-hero__icon"
@@ -22,8 +24,6 @@ const { targetId = "hero", ariaLabel = "Volver al inicio" } = Astro.props;
 </a>
 
 <style>
-  
-
   .back-to-hero {
     --btn-size: 56px;
     --btn-offset-right: 24px;

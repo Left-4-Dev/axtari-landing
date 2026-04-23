@@ -1,6 +1,7 @@
 ---
 import { gsap } from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { sectionImage, iconBrand, uiImage } from "@lib/utils/asset.utils";
 
 const companyLinks = [
   { label: "Contact us", href: "#" },
@@ -45,7 +46,7 @@ const socialLinks = [
   <div class="footer__bg">
     <div class="footer__gradient"></div>
     <div class="footer__image">
-      <img src="/images/sections/hero/hero__background.webp" alt="" />
+      <img src={sectionImage("hero", "hero__background.webp")} alt="" />
     </div>
   </div>
   <div class="footer__inner">
@@ -61,10 +62,10 @@ const socialLinks = [
         </a> -->
         <div class="footer__logo">
           <span class="footer__logo-mark" aria-hidden="true">
-            <img src="/icons/brand/Logo.svg" alt="Ícono Axteri" />
+            <img src={iconBrand("Logo.svg")} alt="Ícono Axteri" />
           </span>
           <span class="footer__logo-text">
-            <img src="/icons/brand/Text_logo.svg" alt="Axteri" />
+            <img src={iconBrand("Text_logo.svg")} alt="Axteri" />
           </span>
         </div>
         <section class="footer__newsletter" aria-label="Newsletter">

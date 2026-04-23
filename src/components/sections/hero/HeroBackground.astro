@@ -1,8 +1,8 @@
-<div class="hero__bg" aria-hidden="true">
+﻿<div class="hero__bg" aria-hidden="true">
   <div class="hero__gradient"></div>
 
   <div class="hero__image">
-    <img src="/images/sections/hero/hero__background.webp" alt="" />
+    <img src={import.meta.env.BASE_URL + "/images/sections/hero/hero__background.webp"} alt="" />
   </div>
 
   <canvas class="hero__stars"></canvas>
@@ -243,3 +243,5 @@
     window.addEventListener("pagehide", cleanup, { once: true });
   })();
 </script>
+
+
