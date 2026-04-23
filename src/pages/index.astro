@@ -1,0 +1,45 @@
+﻿---
+import Layout from "@layouts/Layout.astro";
+import HeroSection from "@components/sections/hero/HeroSection.astro";
+import AboutSection from "@components/sections/about/AboutSection.astro";
+import ServicesSection from "@components/sections/services/ServicesSection.astro";
+import AssistantSection from "@components/sections/assistant/AssistantSection.astro";
+import ValueSection from "@components/sections/value/ValueSection.astro";
+import AudienceSection from "@components/sections/audience/AudienceSection.astro";
+import SellersSection from "@components/sections/sellers/SellersSection.astro";
+import BuyersSection from "@components/sections/buyers/BuyersSection.astro";
+import BenefitsSection from "@components/sections/benefits/BenefitsSection.astro";
+import UniverseSection from "@components/sections/universe/UniverseSection.astro";
+import StarsSection from "@components/sections/stars/StarsSection.astro";
+import AllySection from "@components/sections/ally/AllySection.astro";
+import EcosystemSection from "@components/sections/ecosystem/EcosystemSection.astro";
+import BackToHeroButton from "@components/ui/BackToHeroButton.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+  <HeroSection />
+  <AboutSection />
+  <ServicesSection />
+  <AssistantSection />
+  <ValueSection />
+  <AudienceSection />
+  <SellersSection />
+  <BuyersSection />
+  <BenefitsSection />
+  <UniverseSection />
+  <StarsSection />
+  <AllySection />
+  <EcosystemSection />
+  <BackToHeroButton targetId="hero" />
+</Layout>
+
+<script>
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
+</script>

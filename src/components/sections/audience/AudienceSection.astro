@@ -1,0 +1,308 @@
+﻿---
+import AudienceContent from "@components/sections/audience/AudienceContent.astro";
+---
+
+<section class="audience section">
+  <div class="audience__container container">
+    <AudienceContent />
+  </div>
+</section>
+
+<style>
+  
+  .audience {
+    --audience-text: #2f3448;
+    --audience-text-soft: #5f667f;
+    --audience-accent: #6f76ff;
+    --audience-blue: #a0d5fd;
+    --audience-violet: #9d98fc;
+    --audience-shadow: rgba(109, 122, 255, 0.14);
+    --audience-surface: rgba(255, 255, 255, 0.24);
+    --audience-border: rgba(255, 255, 255, 0.34);
+
+    --gradient-1-angle: 90deg;
+    --gradient-1-stop-1-color: #a0d5fd;
+    --gradient-1-stop-1-pos: 0%;
+    --gradient-1-stop-2-color: #9fb7f5;
+    --gradient-1-stop-2-pos: 65%;
+    --gradient-1-stop-3-color: #9d98ec;
+    --gradient-1-stop-3-pos: 100%;
+
+    --padding-section: 2rem 0;
+    text-transform: uppercase;
+  }
+
+  .audience__container {
+    --max-width-container: 100%;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .audience {
+      --padding-section-xl: 2rem 0px;
+      --max-width-container-xl: 100%;
+      --max-width-header-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .audience {
+      --padding-section-lg: 80px 0px 88px;
+      --max-width-container-lg: 100%;
+      --max-width-header-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .audience {
+      --padding-section-md: 72px 36px 80px;
+      --max-width-description-md: 680px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .audience {
+      --padding-section-sm: 64px 28px 72px;
+      --max-width-description-sm: 100%;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .audience {
+      --padding-section-xs: 56px 20px 64px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+
+  export function initAudienceEntrance() {
+    const section = document.querySelector<HTMLElement>(".audience");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>(".eyebrow");
+    const title = section.querySelector<HTMLElement>(".audience__title");
+    const description = section.querySelector<HTMLElement>(
+      ".audience__description",
+    );
+
+    const visual = section.querySelector<HTMLElement>(".audience__visual");
+    const imageShell = section.querySelector<HTMLElement>(
+      ".audience__image-shell",
+    );
+    const glows = section.querySelectorAll<HTMLElement>(
+      ".audience__visual-glow",
+    );
+
+    const leftCard = section.querySelector<HTMLElement>(".audience-card--left");
+    const rightCard = section.querySelector<HTMLElement>(
+      ".audience-card--right",
+    );
+
+    const leftInner = section.querySelector<HTMLElement>(
+      ".audience-card--left .audience-card__inner",
+    );
+    const rightInner = section.querySelector<HTMLElement>(
+      ".audience-card--right .audience-card__inner",
+    );
+
+    const mm = gsap.matchMedia();
+
+    const getClipPaths = () => {
+      if (window.innerWidth <= 640) {
+        return {
+          leftFrom: "inset(0 100% 0 0 round 18px)",
+          leftTo: "inset(0 0% 0 0 round 18px)",
+          rightFrom: "inset(0 0 0 100% round 18px)",
+          rightTo: "inset(0 0 0 0% round 18px)",
+        };
+      }
+
+      if (window.innerWidth <= 900) {
+        return {
+          leftFrom: "inset(0 100% 0 0 round 20px)",
+          leftTo: "inset(0 0% 0 0 round 20px)",
+          rightFrom: "inset(0 0 0 100% round 20px)",
+          rightTo: "inset(0 0 0 0% round 20px)",
+        };
+      }
+
+      return {
+        leftFrom: "inset(0 100% 0 0 round 0 999px 999px 0)",
+        leftTo: "inset(0 0% 0 0 round 0 999px 999px 0)",
+        rightFrom: "inset(0 0 0 100% round 999px 0 0 999px)",
+        rightTo: "inset(0 0 0 0% round 999px 0 0 999px)",
+      };
+    };
+
+    mm.add("(min-width: 0px)", () => {
+      const clip = getClipPaths();
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 72%",
+          once: true,
+        },
+        defaults: {
+          ease: "power3.out",
+        },
+      });
+
+      if (eyebrow) {
+        tl.fromTo(
+          eyebrow,
+          { autoAlpha: 0, y: 14, filter: "blur(6px)" },
+          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.55 },
+        );
+      }
+
+      if (title) {
+        tl.fromTo(
+          title,
+          { autoAlpha: 0, y: 18, filter: "blur(8px)" },
+          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.7 },
+          "-=0.28",
+        );
+      }
+
+      if (description) {
+        tl.fromTo(
+          description,
+          { autoAlpha: 0, y: 16, filter: "blur(8px)" },
+          { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.65 },
+          "-=0.4",
+        );
+      }
+
+      if (visual) {
+        tl.fromTo(
+          visual,
+          { autoAlpha: 0, y: 18 },
+          { autoAlpha: 1, y: 0, duration: 0.5 },
+          "-=0.18",
+        );
+      }
+
+      if (imageShell) {
+        tl.fromTo(
+          imageShell,
+          {
+            autoAlpha: 0,
+            scale: 0.82,
+            y: 20,
+            filter: "blur(14px)",
+          },
+          {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 1,
+            ease: "back.out(1.35)",
+          },
+          "-=0.18",
+        );
+      }
+
+      if (glows.length) {
+        tl.fromTo(
+          glows,
+          { autoAlpha: 0, scale: 0.72 },
+          {
+            autoAlpha: 0.4,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.08,
+            ease: "power2.out",
+          },
+          "-=0.7",
+        );
+      }
+
+      if (leftCard) {
+        tl.fromTo(
+          leftCard,
+          {
+            autoAlpha: 0,
+            x: -80,
+            clipPath: clip.leftFrom,
+            filter: "blur(10px)",
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            clipPath: clip.leftTo,
+            filter: "blur(0px)",
+            duration: 0.9,
+            clearProps: "clipPath,filter",
+          },
+          "-=0.6",
+        );
+      }
+
+      if (rightCard) {
+        tl.fromTo(
+          rightCard,
+          {
+            autoAlpha: 0,
+            x: 80,
+            clipPath: clip.rightFrom,
+            filter: "blur(10px)",
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            clipPath: clip.rightTo,
+            filter: "blur(0px)",
+            duration: 0.9,
+            clearProps: "clipPath,filter",
+          },
+          "<+0.06",
+        );
+      }
+
+      if (leftInner) {
+        tl.fromTo(
+          leftInner,
+          { autoAlpha: 0, x: -18 },
+          { autoAlpha: 1, x: 0, duration: 0.55 },
+          "-=0.5",
+        );
+      }
+
+      if (rightInner) {
+        tl.fromTo(
+          rightInner,
+          { autoAlpha: 0, x: 18 },
+          { autoAlpha: 1, x: 0, duration: 0.55 },
+          "<+0.08",
+        );
+      }
+
+      return () => {
+        tl.kill();
+      };
+    });
+  }
+
+  window.addEventListener("load", () => {
+    initAudienceEntrance();
+  });
+</script>

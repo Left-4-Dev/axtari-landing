@@ -1,0 +1,136 @@
+﻿---
+import EcosystemContent from "@components/sections/ecosystem/EcosystemContent.astro";
+---
+
+<section class="ecosystem section">
+  <div class="ecosystem__container container">
+    <EcosystemContent />
+  </div>
+</section>
+
+<style>
+  
+
+  .ecosystem {
+    --padding-section: 4rem 0;
+    text-transform: uppercase;
+  }
+
+  .ecosystem__container {
+    --max-width-container: 1200px;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .ecosystem {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .ecosystem {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .ecosystem {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .ecosystem {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .ecosystem {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+
+  (() => {
+    const section = document.querySelector<HTMLElement>(".ecosystem");
+    if (!section) return;
+
+    const list = section.querySelector<HTMLElement>(".ecosystem__list");
+    const brand = section.querySelector<HTMLElement>(".ecosystem__brand");
+    const bubbles = gsap.utils.toArray<HTMLElement>(".ecosystem__bubble");
+
+    if (!list || (!brand && bubbles.length === 0)) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (brand) {
+      tl.fromTo(
+        brand,
+        {
+          autoAlpha: 0,
+          x: -28,
+          scale: 0.96,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          x: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.7,
+        },
+      );
+    }
+
+    if (bubbles.length) {
+      tl.fromTo(
+        bubbles,
+        {
+          autoAlpha: 0,
+          scale: 0.88,
+          filter: "blur(10px)",
+        },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.65,
+          stagger: 0.08,
+          ease: "back.out(1.1)",
+          clearProps: "filter",
+        },
+        brand ? 0.12 : 0,
+      );
+    }
+  })();
+</script>

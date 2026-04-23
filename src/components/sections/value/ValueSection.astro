@@ -1,0 +1,65 @@
+﻿---
+import ValueContent from "@components/sections/value/ValueContent.astro";
+---
+
+<section class="value section">
+  <div class="value__container container">
+    <ValueContent />
+  </div>
+</section>
+
+<style>
+  
+  .value {
+    --padding-section: 2rem 0;
+    --max-width-container: 1200px;
+    text-transform: uppercase;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .value {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .value {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .value {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .value {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .value {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>

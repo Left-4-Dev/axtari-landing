@@ -1,0 +1,980 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+---
+
+<div class="services__content">
+  <header class="services__header header">
+    <Eyebrow text="Lo que hacemos" align="center" />
+
+    <h2 class="services__title title">
+      Nuestros <span>Servicios</span>
+    </h2>
+
+    <p class="services__description description">
+      TE BRINDAMOS PRODUCTOS DE CALIDAD CON LOS MEJORES PROVEEDORES DEL MERCADO,
+      UNA PLATAFORMA DE EXPOSICIÓN Y UN SISTEMA PARA BUSCAR, COMPARAR Y COTIZAR
+      TUS ARTÍCULOS, TODO POTENCIADO POR IA. ASIMISMO. NOS ENCARGAMOS DEL
+      DESPACHO A CUALQUIER REGIÓN DEL PERÚ. ¡CON AXTERI LA COMPRA Y VENTA NUNCA
+      HABÍA SIDO TAN FÁCIL!
+    </p>
+  </header>
+
+  <div class="services__diagram">
+    <article class="service-node service-node--center">
+      <div class="service-node__bubble--center">
+        <img
+          src="/images/ui/bubble-decor.svg"
+          alt="Ecosistema digital Axtari"
+        />
+      </div>
+    </article>
+
+    <article class="service-node service-node--tl">
+      <div class="service-node__connector service-node__connector--tl">
+        <span class="service-node__stick"></span>
+        <span class="service-node__ring"></span>
+      </div>
+
+      <div class="service-node__bubble">
+        <div class="service-node__bg"></div>
+        <div class="service-node__stars" aria-hidden="true">
+          <img src="/images/ui/stars.svg" alt="" />
+        </div>
+        <div class="service-node__icon-wrap">
+          <svg class="service-node__icon" aria-hidden="true">
+            <use xlink:href="assets/sprite.svg#platform"></use>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-node__label">
+        <span class="service-node__kicker">Acceso</span>
+        <strong>Plataforma digital</strong>
+        <p>Exposición, búsqueda y conexión en un solo entorno.</p>
+      </div>
+    </article>
+
+    <article class="service-node service-node--tr">
+      <div class="service-node__connector service-node__connector--tr">
+        <span class="service-node__stick"></span>
+        <span class="service-node__ring"></span>
+      </div>
+
+      <div class="service-node__bubble">
+        <div class="service-node__bg"></div>
+        <div class="service-node__stars" aria-hidden="true">
+          <img src="/images/ui/stars.svg" alt="" />
+        </div>
+        <div class="service-node__icon-wrap">
+          <svg class="service-node__icon" aria-hidden="true">
+            <use xlink:href="assets/sprite.svg#receipt"></use>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-node__label">
+        <span class="service-node__kicker">Confianza</span>
+        <strong>Ventas seguras</strong>
+        <p>Procesos formales, acuerdos claros y productos certificados.</p>
+      </div>
+    </article>
+
+    <article class="service-node service-node--br">
+      <div class="service-node__connector service-node__connector--br">
+        <span class="service-node__stick"></span>
+        <span class="service-node__ring"></span>
+      </div>
+
+      <div class="service-node__bubble">
+        <div class="service-node__bg"></div>
+        <div class="service-node__stars" aria-hidden="true">
+          <img src="/images/ui/stars.svg" alt="" />
+        </div>
+        <div class="service-node__icon-wrap">
+          <svg class="service-node__icon" aria-hidden="true">
+            <use xlink:href="assets/sprite.svg#check-badge"></use>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-node__label">
+        <span class="service-node__kicker">Respaldo</span>
+        <strong>Proveedores verificados</strong>
+        <p>Aliados confiables con operación formal y trazabilidad.</p>
+      </div>
+    </article>
+
+    <article class="service-node service-node--bl">
+      <div class="service-node__connector service-node__connector--bl">
+        <span class="service-node__stick"></span>
+        <span class="service-node__ring"></span>
+      </div>
+
+      <div class="service-node__bubble">
+        <div class="service-node__bg"></div>
+        <div class="service-node__stars" aria-hidden="true">
+          <img src="/images/ui/stars.svg" alt="" />
+        </div>
+        <div class="service-node__icon-wrap">
+          <svg class="service-node__icon" aria-hidden="true">
+            <use xlink:href="assets/sprite.svg#delivery-truck"></use>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-node__label">
+        <span class="service-node__kicker">Operación</span>
+        <strong>Logística y transporte</strong>
+        <p>Consolidación, despacho y cobertura para todo el Perú.</p>
+      </div>
+    </article>
+
+    <article class="service-node service-node--bc">
+      <div class="service-node__connector service-node__connector--bc">
+        <span class="service-node__ring service-node__ring--top"></span>
+        <span class="service-node__stick service-node__stick--vertical"></span>
+      </div>
+
+      <div class="service-node__bubble">
+        <div class="service-node__bg"></div>
+        <div class="service-node__stars" aria-hidden="true">
+          <img src="/images/ui/stars.svg" alt="" />
+        </div>
+        <div class="service-node__icon-wrap">
+          <svg class="service-node__icon" aria-hidden="true">
+            <use xlink:href="assets/sprite.svg#support"></use>
+          </svg>
+        </div>
+      </div>
+
+      <div class="service-node__label service-node__label--bottom">
+        <span class="service-node__kicker">Inteligencia</span>
+        <strong>Asesoría con IA</strong>
+        <p>Soporte personalizado para encontrar y cotizar mejor.</p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<style>
+  
+
+  .services__content {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  .services__diagram {
+    position: relative;
+    width: min(980px, 100%);
+    aspect-ratio: 1.8;
+    margin: 0 auto;
+  }
+
+  .service-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .service-node--center {
+    width: 260px;
+    height: 260px;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+  }
+
+  .service-node--tl,
+  .service-node--tr,
+  .service-node--br,
+  .service-node--bl,
+  .service-node--bc {
+    width: 132px;
+    height: 132px;
+    z-index: 2;
+  }
+
+  .service-node--tl {
+    --gradient-3-angle: 112.5deg;
+    top: 25%;
+    left: 25%;
+  }
+  .service-node--tr {
+    --gradient-3-angle: 202.5deg;
+    top: 25%;
+    left: 75%;
+  }
+  .service-node--br {
+    --gradient-3-angle: -22.5deg;
+    top: 75%;
+    left: 75%;
+  }
+  .service-node--bl {
+    --gradient-3-angle: 22.5deg;
+    top: 75%;
+    left: 25%;
+  }
+  .service-node--bc {
+    --gradient-3-angle: 0deg;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -28%);
+  }
+
+  .service-node__bubble {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .service-node__bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--gradient-3);
+    box-shadow: 5px 5px 5px rgba(175, 157, 209, 0.75);
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .service-node__bubble--center {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+  .service-node__stars {
+    position: absolute;
+    inset: -16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .service-node__icon-wrap {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--gradient-3);
+    z-index: 1;
+  }
+
+  .service-node__icon {
+    color: #323643;
+  }
+
+  .service-node__connector {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .service-node__stick {
+    position: absolute;
+    width: 10px;
+    height: 34px;
+    border-radius: 999px;
+    background: #9d98fc;
+    box-shadow: 0 4px 10px rgba(109, 122, 255, 0.14);
+  }
+
+  .service-node__stick--vertical {
+    height: 200px;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .service-node__ring {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 10px solid #9d98fc;
+    background: transparent;
+  }
+
+  .service-node__connector--tl {
+    width: 24px;
+    height: 24px;
+    top: 65%;
+    left: 95%;
+  }
+
+  .service-node__connector--tl .service-node__stick {
+    top: 0;
+    left: 0;
+    transform: translate(0%, -18%) rotate(-60deg);
+  }
+
+  .service-node__connector--tl .service-node__ring {
+    right: 0;
+    bottom: 0;
+    transform: translate(100%, 65%);
+  }
+
+  .service-node__connector--tr {
+    width: 24px;
+    height: 24px;
+    top: 65%;
+    right: 95%;
+  }
+
+  .service-node__connector--tr .service-node__stick {
+    top: 0;
+    right: 0;
+    transform: translate(0%, -18%) rotate(60deg);
+  }
+
+  .service-node__connector--tr .service-node__ring {
+    left: 0;
+    bottom: 0;
+    transform: translate(-100%, 65%);
+  }
+
+  .service-node__connector--br {
+    width: 24px;
+    height: 24px;
+    right: 95%;
+    bottom: 65%;
+  }
+
+  .service-node__connector--br .service-node__stick {
+    bottom: 0;
+    right: 0;
+    transform: translate(0%, 18%) rotate(-60deg);
+  }
+
+  .service-node__connector--br .service-node__ring {
+    left: 0;
+    top: 0;
+    transform: translate(-100%, -65%);
+  }
+
+  .service-node__connector--bl {
+    width: 24px;
+    height: 24px;
+    left: 95%;
+    bottom: 65%;
+  }
+
+  .service-node__connector--bl .service-node__stick {
+    bottom: 0;
+    left: 0;
+    transform: translate(0%, 18%) rotate(60deg);
+  }
+
+  .service-node__connector--bl .service-node__ring {
+    right: 0;
+    top: 0;
+    transform: translate(100%, -65%);
+  }
+
+  .service-node__connector--bc {
+    width: 32px;
+    height: 210px;
+    top: -52%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .service-node__connector--bc .service-node__ring--top {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .service-node__label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    color: var(--services-text);
+  }
+
+  .service-node__kicker {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--services-accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .service-node__label strong {
+    display: block;
+    font-size: 1.25rem;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+    color: #2f3448;
+  }
+
+  .service-node__label p {
+    margin: 10px 0 0;
+    color: var(--services-text-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .service-node--tl .service-node__label,
+  .service-node--bl .service-node__label {
+    right: calc(100% + 26px);
+    text-align: right;
+  }
+
+  .service-node--tr .service-node__label,
+  .service-node--br .service-node__label {
+    left: calc(100% + 26px);
+    text-align: left;
+  }
+
+  .service-node--bc .service-node__label {
+    top: 50%;
+    left: calc(100% + 26px);
+    transform: translateY(-50%);
+    text-align: left;
+  }
+
+  /* =========================
+   LARGE DESKTOP / SMALL LAPTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .services {
+      --padding-section-xl: 2rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .services__content {
+      padding-inline: 16px;
+    }
+
+    .services__diagram {
+      width: min(840px, 100%);
+      margin-top: 48px;
+    }
+
+    .service-node--center {
+      width: 232px;
+      height: 232px;
+    }
+
+    .service-node--tl,
+    .service-node--tr,
+    .service-node--br,
+    .service-node--bl,
+    .service-node--bc {
+      width: 118px;
+      height: 118px;
+    }
+
+    .service-node--tl {
+      left: 22%;
+    }
+
+    .service-node--tr {
+      left: 78%;
+    }
+
+    .service-node--br {
+      left: 78%;
+    }
+
+    .service-node--bl {
+      left: 22%;
+    }
+
+    .service-node__label {
+      width: 190px;
+    }
+
+    .service-node--tl .service-node__label,
+    .service-node--bl .service-node__label {
+      right: calc(100% + 18px);
+    }
+
+    .service-node--tr .service-node__label,
+    .service-node--br .service-node__label,
+    .service-node--bc .service-node__label {
+      left: calc(100% + 18px);
+    }
+
+    .service-node__label strong {
+      font-size: 1.08rem;
+    }
+
+    .service-node__label p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .service-node__connector--bc .service-node__stick--vertical {
+      height: 176px;
+      top: 61%;
+    }
+  }
+
+  /* =========================
+   LAPTOP / TABLET LANDSCAPE (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .services {
+      --padding-section-lg: 84px 32px 92px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .services__content {
+      padding-inline: 16px;
+    }
+
+    .services__diagram {
+      width: min(840px, 100%);
+      aspect-ratio: 1.65;
+      margin-top: 0px;
+    }
+
+    .service-node--center {
+      width: 210px;
+      height: 210px;
+    }
+
+    .service-node--tl,
+    .service-node--tr,
+    .service-node--br,
+    .service-node--bl,
+    .service-node--bc {
+      width: 104px;
+      height: 104px;
+    }
+
+    .service-node--tl {
+      top: 28%;
+      left: 26%;
+    }
+
+    .service-node--tr {
+      top: 28%;
+      left: 74%;
+    }
+
+    .service-node--br {
+      top: 70%;
+      left: 74%;
+    }
+
+    .service-node--bl {
+      top: 70%;
+      left: 26%;
+    }
+
+    .service-node--bc {
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+    }
+
+    .service-node__label {
+      width: 160px;
+    }
+
+    .service-node--tl .service-node__label,
+    .service-node--bl .service-node__label {
+      right: calc(100% + 14px);
+    }
+
+    .service-node--tr .service-node__label,
+    .service-node--br .service-node__label,
+    .service-node--bc .service-node__label {
+      left: calc(100% + 14px);
+    }
+
+    .service-node__kicker {
+      font-size: 0.74rem;
+      margin-bottom: 4px;
+    }
+
+    .service-node__label strong {
+      font-size: 0.98rem;
+      line-height: 1.14;
+    }
+
+    .service-node__label p {
+      margin-top: 6px;
+      font-size: 0.84rem;
+      line-height: 1.42;
+    }
+
+    .service-node__stick {
+      width: 8px;
+      height: 28px;
+    }
+
+    .service-node__ring {
+      width: 22px;
+      height: 22px;
+      border-width: 7px;
+    }
+
+    .service-node__connector--bc {
+      height: 180px;
+      top: -50%;
+    }
+
+    .service-node__connector--bc .service-node__stick--vertical {
+      height: 152px;
+      top: 60%;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .services {
+      --padding-section-md: 72px 36px 88px;
+      --font-size-title-md: clamp(2rem, 7vw, 3.2rem);
+      --line-height-title-md: 1.02;
+      --max-width-description-md: 680px;
+      --font-size-description-md: 1rem;
+      --line-height-description-md: 1.65;
+    }
+
+    .services__content {
+      padding-inline: 18px;
+    }
+
+    .services__diagram {
+      width: 100%;
+      aspect-ratio: auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .service-node {
+      position: relative;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: 100% !important;
+      height: auto !important;
+      transform: none !important;
+    }
+
+    .service-node--center {
+      grid-column: 1 / -1;
+      width: 210px !important;
+      height: 210px !important;
+      justify-self: center;
+      margin-bottom: 4px;
+    }
+
+    .service-node--bc {
+      grid-column: 1 / -1;
+      width: 100% !important;
+      max-width: 420px;
+      justify-self: center;
+    }
+
+    .service-node__connector {
+      display: none;
+    }
+
+    .service-node:not(.service-node--center) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 22px 18px 20px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.34);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 26px rgba(146, 157, 255, 0.1);
+      text-align: center;
+    }
+
+    .service-node:not(.service-node--center) .service-node__bubble {
+      width: 92px;
+      height: 92px;
+    }
+
+    .service-node__label,
+    .service-node--tl .service-node__label,
+    .service-node--tr .service-node__label,
+    .service-node--br .service-node__label,
+    .service-node--bl .service-node__label,
+    .service-node--bc .service-node__label {
+      position: static;
+      transform: none;
+      width: 100%;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .service-node__label strong {
+      font-size: 1.05rem;
+      line-height: 1.15;
+    }
+
+    .service-node__label p {
+      margin-top: 8px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .services {
+      --padding-section-sm: 64px 28px 80px;
+      --font-size-title-sm: clamp(1.8rem, 10vw, 2.5rem);
+      --letter-spacing-title-sm: -0.04em;
+      --margin-title-sm: 16px 0 0;
+      --font-size-description-sm: 0.96rem;
+      --line-height-description-sm: 1.6;
+      --margin-description-sm: 18px auto 0;
+    }
+
+    .services__content {
+      padding-inline: 14px;
+    }
+
+    .services__eyebrow {
+      min-height: 34px;
+      padding: 0 14px;
+      font-size: 0.84rem;
+    }
+
+    .services__diagram {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .service-node--center {
+      width: 170px !important;
+      height: 170px !important;
+    }
+
+    .service-node:not(.service-node--center) {
+      padding: 18px 16px;
+      border-radius: 20px;
+    }
+
+    .service-node:not(.service-node--center) .service-node__bubble {
+      width: 84px;
+      height: 84px;
+    }
+
+    .service-node__kicker {
+      margin-bottom: 4px;
+      font-size: 0.76rem;
+    }
+
+    .service-node__label strong {
+      font-size: 0.98rem;
+    }
+
+    .service-node__label p {
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .services {
+      --padding-section-xs: 56px 20px 72px;
+    }
+
+    .services__content {
+      padding-inline: 10px;
+    }
+
+    .service-node--center {
+      width: 150px !important;
+      height: 150px !important;
+    }
+
+    .service-node:not(.service-node--center) .service-node__bubble {
+      width: 76px;
+      height: 76px;
+    }
+
+    .service-node__label strong {
+      font-size: 0.94rem;
+    }
+
+    .service-node__label p {
+      font-size: 0.82rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+
+  export function initServicesEntrance() {
+    const section = document.querySelector<HTMLElement>(".services");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>(".eyebrow");
+    const title = section.querySelector<HTMLElement>(".services__title");
+    const description = section.querySelector<HTMLElement>(
+      ".services__description",
+    );
+    const centerNode = section.querySelector<HTMLElement>(
+      ".service-node--center",
+    );
+
+    const outerNodes = section.querySelectorAll<HTMLElement>(
+      ".service-node--tl, .service-node--tr, .service-node--br, .service-node--bl, .service-node--bc",
+    );
+
+    const labels = section.querySelectorAll<HTMLElement>(
+      ".service-node__label",
+    );
+    const connectors = section.querySelectorAll<HTMLElement>(
+      ".service-node__connector",
+    );
+    const bubbles = section.querySelectorAll<HTMLElement>(
+      ".service-node:not(.service-node--center) .service-node__bubble",
+    );
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 70%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (eyebrow) {
+      tl.fromTo(
+        eyebrow,
+        { autoAlpha: 0, y: 18, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.65 },
+      );
+    }
+
+    if (title) {
+      tl.fromTo(
+        title,
+        { autoAlpha: 0, y: 28, filter: "blur(8px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 },
+        "-=0.38",
+      );
+    }
+
+    if (description) {
+      tl.fromTo(
+        description,
+        { autoAlpha: 0, y: 24, filter: "blur(8px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.75 },
+        "-=0.45",
+      );
+    }
+
+    if (centerNode) {
+      tl.fromTo(
+        centerNode,
+        { autoAlpha: 0, scale: 0.86, y: 20, filter: "blur(10px)" },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "back.out(1.4)",
+        },
+        "-=0.2",
+      );
+    }
+
+    if (connectors.length) {
+      tl.fromTo(
+        connectors,
+        { autoAlpha: 0, scaleY: 0.3, transformOrigin: "center center" },
+        {
+          autoAlpha: 1,
+          scaleY: 1,
+          duration: 0.45,
+          stagger: 0.06,
+          ease: "power2.out",
+        },
+        "-=0.35",
+      );
+    }
+
+    if (outerNodes.length) {
+      tl.fromTo(
+        outerNodes,
+        { autoAlpha: 0, scale: 0.8, y: 18, filter: "blur(10px)" },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "back.out(1.25)",
+        },
+        "-=0.2",
+      );
+    }
+
+    if (bubbles.length) {
+      tl.fromTo(
+        bubbles,
+        { rotate: -8 },
+        {
+          rotate: 0,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "<",
+      );
+    }
+
+    if (labels.length) {
+      tl.fromTo(
+        labels,
+        { autoAlpha: 0, y: 16 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "-=0.45",
+      );
+    }
+  }
+
+  window.addEventListener("load", () => {
+    initServicesEntrance();
+  });
+</script>

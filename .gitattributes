@@ -1,0 +1,14 @@
+# Forzar que todos los archivos de texto usen LF (formato Unix)
+# Esto evita problemas de inconsistencia entre Windows/Linux y quita los avisos de "LF will be replaced by CRLF"
+* text=auto eol=lf
+
+# Asegurar que archivos binarios no se toquen
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.svg text

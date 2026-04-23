@@ -1,0 +1,69 @@
+﻿---
+import AboutContent from "@components/sections/about/AboutContent.astro";
+---
+
+<section id="about" class="about section">
+  <div class="about__container container">
+    <AboutContent />
+  </div>
+</section>
+
+<style>
+  
+  .about {
+    --padding-section: 2rem 0;
+    --max-width-container: 1200px;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .about {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .about {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .about {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .about {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .about {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>

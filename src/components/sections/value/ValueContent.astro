@@ -1,0 +1,805 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+---
+
+<div class="value__content">
+  <div class="value__header header">
+    <Eyebrow text="Nuestra propuesta de valor" align="center" />
+
+    <h2 class="value__title title">
+      Nuestra <span>Propuesta de Valor</span>
+    </h2>
+
+    <p class="value__description description">
+      No te preocupes por los inconvenientes a la hora de adquirir un producto.
+      En Axtari, nos encargamos de todo el proceso: desde la realización del
+      pedido hasta el envío. Olvídate de la gestión y los trámites engorrosos;
+      con tan solo tres simples pasos, recibe tu pedido en el almacén o en la
+      obra.
+    </p>
+  </div>
+
+  <div class="value__showcase">
+    <div class="value__viewer">
+      <article
+        class="value__scene is-active"
+        id="scene-1"
+        role="tabpanel"
+        aria-label="Gestión integral"
+      >
+        <div class="value__scene-frame">
+          <img
+            src="/images/ui/PropuestaValor1.svg"
+            alt="Proceso integral de gestión, verificación, negociación, pago, transporte y entrega del producto."
+            class="value__scene-image"
+          />
+        </div>
+      </article>
+
+      <article
+        class="value__scene"
+        id="scene-2"
+        role="tabpanel"
+        aria-label="Conexión y cobertura"
+      >
+        <div class="value__scene-frame">
+          <img
+            src="/images/ui/PropuestaValor2.svg"
+            alt="Conexión directa con el proveedor y envío a cualquier región del Perú."
+            class="value__scene-image"
+          />
+        </div>
+      </article>
+
+      <article
+        class="value__scene"
+        id="scene-3"
+        role="tabpanel"
+        aria-label="Compra simple"
+      >
+        <div class="value__scene-frame">
+          <img
+            src="/images/ui/PropuestaValor3.svg"
+            alt="Proceso de compra simplificado en tres pasos."
+            class="value__scene-image"
+          />
+        </div>
+      </article>
+    </div>
+
+    <div
+      class="value__controls"
+      role="tablist"
+      aria-label="Escenas de propuesta de valor"
+    >
+      <button
+        class="value__indicator is-active"
+        type="button"
+        data-step-target="scene-1"
+        role="tab"
+        aria-selected="true"
+      >
+        <span class="value__indicator-top">
+          <span class="value__indicator-number">01</span>
+          <span class="value__indicator-dot"></span>
+        </span>
+        <span class="value__indicator-label">Gestión integral</span>
+      </button>
+
+      <button
+        class="value__indicator"
+        type="button"
+        data-step-target="scene-2"
+        role="tab"
+        aria-selected="false"
+      >
+        <span class="value__indicator-top">
+          <span class="value__indicator-number">02</span>
+          <span class="value__indicator-dot"></span>
+        </span>
+        <span class="value__indicator-label">Conexión y cobertura</span>
+      </button>
+
+      <button
+        class="value__indicator"
+        type="button"
+        data-step-target="scene-3"
+        role="tab"
+        aria-selected="false"
+      >
+        <span class="value__indicator-top">
+          <span class="value__indicator-number">03</span>
+          <span class="value__indicator-dot"></span>
+        </span>
+        <span class="value__indicator-label">Compra simple</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .value__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .value__showcase {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .value__viewer {
+    position: relative;
+    min-height: 640px;
+    border-radius: 32px;
+    background:
+      radial-gradient(
+        circle at 15% 18%,
+        rgba(160, 213, 253, 0.22),
+        transparent 26%
+      ),
+      radial-gradient(
+        circle at 85% 12%,
+        rgba(157, 152, 252, 0.16),
+        transparent 24%
+      ),
+      linear-gradient(180deg, #f8f7fb 0%, #f3f1f8 100%);
+    border: 1px solid rgba(157, 152, 252, 0.16);
+    box-shadow:
+      0 24px 60px rgba(93, 99, 173, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    overflow: hidden;
+  }
+
+  .value__scene {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .value__scene.is-active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .value__scene-frame {
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .value__scene-image {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 18px 36px rgba(111, 118, 255, 0.12));
+    transform-origin: center;
+  }
+
+  .value__controls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .value__indicator {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1rem 0.25rem 0.25rem;
+    background: transparent;
+    border: 0;
+    text-align: left;
+    cursor: pointer;
+    color: #7a8199;
+    transition:
+      transform 0.28s ease,
+      color 0.28s ease;
+  }
+
+  .value__indicator::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    border-radius: 999px;
+    background: rgba(111, 118, 255, 0.14);
+    overflow: hidden;
+  }
+
+  .value__indicator::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #a0d5fd 0%, #6f76ff 100%);
+    transition: width 0.35s ease;
+    z-index: 1;
+  }
+
+  .value__indicator:hover {
+    color: #4f5877;
+    transform: translateY(-2px);
+  }
+
+  .value__indicator.is-active {
+    color: #2f3448;
+  }
+
+  .value__indicator.is-active::before {
+    width: 100%;
+  }
+
+  .value__indicator-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .value__indicator-number {
+    font-size: 0.82rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #6f76ff;
+  }
+
+  .value__indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(111, 118, 255, 0.2);
+    transition:
+      transform 0.28s ease,
+      background 0.28s ease;
+  }
+
+  .value__indicator.is-active .value__indicator-dot {
+    background: #6f76ff;
+    transform: scale(1.15);
+  }
+
+  .value__indicator-label {
+    font-size: 0.92rem;
+    line-height: 1.3em;
+    font-weight: 600;
+    color: currentColor;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 1240px) {
+    .value__content {
+      gap: 2.75rem;
+      padding-inline: 12px;
+    }
+
+    .value__viewer {
+      min-height: 580px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .value__content {
+      gap: 2.5rem;
+      padding-inline: 16px;
+    }
+
+    .value__viewer {
+      min-height: 520px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .value__content {
+      gap: 2.25rem;
+      padding-inline: 18px;
+    }
+
+    .value__viewer {
+      min-height: 440px;
+      border-radius: 28px;
+    }
+
+    .value__scene {
+      padding: 1.5rem;
+    }
+
+    .value__controls {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .value__indicator {
+      padding-top: 0.75rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .value__content {
+      gap: 2rem;
+      padding-inline: 14px;
+    }
+
+    .value__viewer {
+      min-height: 320px;
+      border-radius: 24px;
+    }
+
+    .value__scene {
+      padding: 1rem;
+    }
+
+    .value__indicator-label {
+      font-size: 0.84rem;
+    }
+
+    .value__indicator-number {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .value__content {
+      gap: 1.75rem;
+      padding-inline: 10px;
+    }
+
+    .value__viewer {
+      min-height: 280px;
+      border-radius: 20px;
+    }
+
+    .value__indicator-label {
+      font-size: 0.78rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+  (() => {
+    const section = document.querySelector<HTMLElement>(".value");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>(".eyebrow");
+    const title = section.querySelector<HTMLElement>(".value__title");
+    const description = section.querySelector<HTMLElement>(
+      ".value__description",
+    );
+
+    const indicators = Array.from(
+      section.querySelectorAll<HTMLButtonElement>(".value__indicator"),
+    );
+
+    const scenes = Array.from(
+      section.querySelectorAll<HTMLElement>(".value__scene"),
+    );
+
+    const viewer = section.querySelector<HTMLElement>(".value__viewer");
+    const controls = section.querySelector<HTMLElement>(".value__controls");
+
+    if (!viewer || !controls || !indicators.length || !scenes.length) return;
+
+    const getSceneImage = (scene: HTMLElement): HTMLImageElement | null =>
+      scene.querySelector<HTMLImageElement>(".value__scene-image");
+
+    const activeScene =
+      scenes.find((scene) => scene.classList.contains("is-active")) ?? null;
+
+    gsap.set([eyebrow, title, description].filter(Boolean), {
+      autoAlpha: 0,
+      y: 18,
+      filter: "blur(0px)",
+    });
+
+    gsap.set(controls, {
+      autoAlpha: 0,
+      y: 16,
+    });
+
+    gsap.set(indicators, {
+      autoAlpha: 0,
+      y: 14,
+    });
+
+    gsap.set(viewer, {
+      autoAlpha: 0,
+      y: 22,
+      scale: 0.985,
+      filter: "blur(12px)",
+    });
+
+    gsap.set(scenes, {
+      autoAlpha: 0,
+      y: 18,
+      scale: 0.985,
+    });
+
+    if (activeScene) {
+      gsap.set(activeScene, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+      });
+
+      const firstImage = getSceneImage(activeScene);
+      if (firstImage) {
+        gsap.set(firstImage, {
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          filter: "blur(0px)",
+        });
+      }
+    }
+
+    const introTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+      onComplete: () => {
+        if (currentImage) {
+          startFloat(currentImage);
+        }
+        startAutoPlay();
+      },
+    });
+
+    if (eyebrow) {
+      introTl.to(eyebrow, {
+        autoAlpha: 1,
+        y: 0,
+        filter: "blur(0px)",
+        clearProps: "filter",
+        duration: 0.45,
+      });
+    }
+
+    if (title) {
+      introTl.to(
+        title,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.65,
+          filter: "blur(0px)",
+          clearProps: "filter",
+        },
+        0.08,
+      );
+    }
+
+    if (description) {
+      introTl.to(
+        description,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          filter: "blur(0px)",
+          clearProps: "filter",
+        },
+        0.16,
+      );
+    }
+
+    introTl.to(
+      viewer,
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.8,
+      },
+      0.22,
+    );
+
+    if (activeScene) {
+      const activeImage = getSceneImage(activeScene);
+
+      introTl.fromTo(
+        activeScene,
+        {
+          autoAlpha: 0,
+          y: 26,
+          scale: 0.97,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.65,
+        },
+        0.3,
+      );
+
+      if (activeImage) {
+        introTl.fromTo(
+          activeImage,
+          {
+            y: 18,
+            scale: 0.96,
+            rotation: -1.2,
+            filter: "blur(8px)",
+          },
+          {
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            filter: "blur(0px)",
+            duration: 0.85,
+            ease: "back.out(1.08)",
+          },
+          0.36,
+        );
+      }
+    }
+
+    introTl.to(
+      controls,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45,
+      },
+      0.34,
+    );
+
+    introTl.to(
+      indicators,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
+        stagger: 0.08,
+      },
+      0.4,
+    );
+
+    let currentScene: HTMLElement | null = activeScene;
+    let currentImage: HTMLImageElement | null = currentScene
+      ? getSceneImage(currentScene)
+      : null;
+
+    let isAnimating = false;
+    let floatTween: gsap.core.Tween | null = null;
+    let autoPlayId: number | null = null;
+    let isHovering = false;
+
+    const AUTO_PLAY_DELAY = 4500;
+
+    const startFloat = (imageEl: HTMLImageElement | null): void => {
+      if (!imageEl) return;
+
+      if (floatTween) {
+        floatTween.kill();
+      }
+
+      gsap.set(imageEl, { y: 0 });
+
+      floatTween = gsap.to(imageEl, {
+        y: -6,
+        duration: 2.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+    };
+
+    const stopFloat = (): void => {
+      if (floatTween) {
+        floatTween.kill();
+        floatTween = null;
+      }
+    };
+
+    const setActiveIndicator = (targetId: string): void => {
+      indicators.forEach((indicator) => {
+        const isActive = indicator.dataset.stepTarget === targetId;
+        indicator.classList.toggle("is-active", isActive);
+        indicator.setAttribute("aria-selected", String(isActive));
+      });
+    };
+
+    const goToNextScene = (): void => {
+      const currentIndex = currentScene
+        ? scenes.findIndex((scene) => scene === currentScene)
+        : 0;
+
+      const nextIndex = (currentIndex + 1) % scenes.length;
+      const nextScene = scenes[nextIndex];
+      if (!nextScene) return;
+
+      switchScene(nextScene.id, true);
+    };
+
+    const stopAutoPlay = (): void => {
+      if (autoPlayId !== null) {
+        window.clearInterval(autoPlayId);
+        autoPlayId = null;
+      }
+    };
+
+    const startAutoPlay = (): void => {
+      stopAutoPlay();
+
+      if (isHovering) return;
+
+      autoPlayId = window.setInterval(() => {
+        if (!isAnimating && !isHovering) {
+          goToNextScene();
+        }
+      }, AUTO_PLAY_DELAY);
+    };
+
+    const restartAutoPlay = (): void => {
+      startAutoPlay();
+    };
+
+    const switchScene = (targetId: string, fromAutoPlay = false): void => {
+      if (isAnimating) return;
+
+      const nextScene = scenes.find((scene) => scene.id === targetId) ?? null;
+
+      if (!nextScene || nextScene === currentScene) return;
+
+      const previousScene = currentScene;
+      const previousImage = currentImage;
+      const nextImage = getSceneImage(nextScene);
+
+      isAnimating = true;
+      setActiveIndicator(targetId);
+
+      stopFloat();
+
+      nextScene.classList.add("is-active");
+
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+        onComplete: () => {
+          if (previousScene) {
+            previousScene.classList.remove("is-active");
+            gsap.set(previousScene, {
+              autoAlpha: 0,
+              y: 18,
+              scale: 0.985,
+            });
+          }
+
+          currentScene = nextScene;
+          currentImage = nextImage;
+
+          if (currentImage) {
+            startFloat(currentImage);
+          }
+
+          isAnimating = false;
+
+          if (!fromAutoPlay) {
+            restartAutoPlay();
+          }
+        },
+      });
+
+      if (previousScene) {
+        tl.to(
+          previousScene,
+          {
+            autoAlpha: 0,
+            y: -10,
+            scale: 0.985,
+            duration: 0.28,
+          },
+          0,
+        );
+      }
+
+      if (previousImage) {
+        tl.to(
+          previousImage,
+          {
+            y: -14,
+            scale: 0.97,
+            filter: "blur(8px)",
+            duration: 0.28,
+          },
+          0,
+        );
+      }
+
+      tl.fromTo(
+        nextScene,
+        {
+          autoAlpha: 0,
+          y: 18,
+          scale: 0.985,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.38,
+        },
+        0.1,
+      );
+
+      if (nextImage) {
+        tl.fromTo(
+          nextImage,
+          {
+            y: 18,
+            scale: 0.95,
+            rotation: -1.2,
+            filter: "blur(10px)",
+          },
+          {
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            filter: "blur(0px)",
+            duration: 0.55,
+            ease: "back.out(1.04)",
+          },
+          0.14,
+        );
+      }
+    };
+
+    indicators.forEach((indicator) => {
+      indicator.addEventListener("click", () => {
+        const targetId = indicator.dataset.stepTarget;
+        if (!targetId) return;
+
+        switchScene(targetId, false);
+      });
+    });
+
+    const pauseHandlers = [viewer, controls];
+
+    // pauseHandlers.forEach((el) => {
+    //   el.addEventListener("mouseenter", () => {
+    //     isHovering = true;
+    //     stopAutoPlay();
+    //   });
+
+    //   el.addEventListener("mouseleave", () => {
+    //     isHovering = false;
+    //     startAutoPlay();
+    //   });
+    // });
+  })();
+</script>

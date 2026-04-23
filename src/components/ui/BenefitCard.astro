@@ -1,0 +1,423 @@
+---
+interface Props {
+  value: number;
+  description: string;
+  accent: string;
+  label: string;
+  prefix?: string;
+  offset?: boolean;
+}
+
+const {
+  value,
+  description,
+  accent,
+  label,
+  prefix,
+  offset = false,
+} = Astro.props;
+---
+
+<article class="benefits__card" data-benefit-card>
+  <div
+    class:list={["benefits__ring", offset && "benefits__ring--offset"]}
+    style={`--benefit-value: ${value}; --benefit-progress: 0; --benefit-accent: ${accent};`}
+    aria-label={label}
+    data-benefit-value={value}
+  >
+    <div class="benefits__ring-inner">
+      {prefix && <span class="benefits__ring-prefix">{prefix}</span>}
+      <span class="benefits__ring-value" data-benefit-number>0%</span>
+    </div>
+  </div>
+
+  <p class="benefits__description">
+    {description}
+  </p>
+</article>
+
+<style>
+  .benefits__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    padding: 1.75rem 1.25rem 1.5rem;
+    border-radius: 28px;
+    text-align: center;
+    transition:
+      transform 0.35s ease,
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+  }
+
+  .benefits__ring {
+    --benefit-size: 240px;
+    --benefit-thickness: 48px;
+    --benefit-value: 28;
+    --benefit-progress: 0;
+    --benefit-angle: calc(var(--benefit-progress) * 3.6deg);
+    --benefit-track: #737c93;
+    --benefit-hole: #ffffff;
+
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--benefit-size);
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    isolation: isolate;
+  }
+
+  .benefits__ring::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--benefit-track);
+  }
+
+  .benefits__ring::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(
+      from -90deg,
+      var(--benefit-accent) 0deg var(--benefit-angle),
+      transparent var(--benefit-angle) 360deg
+    );
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - var(--benefit-thickness)),
+      #000 calc(100% - var(--benefit-thickness))
+    );
+    mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - var(--benefit-thickness)),
+      #000 calc(100% - var(--benefit-thickness))
+    );
+    transform: rotate(0deg) scale(1.06);
+    z-index: 1;
+  }
+
+  .benefits__ring-inner {
+    position: relative;
+    z-index: 2;
+    width: calc(100% - (var(--benefit-thickness) * 1.5));
+    height: calc(100% - (var(--benefit-thickness) * 1.5));
+    border-radius: 50%;
+    background: var(--benefit-hole);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    box-shadow: 12px 12px 12px rgba(81, 72, 97, 0.75);
+  }
+
+  .benefits__ring-prefix {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--text-gray);
+  }
+
+  .benefits__ring-value {
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2em;
+    letter-spacing: 0;
+    color: var(--text-gray);
+  }
+
+  .benefits__description {
+    max-width: 260px;
+    font-size: 0.875rem;
+    line-height: 1.5em;
+    font-weight: 500;
+    letter-spacing: 0em;
+    color: var(--text-black);
+    text-wrap: balance;
+
+    /* animación (ya la tenías) */
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .benefits__card {
+      padding: 1.5rem 1.125rem 1.375rem;
+      border-radius: 24px;
+    }
+
+    .benefits__ring {
+      --benefit-size: 220px;
+      --benefit-thickness: 44px;
+      margin-bottom: 1.25rem;
+    }
+
+    .benefits__ring-inner {
+      box-shadow: 10px 10px 10px rgba(81, 72, 97, 0.68);
+    }
+
+    .benefits__ring-prefix {
+      font-size: 1.35rem;
+    }
+
+    .benefits__ring-value {
+      font-size: clamp(1rem, 2.6vw, 2.2rem);
+    }
+
+    .benefits__description {
+      max-width: 240px;
+      font-size: 0.825rem;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .benefits__card {
+      padding: 1.375rem 1rem 1.25rem;
+      border-radius: 22px;
+    }
+
+    .benefits__ring {
+      --benefit-size: 200px;
+      --benefit-thickness: 40px;
+      margin-bottom: 1.125rem;
+    }
+
+    .benefits__ring-inner {
+      box-shadow: 9px 9px 9px rgba(81, 72, 97, 0.62);
+    }
+
+    .benefits__ring-prefix {
+      font-size: 1.2rem;
+    }
+
+    .benefits__ring-value {
+      font-size: clamp(0.95rem, 2.4vw, 2rem);
+    }
+
+    .benefits__description {
+      max-width: 220px;
+      font-size: 0.8rem;
+      line-height: 1.45em;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .benefits__card {
+      padding: 1.25rem 1rem 1.125rem;
+      border-radius: 20px;
+    }
+
+    .benefits__ring {
+      --benefit-size: 184px;
+      --benefit-thickness: 36px;
+      margin-bottom: 1rem;
+    }
+
+    .benefits__ring-inner {
+      gap: 0.25rem;
+      box-shadow: 8px 8px 8px rgba(81, 72, 97, 0.58);
+    }
+
+    .benefits__ring-prefix {
+      font-size: 1.05rem;
+    }
+
+    .benefits__ring-value {
+      font-size: clamp(0.95rem, 2.8vw, 1.8rem);
+      line-height: 1.1em;
+    }
+
+    .benefits__description {
+      max-width: 100%;
+      font-size: 0.775rem;
+      line-height: 1.5em;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .benefits__card {
+      padding: 1.125rem 0.875rem 1rem;
+      border-radius: 18px;
+    }
+
+    .benefits__ring {
+      --benefit-size: 160px;
+      --benefit-thickness: 30px;
+      margin-bottom: 0.875rem;
+    }
+
+    .benefits__ring-inner {
+      gap: 0.2rem;
+      box-shadow: 7px 7px 7px rgba(81, 72, 97, 0.52);
+    }
+
+    .benefits__ring-prefix {
+      font-size: 0.95rem;
+    }
+
+    .benefits__ring-value {
+      font-size: 1.5rem;
+      line-height: 1.05em;
+    }
+
+    .benefits__description {
+      font-size: 0.75rem;
+      line-height: 1.45em;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .benefits__card {
+      padding: 1rem 0.75rem 0.875rem;
+      border-radius: 16px;
+    }
+
+    .benefits__ring {
+      --benefit-size: 144px;
+      --benefit-thickness: 26px;
+      margin-bottom: 0.75rem;
+    }
+
+    .benefits__ring-inner {
+      box-shadow: 6px 6px 6px rgba(81, 72, 97, 0.46);
+    }
+
+    .benefits__ring-prefix {
+      font-size: 0.85rem;
+    }
+
+    .benefits__ring-value {
+      font-size: 1.3rem;
+    }
+
+    .benefits__description {
+      font-size: 0.725rem;
+      line-height: 1.4em;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+  const initBenefitsAnimation = () => {
+    const cards = gsap.utils.toArray<HTMLElement>("[data-benefit-card]");
+
+    if (!cards.length) return;
+
+    cards.forEach((card) => {
+      const ring = card.querySelector<HTMLElement>(".benefits__ring");
+      const number = card.querySelector<HTMLElement>("[data-benefit-number]");
+      const description = card.querySelector<HTMLElement>(
+        ".benefits__description",
+      );
+      const prefix = card.querySelector<HTMLElement>(".benefits__ring-prefix");
+
+      if (!ring || !number) return;
+
+      const targetValue = Number(ring.dataset.benefitValue || 0);
+      const counter = { value: 0 };
+
+      gsap.set(card, { opacity: 1 });
+      gsap.set(ring, { scale: 0.9, opacity: 0 });
+      gsap.set(number, { opacity: 0, y: 10 });
+      if (prefix) gsap.set(prefix, { opacity: 0, y: 8 });
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80%",
+          once: true,
+        },
+      });
+
+      tl.to(ring, {
+        scale: 1,
+        opacity: 1,
+        duration: 0.45,
+        ease: "power2.out",
+      })
+        .to(
+          counter,
+          {
+            value: targetValue,
+            duration: 1.4,
+            ease: "power2.out",
+            onUpdate: () => {
+              const current = Math.round(counter.value);
+              ring.style.setProperty("--benefit-progress", String(current));
+              number.textContent = `${current}%`;
+            },
+          },
+          0.08,
+        )
+        .to(
+          number,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.35,
+            ease: "power2.out",
+          },
+          0.12,
+        );
+
+      if (prefix) {
+        tl.to(
+          prefix,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            ease: "power2.out",
+          },
+          0.16,
+        );
+      }
+
+      if (description) {
+        tl.to(
+          description,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: "power2.out",
+          },
+          0.45,
+        );
+      }
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initBenefitsAnimation, {
+      once: true,
+    });
+  } else {
+    initBenefitsAnimation();
+  }
+</script>

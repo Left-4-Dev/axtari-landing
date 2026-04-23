@@ -1,0 +1,405 @@
+﻿<div class="ally__content">
+  <div class="ally__panel">
+    <div class="ally__visual">
+      <figure class="ally__illustration">
+        <img src="/images/sections/ally/meeting.svg" alt="Equipo trabajando" />
+      </figure>
+    </div>
+
+    <div class="ally__text-content">
+      <h2 class="ally__title title">
+        ¿Cómo <span>aliarte</span><br />con nosotros?
+      </h2>
+
+      <p class="ally__description description">
+        ¿Eres importador, proveedor o fabricante y quieres que tus productos se
+        vendan de manera digital? Puedes ser parte de nuestra plataforma y
+        llegar a más clientes en todo el Perú.
+      </p>
+
+      <div class="ally__cta">
+        <button class="ally__button"> ÚNETE </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  
+
+  .ally__content {
+  }
+
+  .ally__panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    overflow: hidden;
+    gap: 3.5rem;
+    border-radius: 20px;
+    padding: clamp(2rem, 4vw, 4rem);
+
+    background: var(--gradient-4);
+
+    isolation: isolate;
+  }
+
+  .ally__text-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .ally__visual {
+    /* position: relative; */
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ally__visual::before {
+    content: "";
+    position: absolute;
+    aspect-ratio: 1;
+    height: 130%;
+    width: auto;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    z-index: -1;
+    background: linear-gradient(200deg, #a0d5fd 0%, #9ea8fc 90%, #9d98fc 100%);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    isolation: isolate;
+  }
+
+  .ally__illustration img {
+    width: clamp(260px, 32vw, 420px);
+    transition: transform 0.6s ease;
+  }
+
+  .ally__panel:hover .ally__illustration img {
+    transform: translateY(-8px) scale(1.03);
+  }
+
+  .ally__title {
+    --margin-title: 0;
+    --color-title: var(--text-white);
+    --font-size-title: clamp(2.25rem, 3.5vw, 3rem);
+  }
+
+  .ally__title span {
+    --color-title-span: #a8d4ff;
+  }
+
+  .ally__description {
+    --color-description: var(--text-white);
+    --font-size-description: clamp(0.875rem, 1.2vw, 0.875rem);
+    --font-weight-description: 400;
+    --margin-description: 1.5rem 0 0 0;
+  }
+
+  .ally__cta {
+    margin-top: 3rem;
+  }
+
+  .ally__button {
+    padding: 14px 40px;
+    border-radius: 999px;
+    border: none;
+
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+
+    background: white;
+    color: #6b75ff;
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+  }
+
+  .ally__button:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .ally {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .ally__content {
+      padding-inline: 12px;
+    }
+
+    .ally__panel {
+      gap: 2.75rem;
+      padding: 2.5rem;
+      border-radius: 18px;
+    }
+
+    .ally__visual::before {
+      height: 140%;
+      left: 20%;
+    }
+
+    .ally__illustration img {
+      width: clamp(240px, 30vw, 380px);
+    }
+
+    .ally__cta {
+      margin-top: 2.5rem;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .ally {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .ally__content {
+      padding-inline: 16px;
+    }
+
+    .ally__panel {
+      gap: 2rem;
+      padding: 2.25rem;
+      border-radius: 18px;
+    }
+
+    .ally__visual::before {
+      height: 150%;
+      left: 20%;
+    }
+
+    .ally__illustration img {
+      width: clamp(220px, 28vw, 330px);
+    }
+
+    .ally__title {
+      --font-size-title: clamp(2rem, 4vw, 2.5rem);
+    }
+
+    .ally__description {
+      --font-size-description: 0.85rem;
+    }
+
+    .ally__cta {
+      margin-top: 2.25rem;
+    }
+
+    .ally__button {
+      padding: 13px 34px;
+      font-size: 0.95rem;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .ally {
+      --padding-section-md: 3.25rem 36px;
+    }
+
+    .ally__content {
+      padding-inline: 18px;
+    }
+
+    .ally__panel {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .ally__visual {
+      order: -1;
+    }
+
+    .ally__visual::before {
+      width: 120%;
+      height: auto;
+      left: 50%;
+      top: -25%;
+    }
+
+    .ally__illustration img {
+      width: min(100%, 300px);
+      margin-inline: auto;
+    }
+
+    .ally__text-content {
+      text-align: center;
+    }
+
+    .ally__title {
+      --font-size-title: clamp(1.9rem, 6vw, 2.4rem);
+    }
+
+    .ally__description {
+      --margin-description: 1.25rem auto 0;
+      --font-size-description: 0.88rem;
+      max-width: 580px;
+    }
+
+    .ally__cta {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ally__button {
+      padding: 13px 32px;
+    }
+  }
+
+  @media (max-width: 840px) {
+    .ally__visual::before {
+      top: -20%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ally__visual::before {
+      top: -15%;
+    }
+  }
+
+  @media (max-width: 740px) {
+    .ally__visual::before {
+      top: -10%;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .ally__visual::before {
+      top: -5%;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .ally {
+      --padding-section-sm: 3rem 28px;
+    }
+
+    .ally__content {
+      padding-inline: 14px;
+    }
+
+    .ally__panel {
+      gap: 1.5rem;
+      padding: 1.5rem 1.125rem;
+      border-radius: 16px;
+    }
+
+    .ally__visual::before {
+      top: -15%;
+    }
+
+    .ally__illustration img {
+      width: min(100%, 240px);
+    }
+
+    .ally__title {
+      --font-size-title: clamp(1.7rem, 8vw, 2.1rem);
+    }
+
+    .ally__description {
+      --margin-description: 1rem auto 0;
+      --font-size-description: 0.82rem;
+      line-height: 1.45em;
+      max-width: 100%;
+    }
+
+    .ally__cta {
+      margin-top: 1.5rem;
+    }
+
+    .ally__button {
+      width: 100%;
+      max-width: 220px;
+      padding: 12px 24px;
+      font-size: 0.88rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ally__visual::before {
+      top: -10%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .ally__visual::before {
+      top: -2%;
+    }
+  }
+
+  @media (max-width: 440px) {
+    .ally__visual::before {
+      top: 5%;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .ally {
+      --padding-section-xs: 2.75rem 20px;
+    }
+
+    .ally__content {
+      padding-inline: 10px;
+    }
+
+    .ally__panel {
+      gap: 1.25rem;
+      padding: 1.25rem 0.9rem;
+      border-radius: 14px;
+    }
+
+    .ally__visual::before {
+      top: 6%;
+    }
+
+    .ally__illustration img {
+      width: min(100%, 210px);
+    }
+
+    .ally__title {
+      --font-size-title: 1.5rem;
+    }
+
+    .ally__description {
+      --font-size-description: 0.76rem;
+      line-height: 1.38em;
+    }
+
+    .ally__button {
+      max-width: 190px;
+      padding: 11px 20px;
+      font-size: 0.8rem;
+    }
+  }
+</style>

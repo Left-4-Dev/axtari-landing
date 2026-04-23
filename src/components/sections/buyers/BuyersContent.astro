@@ -1,0 +1,319 @@
+---
+import JourneyCard from "@components/ui/JourneyCard.astro";
+import { buyerCards } from "@data/buyers.data";
+---
+
+<div class="buyer__content">
+  <div class="buyer__stage-wrapper">
+    <div class="buyer__stage buyer__stage--reverse">
+      <div class="buyer__intro">
+        <p class="buyer__label">Para</p>
+        <h3 class="buyer__role">COMPRADORES</h3>
+        <img
+          src="/images/sections/buyers/buyer1.svg"
+          alt="Herramientas para compradores"
+          class="buyer__image"
+        />
+      </div>
+      <div class="buyer__gallery">
+        <div class="buyer__track" id="buyerTrack">
+          {
+            buyerCards.map((card) => (
+              <JourneyCard
+                number={card.number}
+                icon={card.icon}
+                title={card.title}
+                items={card.items}
+                light={card.light}
+                active={card.active}
+                image={card.image}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  
+
+  .buyer__content {
+    display: flex;
+    flex-direction: column;
+    place-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    height: 100%;
+  }
+
+  .buyer__stage-wrapper {
+    --buyer-stage-h: auto;
+    min-height: var(--buyer-stage-h);
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
+    flex: 1 1 auto;
+  }
+
+  .buyer__stage-wrapper::before {
+    --gradient-3-angle: 127deg;
+    --gradient-3-stop-1-color: #a0d5fd;
+    --gradient-3-stop-1-pos: 23.5%;
+    --gradient-3-stop-2-color: #9fb7fd;
+    --gradient-3-stop-2-pos: 65%;
+    --gradient-3-stop-3-color: #9d98fc;
+    --gradient-3-stop-3-pos: 100%;
+
+    --gradient-3: linear-gradient(
+      var(--gradient-3-angle),
+      var(--gradient-3-stop-1-color) var(--gradient-3-stop-1-pos),
+      var(--gradient-3-stop-2-color) var(--gradient-3-stop-2-pos),
+      var(--gradient-3-stop-3-color) var(--gradient-3-stop-3-pos)
+    );
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--gradient-3);
+  }
+
+  .buyer__stage {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    width: min(1200px, calc(100% - 2rem));
+    gap: 3rem;
+  }
+
+  .buyer__stage--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .buyer__intro {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    z-index: 2;
+  }
+
+  .buyer__label {
+    margin: 0;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2em;
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-wrap: balance;
+    color: var(--text-black);
+  }
+
+  .buyer__role {
+    margin: 0 0 3rem;
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-wrap: balance;
+    color: var(--text-accent);
+  }
+
+  .buyer__image {
+    width: min(100%, 320px);
+    height: auto;
+    display: block;
+    object-fit: contain;
+    align-self: center;
+  }
+
+  .buyer__gallery {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .buyer__track {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    width: max-content;
+    padding: 2rem 2rem 3rem 0;
+    will-change: transform;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .buyer {
+      --padding-section-xl: 2rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .buyer__stage {
+      gap: 1.5rem;
+    }
+
+    .buyer__image {
+      width: min(100%, 280px);
+    }
+
+    .buyer__track {
+      gap: 1.5rem;
+      padding: 1.75rem 1.5rem 2.5rem 0;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .buyer {
+      --padding-section-lg: 3rem 32px 3.5rem;
+      --max-width-container-lg: 1000px;
+    }
+
+    .buyer__stage {
+      gap: 2rem;
+    }
+
+    .buyer__intro {
+      max-width: 520px;
+      text-align: center;
+    }
+
+    .buyer__image {
+      margin: 0 auto;
+      width: min(100%, 260px);
+    }
+
+    .buyer__gallery {
+      width: 100%;
+    }
+
+    .buyer__track {
+      gap: 1.25rem;
+      padding: 1.5rem 1rem 2.25rem;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .buyer {
+      --padding-section-md: 2.75rem 36px 3.25rem;
+    }
+
+    .buyer__stage-wrapper {
+      padding: 1.25rem 0;
+    }
+
+    .buyer__stage {
+      gap: 1.75rem;
+    }
+
+    .buyer__label {
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+    }
+
+    .buyer__role {
+      margin-bottom: 2rem;
+      font-size: clamp(1.8rem, 7vw, 2.4rem);
+    }
+
+    .buyer__image {
+      width: min(100%, 240px);
+    }
+
+    .buyer__track {
+      gap: 1rem;
+      padding: 1.25rem 0.75rem 2rem;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .buyer {
+      --padding-section-sm: 2.5rem 28px 3rem;
+    }
+
+    .buyer__stage {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .buyer__intro {
+      text-align: center;
+    }
+
+    .buyer__role {
+      margin-bottom: 1rem;
+    }
+
+    .buyer__gallery {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .buyer__gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .buyer__track {
+      width: max-content;
+      gap: 0.875rem;
+      padding-top: 1rem;
+      padding-bottom: 1.75rem;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .buyer__image {
+      width: min(100%, 200px);
+    }
+
+    .buyer__gallery .journey-card {
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .buyer {
+      --padding-section-xs: 2.25rem 20px 2.75rem;
+    }
+
+    .buyer__stage {
+      gap: 1.25rem;
+    }
+
+    .buyer__image {
+      width: min(100%, 170px);
+    }
+
+    .buyer__track {
+      padding-top: 0.875rem;
+      padding-bottom: 1.5rem;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+</style>

@@ -1,0 +1,526 @@
+﻿---
+interface Item {
+  label: string;
+  descriptions: string[];
+}
+
+interface Props {
+  number: string;
+  icon: string;
+  title: string;
+  items: Item[];
+  light?: boolean;
+  active?: boolean;
+  image?: string;
+}
+
+const {
+  number,
+  icon,
+  title,
+  items,
+  light = false,
+  active = false,
+  image = "",
+} = Astro.props;
+---
+
+<article
+  class:list={[
+    "journey-card",
+    light && "journey-card--light",
+    active && "journey-card--active",
+  ]}
+  data-image={image}
+>
+  <div class="journey-card__shape"></div>
+  <div class="journey-card__base"></div>
+
+  <div class="journey-card__top">
+    <span class="journey-card__number">{number}</span>
+
+    <span class="journey-card__icon-wrap">
+      <svg aria-hidden="true">
+        <use xlink:href={`assets/sprite.svg#${icon}`}></use>
+      </svg>
+    </span>
+  </div>
+
+  <div class="journey-card__body">
+    <h4 class="journey-card__title">{title}</h4>
+
+    <!-- <ul class="journey-card__list">
+      {
+        items.map((item) => (
+          <li>
+            <strong>{item.label}</strong>
+            {item.descriptions.map((description) => (
+              <span>{description}</span>
+            ))}
+          </li>
+        ))
+      }
+    </ul> -->
+    <ul class="journey-card__list">
+      {
+        items.map((item) => (
+          <li class="journey-card__item">
+            <strong class="journey-card__label">{item.label}</strong>
+
+            <ul class="journey-card__sublist">
+              {item.descriptions.map((description) => (
+                <li class="journey-card__subitem">{description}</li>
+              ))}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</article>
+
+<style>
+  
+  .journey-card {
+    --gradient-2-angle: 150deg;
+    --gradient-2-stop-1-color: #7774f7;
+    --gradient-2-stop-1-pos: 30.4773%;
+    --gradient-2-stop-2-color: #666bfb;
+    --gradient-2-stop-2-pos: 56.9231%;
+    --gradient-2-stop-3-color: #5542ff;
+    --gradient-2-stop-3-pos: 100%;
+
+    --gradient-2: linear-gradient(
+      var(--gradient-2-angle),
+      var(--gradient-2-stop-1-color) var(--gradient-2-stop-1-pos),
+      var(--gradient-2-stop-2-color) var(--gradient-2-stop-2-pos),
+      var(--gradient-2-stop-3-color) var(--gradient-2-stop-3-pos)
+    );
+    --card-bg: var(--gradient-2);
+    --card-title: #ffffff;
+    --card-text: rgba(255, 255, 255, 0.95);
+    --card-number: #7b7cff;
+    --card-icon-bg: #ffffff;
+    --card-base: #f1f1f1;
+    --card-bullet: #ffffff;
+
+    --color-icon: var(--text-accent);
+    position: relative;
+    aspect-ratio: 0.6;
+    flex: 0 0 280px;
+    width: 280px;
+    height: auto;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .journey-card--light {
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-title: #6971ff;
+    --card-text: #20253f;
+    --card-number: #6d74ff;
+    --card-icon-bg: #6f71f7;
+    --card-base: #685cf6;
+    --card-bullet: #6d74ff;
+    --color-icon: #ffffff;
+  }
+
+  .journey-card__shape {
+    position: absolute;
+    inset: 0;
+    background: var(--card-bg);
+    box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.75);
+    pointer-events: none;
+    z-index: 0;
+
+    /* -webkit-mask-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 330 470' preserveAspectRatio='none'>\<path fill='white' d='\M122 0\H306\Q330 0 330 24\V446\Q330 470 306 470\H24\Q0 470 0 446\V140\Q0 116 24 116\H98\Q122 116 122 92\V24\Q122 0 146 0\Z'/>\</svg>"); */
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 330 470' preserveAspectRatio='none'><path fill='white' d='M144 0H306Q330 0 330 16V454Q330 470 314 470H16Q0 470 0 454V120Q0 104 16 104H128Q144 104 144 88V16Q144 0 160 0Z'/></svg>");
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-position: center;
+
+    /* mask-image: url("data:image/svg+xml;utf8,\<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 330 470' preserveAspectRatio='none'>\<path fill='white' d='\M122 0\H306\Q330 0 330 24\V446\Q330 470 306 470\H24\Q0 470 0 446\V140\Q0 116 24 116\H98\Q122 116 122 92\V24\Q122 0 146 0\Z'/>\</svg>");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center; */
+  }
+
+  .journey-card__base {
+    position: absolute;
+    left: 50%;
+    bottom: -24.5px;
+    transform: translateX(-50%);
+    width: 64%;
+    height: 24px;
+    background: var(--card-base);
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 15px rgba(90, 97, 255, 0.12);
+    z-index: 1;
+  }
+
+  .journey-card__top {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem;
+    z-index: 2;
+  }
+
+  .journey-card__number {
+    font-size: 4rem;
+    line-height: 1em;
+    font-weight: 700;
+    letter-spacing: 0em;
+    color: var(--card-number);
+    text-shadow: 0 6px 18px rgba(109, 116, 255, 0.18);
+  }
+
+  .journey-card__icon-wrap {
+    width: 4rem;
+    height: 4rem;
+    padding: 1rem;
+    border-radius: 999px;
+    background: var(--card-icon-bg);
+    color: var(--color-icon);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 7.5px 7.5px 5.4px rgba(53, 62, 170, 0.4);
+  }
+
+  .journey-card__body {
+    position: relative;
+    padding: 2rem 1.5rem;
+    height: min-content;
+    z-index: 2;
+  }
+
+  .journey-card__title {
+    margin: 0 0 1.5rem;
+    color: var(--card-title);
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .journey-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  /* =========================
+   ITEM PRINCIPAL
+========================= */
+  .journey-card__item {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  /* LABEL (primer bullet) */
+  .journey-card__label {
+    color: var(--card-title);
+    font-size: 0.75rem;
+    line-height: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 0.75rem;
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  /* 🔵 Bullet principal */
+  .journey-card__label::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--card-bullet);
+  }
+
+  /* =========================
+   SUBLIST (segundo nivel)
+========================= */
+  .journey-card__sublist {
+    list-style: none;
+    margin: 0;
+    padding-left: 0.75rem;
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  /* ITEM secundario */
+  .journey-card__subitem {
+    position: relative;
+    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1.5em;
+    color: var(--card-text);
+    text-transform: uppercase;
+    font-weight: 300;
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  /* 🔹 Bullet secundario (estilo moderno) */
+  .journey-card__subitem::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--card-bullet);
+    position: absolute;
+    left: 0;
+    top: 10px;
+    transform: translateY(-50%);
+    opacity: 0.9;
+  }
+
+  /* .journey-card__list li {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .journey-card__list strong {
+    color: var(--card-title);
+    font-size: 0.75rem;
+    line-height: 1.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    padding-left: 0.75rem;
+    letter-spacing: 0em;
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .journey-card__list strong::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--card-bullet);
+  }
+
+  .journey-card__list span {
+    font-size: 0.75rem;
+    line-height: 1.5em;
+    letter-spacing: 0em;
+    color: var(--card-text);
+    text-transform: uppercase;
+    padding-left: 0.75rem;
+    font-weight: 300;
+    font-family: "Noto Sans", sans-serif;
+  } */
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .journey-card {
+      flex: 0 0 300px;
+      width: 300px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .journey-card {
+      flex: 0 0 280px;
+      width: 280px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .journey-card {
+      flex: 0 0 260px;
+      width: 260px;
+      aspect-ratio: 0.55;
+    }
+
+    .journey-card__top {
+      padding: 1.25rem;
+    }
+
+    .journey-card__body {
+      padding: 1.75rem 1.25rem;
+    }
+
+    .journey-card__title {
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .journey-card__list {
+      gap: 1rem;
+    }
+
+    .journey-card__item {
+      gap: 0.625rem;
+    }
+
+    .journey-card__sublist {
+      gap: 0.35rem;
+    }
+
+    .journey-card__label {
+      font-size: 0.7rem;
+    }
+
+    .journey-card__subitem {
+      font-size: 0.72rem;
+    }
+
+    .journey-card__subitem::before {
+      top: 9px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .journey-card {
+      flex: 0 0 240px;
+      width: 240px;
+    }
+
+    .journey-card__number {
+      font-size: 3rem;
+    }
+
+    .journey-card__icon-wrap {
+      width: 3.4rem;
+      height: 3.4rem;
+      padding: 0.85rem;
+    }
+
+    .journey-card__top {
+      padding: 1.125rem;
+    }
+
+    .journey-card__body {
+      padding: 1.5rem 1.125rem;
+    }
+
+    .journey-card__title {
+      margin-bottom: 1.125rem;
+      font-size: 0.92rem;
+    }
+
+    .journey-card__list {
+      gap: 0.9rem;
+    }
+
+    .journey-card__item {
+      gap: 0.55rem;
+    }
+
+    .journey-card__sublist {
+      gap: 0.3rem;
+      padding-left: 0.65rem;
+    }
+
+    .journey-card__label {
+      font-size: 0.68rem;
+      padding-left: 0.7rem;
+    }
+
+    .journey-card__label::before {
+      font-size: 1.05rem;
+    }
+
+    .journey-card__subitem {
+      font-size: 0.7rem;
+      padding-left: 0.7rem;
+    }
+
+    .journey-card__subitem::before {
+      width: 3.5px;
+      height: 3.5px;
+      top: 9px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .journey-card {
+      flex: 0 0 220px;
+      width: 220px;
+    }
+
+    .journey-card__number {
+      font-size: 2.6rem;
+    }
+
+    .journey-card__icon-wrap {
+      width: 3rem;
+      height: 3rem;
+      padding: 0.75rem;
+    }
+
+    .journey-card__base {
+      height: 20px;
+      bottom: -20.5px;
+    }
+
+    .journey-card__top {
+      padding: 1rem;
+    }
+
+    .journey-card__body {
+      padding: 1.35rem 1rem;
+    }
+
+    .journey-card__title {
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    .journey-card__list {
+      gap: 0.8rem;
+    }
+
+    .journey-card__item {
+      gap: 0.5rem;
+    }
+
+    .journey-card__sublist {
+      gap: 0.25rem;
+      padding-left: 0.6rem;
+    }
+
+    .journey-card__label {
+      font-size: 0.6rem;
+      padding-left: 0.65rem;
+    }
+
+    .journey-card__label::before {
+      font-size: 0.95rem;
+    }
+
+    .journey-card__subitem {
+      font-size: 0.65rem;
+      padding-left: 0.65rem;
+    }
+
+    .journey-card__subitem::before {
+      width: 3px;
+      height: 3px;
+      top: 8px;
+      left: 2px;
+    }
+  }
+</style>

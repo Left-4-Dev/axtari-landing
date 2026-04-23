@@ -1,0 +1,96 @@
+﻿---
+import ServicesContent from "@components/sections/services/ServicesContent.astro";
+---
+
+<section class="services section">
+  <div class="services__container container">
+    <ServicesContent />
+  </div>
+</section>
+
+<style>
+  
+
+  .services {
+    --services-text: #2f3448;
+    --services-text-soft: #5f667f;
+    --services-accent: #6f76ff;
+    --services-accent-2: #9a90f5;
+    --services-border: rgba(255, 255, 255, 0.42);
+    --services-glass: rgba(255, 255, 255, 0.22);
+    --services-shadow: rgba(109, 122, 255, 0.12);
+
+    --gradient-3-angle: 102.1135deg;
+    --gradient-3-stop-1-color: #a0d5fd;
+    --gradient-3-stop-1-pos: 10%;
+    --gradient-3-stop-2-color: #9fb7fd;
+    --gradient-3-stop-2-pos: 75%;
+    --gradient-3-stop-3-color: #9d98fc;
+    --gradient-3-stop-3-pos: 100%;
+    --gradient-3: linear-gradient(
+      var(--gradient-3-angle),
+      var(--gradient-3-stop-1-color) var(--gradient-3-stop-1-pos),
+      var(--gradient-3-stop-2-color) var(--gradient-3-stop-2-pos),
+      var(--gradient-3-stop-3-color) var(--gradient-3-stop-3-pos)
+    );
+    --padding-section: 2rem 0;
+    --overflow-section: visible;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  .services__container {
+    --max-width-container: 1240px;
+    z-index: 1;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .services {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .services {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .services {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .services {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .services {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>

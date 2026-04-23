@@ -1,0 +1,140 @@
+﻿---
+interface Props {
+  targetId?: string;
+  ariaLabel?: string;
+}
+
+const { targetId = "hero", ariaLabel = "Volver al inicio" } = Astro.props;
+---
+
+<a
+  href={`#${targetId}`}
+  class="back-to-hero"
+  aria-label={ariaLabel}
+  data-back-to-hero
+>
+  <img
+    src="/images/ui/btn_icon.svg"
+    alt=""
+    aria-hidden="true"
+    class="back-to-hero__icon"
+  />
+</a>
+
+<style>
+  
+
+  .back-to-hero {
+    --btn-size: 56px;
+    --btn-offset-right: 24px;
+    --btn-offset-bottom: 24px;
+    --btn-ring: rgba(255, 255, 255, 0.42);
+    --btn-ring-soft: rgba(111, 118, 255, 0.18);
+    --btn-shadow: rgba(87, 94, 255, 0.28);
+
+    position: fixed;
+    right: var(--btn-offset-right);
+    bottom: var(--btn-offset-bottom);
+    z-index: 120;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--btn-size);
+    aspect-ratio: 1;
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--text-accent);
+    border: none;
+    outline: none;
+    isolation: isolate;
+    transition:
+      transform 0.28s ease,
+      filter 0.28s ease,
+      opacity 0.28s ease;
+  }
+
+  .back-to-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    pointer-events: none;
+  }
+
+  .back-to-hero::before {
+    inset: -10px;
+    border: 4px solid var(--text-accent);
+  }
+
+  .back-to-hero__icon {
+    position: relative;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(87, 94, 255, 0.16));
+  }
+
+  .back-to-hero:hover {
+    transform: translateY(-4px) scale(1.04);
+    filter: brightness(1.03);
+  }
+
+  .back-to-hero:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  .back-to-hero:focus-visible {
+    box-shadow: 0 0 0 4px rgba(111, 118, 255, 0.2);
+  }
+
+  @media (max-width: 900px) {
+    .back-to-hero {
+      --btn-size: 52px;
+      --btn-offset-right: 20px;
+      --btn-offset-bottom: 20px;
+    }
+
+    .back-to-hero__icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .back-to-hero::before {
+      border-width: 4px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .back-to-hero {
+      --btn-size: 48px;
+      --btn-offset-right: 18px;
+      --btn-offset-bottom: 18px;
+    }
+
+    .back-to-hero__icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .back-to-hero {
+      --btn-size: 40px;
+      --btn-offset-right: 18px;
+      --btn-offset-bottom: 18px;
+    }
+
+    .back-to-hero__icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .back-to-hero {
+      transition: none;
+    }
+  }
+</style>

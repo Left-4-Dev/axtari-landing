@@ -1,0 +1,466 @@
+<div class="hero__content">
+  <h1 class="hero__title" aria-label="Brilla, conecta y trasciende.">
+    <span class="hero__title-line">
+      <span class="hero__title-text">Brilla, conecta</span>
+    </span>
+    <span class="hero__title-line">
+      <span class="hero__title-text">y trasciende.</span>
+    </span>
+  </h1>
+
+  <p class="hero__description">
+    El mercado digital que te ofrece una forma simple, rápida y segura de
+    comprar por internet.
+  </p>
+
+  <div class="hero__actions">
+    <button
+      type="button"
+      class="hero__button hero__button--primary"
+      data-open-modal="explore"
+    >
+      EXPLORAR
+    </button>
+
+    <button
+      type="button"
+      class="hero__button hero__button--secondary"
+      data-open-modal="join"
+    >
+      UNIRSE
+    </button>
+  </div>
+
+  <div class="hero__stats">
+    <article class="hero__stat-card">
+      <div class="hero__stat-bg">
+        <img src="/images/sections/hero/heroCard__background.webp" alt="" />
+      </div>
+      <strong class="hero__stat-value">12</strong>
+      <span class="hero__stat-label">Marcas aliadas</span>
+    </article>
+
+    <article class="hero__stat-card hero__stat-card--highlight">
+      <div class="hero__stat-bg">
+        <img src="/images/sections/hero/heroCard__background.webp" alt="" />
+      </div>
+      <strong class="hero__stat-value">+500</strong>
+      <span class="hero__stat-label">Usuarios</span>
+    </article>
+
+    <article class="hero__stat-card">
+      <div class="hero__stat-bg">
+        <img src="/images/sections/hero/heroCard__background.webp" alt="" />
+      </div>
+      <strong class="hero__stat-value">4500</strong>
+      <span class="hero__stat-label">Productos</span>
+    </article>
+  </div>
+</div>
+
+<style>
+  .hero__content {
+    padding: 120px 0 72px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .hero__title {
+    position: relative;
+    margin: 32px 0 0;
+    color: var(--text-white);
+    font-size: clamp(2.7rem, 4.5vw, 3.5rem);
+    line-height: 1.2em;
+    font-weight: 800;
+    letter-spacing: 0em;
+    text-wrap: pretty;
+    z-index: 1;
+  }
+
+  .hero__title span {
+    color: inherit;
+  }
+
+  .hero__title-line {
+    display: block;
+    overflow: hidden;
+  }
+
+  .hero__title-text {
+    display: inline-block;
+  }
+
+  .hero__description {
+    position: relative;
+    color: var(--text-black);
+    max-width: 580px;
+    margin: 16px auto 0;
+    font-size: clamp(1rem, 1.25vw, 1.125rem);
+    line-height: 1.5em;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-wrap: pretty;
+    z-index: 1;
+  }
+
+  .hero__actions {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+    gap: 48px;
+    z-index: 1;
+  }
+
+  .hero__button {
+    /* Exo */
+    max-width: 200px;
+    flex: 1 0 0;
+    width: 1px;
+    padding: 10px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(0.95rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: 0em;
+    line-height: 1.5em;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease,
+      background 0.22s ease,
+      color 0.22s ease;
+  }
+
+  .hero__button:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero__button--primary {
+    background: var(--gradient-4);
+    color: var(--text-white);
+    box-shadow:
+      0 14px 30px rgba(111, 118, 255, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .hero__button--primary:hover {
+    background: var(--gradient-5);
+  }
+
+  .hero__button--secondary {
+    background: rgba(255, 255, 255, 0.6);
+    color: var(--text-accent);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow:
+      0 12px 26px rgba(157, 162, 210, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+
+  .hero__button--secondary:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .hero__stats {
+    position: relative;
+    width: 100%;
+    margin-top: 64px;
+    gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero__stat-card {
+    aspect-ratio: 512 / 173.09;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* transition:
+      border-color 0.25s ease,
+      box-shadow 0.25s ease,
+      background 0.25s ease;
+    will-change: transform, box-shadow; */
+  }
+
+  .hero__stat-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: soft-light;
+    img {
+      object-fit: cover;
+    }
+    /* img {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      mix-blend-mode: soft-light;
+    } */
+  }
+
+  .hero__stat-card--highlight .hero__stat-value,
+  .hero__stat-card--highlight .hero__stat-label {
+    color: var(--text-accent);
+  }
+
+  .hero__stat-value {
+    position: relative;
+    color: var(--text-muted);
+    font-size: clamp(2.5rem, 3.8vw, 3.8rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0em;
+    z-index: 1;
+  }
+
+  .hero__stat-label {
+    /* JosefinSansRoman */
+    position: relative;
+    font-size: clamp(0.95rem, 1.5vw, 1.5rem);
+    letter-spacing: 0em;
+    color: var(--text-muted);
+    line-height: 1.5em;
+    font-weight: 300;
+    z-index: 1;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .hero {
+      height: 100vh;
+      min-height: 920px;
+      --padding-section: 0 28px;
+    }
+
+    .hero__container {
+      --max-width-container: 1120px;
+      width: min(100%, calc(100% - 40px));
+      height: 100%;
+    }
+
+    .hero__content {
+      padding: 108px 12px 64px;
+    }
+
+    .hero__title {
+      margin-top: 52px;
+      font-size: clamp(2.45rem, 4.8vw, 3.2rem);
+    }
+
+    .hero__description {
+      max-width: 560px;
+    }
+
+    .hero__actions {
+      margin-top: 52px;
+      gap: 32px;
+    }
+
+    .hero__stats {
+      margin-top: 56px;
+      gap: 20px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .hero {
+      height: auto;
+      min-height: 860px;
+      --padding-section: 0 32px;
+    }
+
+    .hero__container {
+      --max-width-container: 100%;
+      width: min(100%, calc(100% - 48px));
+      height: 100%;
+    }
+
+    .hero__content {
+      padding: 96px 16px 60px;
+    }
+
+    .hero__title {
+      margin-top: 36px;
+      font-size: clamp(2.15rem, 5.3vw, 2.9rem);
+      line-height: 1.08em;
+    }
+
+    .hero__description {
+      max-width: 520px;
+      font-size: 1rem;
+    }
+
+    .hero__actions {
+      margin-top: 44px;
+      gap: 18px;
+    }
+
+    .hero__button {
+      max-width: 190px;
+      padding: 10px 20px;
+    }
+
+    .hero__stats {
+      margin-top: 52px;
+      gap: 16px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .hero {
+      height: auto;
+      min-height: 980px;
+      --padding-section: 0 36px;
+    }
+
+    .hero__container {
+      width: min(100%, calc(100% - 64px));
+      height: 100%;
+    }
+
+    .hero__content {
+      padding: 84px 20px 56px;
+    }
+
+    .hero__title {
+      margin-top: 28px;
+      font-size: clamp(1.95rem, 6.6vw, 2.6rem);
+    }
+
+    .hero__description {
+      max-width: 460px;
+    }
+
+    .hero__actions {
+      margin-top: 36px;
+      gap: 12px;
+    }
+
+    .hero__button {
+      flex: 1 1 calc(50% - 6px);
+      width: auto;
+      max-width: 100%;
+    }
+
+    .hero__stats {
+      width: min(100%, 520px);
+      margin: 44px auto 0;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .hero {
+      height: auto;
+      min-height: 900px;
+      --padding-section: 0 28px;
+    }
+
+    .hero__container {
+      width: min(100%, calc(100% - 48px));
+      height: 100%;
+    }
+
+    .hero__content {
+      padding: 72px 16px 48px;
+    }
+
+    .hero__title {
+      margin-top: 18px;
+      font-size: clamp(1.7rem, 8.8vw, 2.2rem);
+      line-height: 1.04em;
+    }
+
+    .hero__description {
+      max-width: 100%;
+    }
+
+    .hero__actions {
+      margin-top: 30px;
+      gap: 10px;
+    }
+
+    .hero__button {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
+    .hero__stats {
+      width: min(100%, 420px);
+      margin: 36px auto 0;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .hero {
+      height: auto;
+      min-height: 840px;
+      --padding-section: 0 20px;
+    }
+
+    .hero__container {
+      width: min(100%, calc(100% - 32px));
+      height: 100%;
+    }
+
+    .hero__content {
+      padding: 64px 14px 40px;
+    }
+
+    .hero__title {
+      margin-top: 14px;
+      font-size: 1.5rem;
+    }
+
+    .hero__description {
+      margin-top: 14px;
+    }
+
+    .hero__actions {
+      margin-top: 24px;
+    }
+
+    .hero__stats {
+      width: 100%;
+      margin: 30px auto 0;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .hero__stat-card {
+      aspect-ratio: auto;
+    }
+  }
+</style>

@@ -1,0 +1,107 @@
+/**
+ * tokens.css
+ * ----------
+ * Design tokens del proyecto Axtari.
+ * Solo variables CSS (:root). Sin reglas de estilo.
+ */
+
+:root {
+  /* ===== Container ===== */
+  --container: 1240px;
+
+  /* ===== Radius ===== */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-full: 999px;
+  
+  /* ===== Gap ===== */
+  --gap-md: 24px;
+
+  /* ===== Background Colors ===== */
+  --bg-primary:   #ffffff;
+  --bg-secondary: #9199aa;
+
+  /* ===== Text Colors ===== */
+  --text-white:    #ffffff;
+  --text-black:    #000000;
+  --text-muted:    #9199aa;
+  --text-gray:     #323643;
+  --text-accent:   #7379ff;
+  --text-accent-2: #9d98fc;
+
+  /* ===== Degradado 1 (horizontal — hero, comparison card) ===== */
+  --gradient-1-angle:        90deg;
+  --gradient-1-stop-1-color: #A0D5FD;
+  --gradient-1-stop-1-pos:   6.6293%;
+  --gradient-1-stop-2-color: #9FB7F5;
+  --gradient-1-stop-2-pos:   47.1302%;
+  --gradient-1-stop-3-color: #9D98EC;
+  --gradient-1-stop-3-pos:   100%;
+
+  --gradient-1: linear-gradient(
+    var(--gradient-1-angle),
+    var(--gradient-1-stop-1-color) var(--gradient-1-stop-1-pos),
+    var(--gradient-1-stop-2-color) var(--gradient-1-stop-2-pos),
+    var(--gradient-1-stop-3-color) var(--gradient-1-stop-3-pos)
+  );
+
+  /* ===== Degradado 2 (diagonal oscuro — botones, CTA) ===== */
+  --gradient-2-angle:        -30.4334deg;
+  --gradient-2-stop-1-color: #7774F7;
+  --gradient-2-stop-1-pos:   30.4773%;
+  --gradient-2-stop-2-color: #666BFB;
+  --gradient-2-stop-2-pos:   56.9231%;
+  --gradient-2-stop-3-color: #5542FF;
+  --gradient-2-stop-3-pos:   100%;
+
+  --gradient-2: linear-gradient(
+    var(--gradient-2-angle),
+    var(--gradient-2-stop-1-color) var(--gradient-2-stop-1-pos),
+    var(--gradient-2-stop-2-color) var(--gradient-2-stop-2-pos),
+    var(--gradient-2-stop-3-color) var(--gradient-2-stop-3-pos)
+  );
+
+  /* ===== Degradado 3 (diagonal suave — stages buyers/sellers) ===== */
+  --gradient-3-angle:        102.1135deg;
+  --gradient-3-stop-1-color: #A0D5FD;
+  --gradient-3-stop-1-pos:   6.6292%;
+  --gradient-3-stop-2-color: #9FB7FD;
+  --gradient-3-stop-2-pos:   47.1303%;
+  --gradient-3-stop-3-color: #9D98FC;
+  --gradient-3-stop-3-pos:   100%;
+
+  --gradient-3: linear-gradient(
+    var(--gradient-3-angle),
+    var(--gradient-3-stop-1-color) var(--gradient-3-stop-1-pos),
+    var(--gradient-3-stop-2-color) var(--gradient-3-stop-2-pos),
+    var(--gradient-3-stop-3-color) var(--gradient-3-stop-3-pos)
+  );
+
+  /* ===== Degradado 4 (vertical — fondos de sección) ===== */
+  --gradient-4-angle:        180deg;
+  --gradient-4-stop-1-color: #7f84ff;
+  --gradient-4-stop-1-pos:   0%;
+  --gradient-4-stop-2-color: #6f76ff;
+  --gradient-4-stop-2-pos:   100%;
+
+  --gradient-4: linear-gradient(
+    var(--gradient-4-angle),
+    var(--gradient-4-stop-1-color) var(--gradient-4-stop-1-pos),
+    var(--gradient-4-stop-2-color) var(--gradient-4-stop-2-pos)
+  );
+
+  /* ===== Degradado 5 (hover de botones) ===== */
+  --gradient-5-angle:        180deg;
+  --gradient-5-stop-1-color: #767cff;
+  --gradient-5-stop-1-pos:   0%;
+  --gradient-5-stop-2-color: #656df5;
+  --gradient-5-stop-2-pos:   100%;
+
+  --gradient-5: linear-gradient(
+    var(--gradient-5-angle),
+    var(--gradient-5-stop-1-color) var(--gradient-5-stop-1-pos),
+    var(--gradient-5-stop-2-color) var(--gradient-5-stop-2-pos)
+  );
+}

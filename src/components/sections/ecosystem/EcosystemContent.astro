@@ -1,0 +1,427 @@
+﻿<div class="ecosystem__content">
+  <div class="ecosystem__list">
+    <div class="ecosystem__brand">
+      <div class="ecosystem__lockup">
+        <div class="ecosystem__icon">
+          <img src="/icons/brand/Logo.svg" alt="Ícono Axteri" />
+        </div>
+        <div class="ecosystem__logotype">
+          <img src="/icons/brand/Text_logo.svg" alt="Axteri" />
+        </div>
+      </div>
+    </div>
+
+    <article class="ecosystem__bubble">
+      <div class="ecosystem__bubble-bg">
+        <img src="/images/ui/axte_bg.svg" alt="" />
+      </div>
+      <div class="ecosystem__bubble-content">
+        <span class="ecosystem__prefix">Axte</span>
+        <span class="ecosystem__name">Indux</span>
+      </div>
+    </article>
+
+    <article class="ecosystem__bubble">
+      <div class="ecosystem__bubble-bg">
+        <img src="/images/ui/axte_bg.svg" alt="" />
+      </div>
+      <div class="ecosystem__bubble-content">
+        <span class="ecosystem__prefix">Axte</span>
+        <span class="ecosystem__name">Arqui</span>
+      </div>
+    </article>
+
+    <article class="ecosystem__bubble">
+      <div class="ecosystem__bubble-bg">
+        <img src="/images/ui/axte_bg.svg" alt="" />
+      </div>
+      <div class="ecosystem__bubble-content">
+        <span class="ecosystem__prefix">Axte</span>
+        <span class="ecosystem__name">Agro</span>
+      </div>
+    </article>
+
+    <article class="ecosystem__bubble">
+      <div class="ecosystem__bubble-bg">
+        <img src="/images/ui/axte_bg.svg" alt="" />
+      </div>
+      <div class="ecosystem__bubble-content">
+        <span class="ecosystem__prefix">Axte</span>
+        <span class="ecosystem__name">Civil</span>
+      </div>
+    </article>
+
+    <article class="ecosystem__bubble">
+      <div class="ecosystem__bubble-bg">
+        <img src="/images/ui/axte_bg.svg" alt="" />
+      </div>
+      <div class="ecosystem__bubble-content">
+        <span class="ecosystem__prefix">Axte</span>
+        <span class="ecosystem__name">Medic</span>
+      </div>
+    </article>
+  </div>
+</div>
+
+<style>
+  
+
+  .ecosystem__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    position: relative;
+  }
+
+  .ecosystem__brand {
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+  }
+
+  .ecosystem__lockup {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100px;
+    padding-right: clamp(1.5rem, 2.5vw, 2.5rem);
+    border-right: 2px solid rgb(47, 52, 72, 0.7);
+  }
+
+  .ecosystem__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ecosystem__logotype {
+    width: 128px;
+    height: auto;
+  }
+
+  .ecosystem__bubble {
+    position: relative;
+    width: clamp(140px, 12vw, 160px);
+    max-width: 160px;
+    aspect-ratio: 1;
+    flex: 1 0 auto;
+    border-radius: 50%;
+
+    box-shadow:
+      0 20px 40px rgba(90, 100, 200, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+    display: grid;
+    place-items: center;
+
+    transition: all 0.35s ease;
+  }
+
+  .ecosystem__bubble-bg {
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+  }
+
+  .ecosystem__bubble:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow:
+      0 30px 60px rgba(90, 100, 200, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+
+  .ecosystem__bubble:hover::before {
+    opacity: 1;
+  }
+
+  .ecosystem__bubble-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: "Josefin Sans", sans-serif;
+    color: #2f3448;
+  }
+
+  .ecosystem__prefix {
+    font-size: 0.9625rem;
+    font-weight: 500;
+    line-height: 1em;
+    letter-spacing: 0em;
+    color: #2f3448;
+  }
+
+  .ecosystem__name {
+    font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1.2em;
+    letter-spacing: 0em;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  .ecosystem__bubble:nth-child(2) {
+    animation: float 6s ease-in-out infinite;
+  }
+  .ecosystem__bubble:nth-child(3) {
+    animation: float 7s ease-in-out infinite;
+  }
+  .ecosystem__bubble:nth-child(4) {
+    animation: float 6.5s ease-in-out infinite;
+  }
+  .ecosystem__bubble:nth-child(5) {
+    animation: float 7.5s ease-in-out infinite;
+  }
+  .ecosystem__bubble:nth-child(6) {
+    animation: float 6.8s ease-in-out infinite;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .ecosystem {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .ecosystem__content {
+      padding-inline: 12px;
+    }
+
+    .ecosystem__list {
+      gap: 1.5rem;
+    }
+
+    .ecosystem__lockup {
+      height: 92px;
+      padding-right: 1.5rem;
+    }
+
+    .ecosystem__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .ecosystem__logotype {
+      width: 116px;
+    }
+
+    .ecosystem__bubble {
+      width: 140px;
+      max-width: 140px;
+    }
+
+    .ecosystem__prefix {
+      font-size: 0.9rem;
+    }
+
+    .ecosystem__name {
+      font-size: clamp(1.6rem, 2.2vw, 2.2rem);
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .ecosystem {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .ecosystem__content {
+      padding-inline: 16px;
+    }
+
+    .ecosystem__list {
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      justify-content: center;
+    }
+
+    .ecosystem__brand {
+      /* width: 100%;
+      display: flex;
+      justify-content: center; */
+      display: none;
+    }
+
+    .ecosystem__lockup {
+      height: auto;
+      padding-right: 0;
+      padding-bottom: 1rem;
+      border-right: 0;
+      border-bottom: 2px solid rgb(47, 52, 72, 0.7);
+    }
+
+    /* .ecosystem__icon {
+      width: 34px;
+      height: 34px;
+    }
+
+    .ecosystem__logotype {
+      width: 108px;
+    } */
+
+    .ecosystem__bubble {
+      width: 140px;
+      max-width: 140px;
+      flex: 0 0 auto;
+    }
+
+    .ecosystem__prefix {
+      font-size: 0.85rem;
+    }
+
+    .ecosystem__name {
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .ecosystem {
+      --padding-section-md: 3.25rem 36px;
+    }
+
+    .ecosystem__content {
+      padding-inline: 18px;
+    }
+
+    .ecosystem__list {
+      gap: 1rem;
+    }
+
+    .ecosystem__lockup {
+      padding-bottom: 0.875rem;
+    }
+
+    .ecosystem__bubble {
+      width: 128px;
+      max-width: 128px;
+      box-shadow:
+        0 16px 32px rgba(90, 100, 200, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    }
+
+    .ecosystem__bubble-content {
+      align-items: center;
+      text-align: center;
+    }
+
+    .ecosystem__prefix {
+      font-size: 0.8rem;
+    }
+
+    .ecosystem__name {
+      font-size: clamp(1.35rem, 3vw, 1.8rem);
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .ecosystem {
+      --padding-section-sm: 3rem 28px;
+    }
+
+    .ecosystem__content {
+      padding-inline: 14px;
+    }
+
+    .ecosystem__list {
+      /* flex-direction: column; */
+      gap: 0.875rem;
+    }
+
+    .ecosystem__brand {
+      width: 100%;
+    }
+
+    .ecosystem__lockup {
+      justify-content: center;
+      width: 100%;
+      padding-bottom: 0.75rem;
+    }
+
+    .ecosystem__icon {
+      width: 30px;
+      height: 30px;
+    }
+
+    .ecosystem__logotype {
+      width: 96px;
+    }
+
+    .ecosystem__bubble {
+      width: min(100%, 120px);
+      max-width: 120px;
+    }
+
+    .ecosystem__bubble:hover {
+      transform: translateY(-6px) scale(1.03);
+    }
+
+    .ecosystem__prefix {
+      font-size: 0.75rem;
+    }
+
+    .ecosystem__name {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .ecosystem {
+      --padding-section-xs: 2.75rem 20px;
+    }
+
+    .ecosystem__content {
+      padding-inline: 10px;
+    }
+
+    .ecosystem__list {
+      gap: 0.75rem;
+    }
+
+    .ecosystem__icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .ecosystem__logotype {
+      width: 88px;
+    }
+
+    .ecosystem__bubble {
+      width: min(100%, 108px);
+      max-width: 108px;
+    }
+
+    .ecosystem__prefix {
+      font-size: 0.72rem;
+    }
+
+    .ecosystem__name {
+      font-size: 1.3rem;
+    }
+  }
+</style>

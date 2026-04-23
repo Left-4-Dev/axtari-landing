@@ -1,0 +1,1038 @@
+---
+import { gsap } from "gsap";
+import { SplitText } from "gsap/SplitText";
+
+const companyLinks = [
+  { label: "Contact us", href: "#" },
+  { label: "About us", href: "#" },
+  { label: "Projects", href: "#", dot: true },
+  { label: "Career", href: "#", badge: "Hiring" },
+  { label: "Blog", href: "#", badge: "6" },
+];
+
+// const socialLinks = [
+//   { label: "X", href: "#", icon: "𝕏" },
+//   { label: "Framer", href: "#", icon: "✦" },
+//   { label: "Dribbble", href: "#", icon: "◉" },
+//   { label: "Facebook", href: "#", icon: "●" },
+// ];
+
+const explorarLinks = [
+  { label: "Inicio", href: "#" },
+  { label: "Categorías", href: "#" },
+  { label: "Eventos", href: "#" },
+];
+
+const empresaLinks = [
+  { label: "Nuestra compañía", href: "#" },
+  { label: "Nuestros aliados", href: "#" },
+];
+
+const eventosLinks = [
+  { label: "Feria internacional", href: "#" },
+  { label: "Talleres digitales", href: "#" },
+];
+
+const socialLinks = [
+  { label: "Facebook", href: "#", icon: "f" },
+  { label: "Instagram", href: "#", icon: "◎" },
+  { label: "TikTok", href: "#", icon: "♪" },
+  { label: "YouTube", href: "#", icon: "▶" },
+];
+---
+
+<footer class="footer">
+  <div class="footer__bg">
+    <div class="footer__gradient"></div>
+    <div class="footer__image">
+      <img src="/images/sections/hero/hero__background.webp" alt="" />
+    </div>
+  </div>
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__left">
+        <!-- <a href="/" class="footer__logo" aria-label="Axtari home">
+          <span class="footer__logo-mark" aria-hidden="true">
+            <span class="footer__logo-slash"></span>
+            <span class="footer__logo-slash"></span>
+            <span class="footer__logo-dot"></span>
+          </span>
+          <span class="footer__logo-text">Axtari</span>
+        </a> -->
+        <div class="footer__logo">
+          <span class="footer__logo-mark" aria-hidden="true">
+            <img src="/icons/brand/Logo.svg" alt="Ícono Axteri" />
+          </span>
+          <span class="footer__logo-text">
+            <img src="/icons/brand/Text_logo.svg" alt="Axteri" />
+          </span>
+        </div>
+        <section class="footer__newsletter" aria-label="Newsletter">
+          <h2 class="footer__title">
+            Decisiones más inteligentes empiezan aquí
+          </h2>
+          <p class="footer__description">
+            Accede a proveedores, información y oportunidades para tomar
+            decisiones de compra más rápidas y estratégicas.
+          </p>
+
+          <form class="footer__form" action="#" method="post">
+            <label class="sr-only" for="footer-email">Ingresa tu correo</label>
+            <input
+              id="footer-email"
+              name="email"
+              type="email"
+              class="footer__input"
+              placeholder="Enter your email..."
+              autocomplete="email"
+            />
+            <button type="submit" class="footer__submit" aria-label="Submit">
+              <span aria-hidden="true">→</span>
+            </button>
+          </form>
+        </section>
+      </div>
+
+      <div class="footer__right">
+        <!-- <nav class="footer__column" aria-label="Company">
+          <h3 class="footer__heading">Company</h3>
+          <ul class="footer__list">
+            {
+              companyLinks.map((link) => (
+                <li>
+                  <a class="footer__link" href={link.href}>
+                    <span>{link.label}</span>
+
+                    {link.dot && (
+                      <span class="footer__dot" aria-hidden="true" />
+                    )}
+
+                    {link.badge && (
+                      <span class="footer__badge" aria-hidden="true">
+                        {link.badge}
+                      </span>
+                    )}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <nav class="footer__column" aria-label="Socials">
+          <h3 class="footer__heading">Socials</h3>
+          <ul class="footer__list">
+            {
+              socialLinks.map((link) => (
+                <li>
+                  <a class="footer__link footer__link--social" href={link.href}>
+                    <span class="footer__social-icon" aria-hidden="true">
+                      {link.icon}
+                    </span>
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav> -->
+
+        <!-- EXPLORAR -->
+        <nav class="footer__column" aria-label="Explorar">
+          <h3 class="footer__heading">Explorar</h3>
+          <ul class="footer__list">
+            {
+              explorarLinks.map((link) => (
+                <li>
+                  <a class="footer__link" href={link.href}>
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <!-- EMPRESA -->
+        <nav class="footer__column" aria-label="Empresa">
+          <h3 class="footer__heading">Empresa</h3>
+          <ul class="footer__list">
+            {
+              empresaLinks.map((link) => (
+                <li>
+                  <a class="footer__link" href={link.href}>
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <!-- EVENTOS -->
+        <nav class="footer__column" aria-label="Eventos">
+          <h3 class="footer__heading">Eventos</h3>
+          <ul class="footer__list">
+            {
+              eventosLinks.map((link) => (
+                <li>
+                  <a class="footer__link" href={link.href}>
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <!-- CONTACTO -->
+        <div class="footer__column" aria-label="Contacto">
+          <h3 class="footer__heading">Contacto</h3>
+
+          <ul class="footer__list">
+            <li>
+              <a class="footer__link" href="tel:+51934923404">
+                +51 934 923 404
+              </a>
+            </li>
+          </ul>
+
+          <ul class="footer__list">
+            {
+              socialLinks.map((link) => (
+                <li>
+                  <a class="footer__link footer__link--social" href={link.href}>
+                    <span class="footer__social-icon" aria-hidden="true">
+                      {link.icon}
+                    </span>
+                    <span>{link.label}</span>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__watermark" aria-hidden="true">Axteri.</div>
+
+    <div class="footer__bottom">
+      <p class="footer__credit">
+        @ 2026 Built by <a href="#">L4Dev</a>
+      </p>
+
+      <nav class="footer__legal" aria-label="Legal links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of services</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    --bg-sky: #bfe1ff;
+    --bg-lavender: #cfcfff;
+    --bg-soft-purple: #ddd6ff;
+
+    --glass-white: rgba(255, 255, 255, 0.34);
+    --glass-white-strong: rgba(255, 255, 255, 0.52);
+    --glass-border: rgba(255, 255, 255, 0.42);
+
+    --text: #2f3448;
+    --text-soft: #5d647d;
+    --text-muted: #7f86a0;
+
+    --accent: #6f76ff;
+    --accent-hover: #6268f4;
+    --accent-soft: rgba(111, 118, 255, 0.14);
+
+    --shadow-sm: rgba(109, 122, 255, 0.1);
+    --shadow-lg: rgba(146, 157, 255, 0.12);
+
+    --watermark: rgba(110, 120, 200, 0.25);
+
+    flex-flow: column;
+    place-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: min-content;
+    padding: 24px;
+    display: flex;
+    position: relative;
+    overflow: visible;
+    background:
+      radial-gradient(
+        900px at 15% 20%,
+        rgba(173, 216, 255, 0.45),
+        transparent 60%
+      ),
+      radial-gradient(
+        700px at 85% 15%,
+        rgba(193, 182, 255, 0.38),
+        transparent 55%
+      ),
+      linear-gradient(135deg, #b9ddff 0%, #c9c8ff 48%, #d8d0ff 100%);
+  }
+
+  .footer__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--bg-primary);
+    transform: rotate(180deg);
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .footer__gradient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--gradient-1);
+    mix-blend-mode: color;
+    z-index: 1;
+  }
+
+  .footer__image {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: normal;
+    z-index: 0;
+  }
+
+  .footer__inner {
+    z-index: 2;
+    flex-flow: column;
+    flex: none;
+    place-content: center flex-start;
+    align-items: center;
+    width: 100%;
+    max-width: 1392px;
+    height: min-content;
+    padding: 60px 32px 32px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border-radius: 48px;
+    background: var(--glass-white);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      0 10px 30px var(--shadow-sm),
+      0 24px 60px var(--shadow-lg),
+      inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  }
+
+  .footer__inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.06) 28%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+  }
+
+  .footer__top {
+    flex-flow: row;
+    flex: none;
+    place-content: flex-start space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: min-content;
+    display: flex;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+  }
+
+  .footer__left {
+    flex-flow: column;
+    flex: 1 0 0;
+    place-content: flex-start;
+    align-items: flex-start;
+    gap: 60px;
+    width: 1px;
+    height: min-content;
+    padding: 0;
+    display: flex;
+    position: relative;
+    overflow: visible;
+  }
+
+  /* LOGO NUEVO */
+  .footer__logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    width: fit-content;
+    max-width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .footer__logo-mark,
+  .footer__logo-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+
+  .footer__logo-mark {
+    width: clamp(2rem, 2.2vw, 2.5rem);
+  }
+
+  .footer__logo-text {
+    width: clamp(7rem, 10vw, 8rem);
+  }
+
+  .footer__logo-mark img,
+  .footer__logo-text img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .footer__newsletter {
+    flex-flow: column;
+    flex: none;
+    place-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    max-width: 360px;
+    height: min-content;
+    display: flex;
+    position: relative;
+    overflow: visible;
+  }
+
+  .footer__title {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3em;
+    letter-spacing: 0em;
+  }
+
+  .footer__description {
+    color: var(--text-soft);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3em;
+    letter-spacing: 0em;
+  }
+
+  .footer__form {
+    position: relative;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .footer__input {
+    width: 100%;
+    height: min-content;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.52);
+    color: var(--text);
+    font-size: 15px;
+    outline: none;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 8px 20px rgba(141, 150, 255, 0.06);
+  }
+
+  .footer__input::placeholder {
+    color: #98a0ba;
+  }
+
+  .footer__input:focus {
+    border-color: rgba(111, 118, 255, 0.3);
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow:
+      0 0 0 4px rgba(111, 118, 255, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .footer__submit {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    bottom: 4px;
+    width: 68px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #7e84ff 0%, #6f76ff 100%);
+    color: white;
+    font-size: 1.55rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow:
+      0 10px 24px rgba(111, 118, 255, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    transition:
+      transform 0.2s ease,
+      filter 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .footer__submit:hover {
+    transform: scale(1.03);
+    filter: brightness(1.02);
+    box-shadow:
+      0 14px 28px rgba(111, 118, 255, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .footer__right {
+    flex-flow: row;
+    flex: 1 0 0;
+    place-content: flex-start space-between;
+    align-items: flex-start;
+    width: 1px;
+    max-width: 640px;
+    height: min-content;
+    padding: 0;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__column {
+    flex-flow: column;
+    flex: 1 0 0;
+    place-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    width: 1px;
+    max-width: 160px;
+    height: min-content;
+    padding: 0;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__heading {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.3em;
+    letter-spacing: 0em;
+  }
+
+  .footer__list {
+    list-style: none;
+    flex-flow: column;
+    flex: none;
+    place-content: flex-start center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    height: min-content;
+    padding: 0;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text-soft);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.3em;
+    letter-spacing: 0em;
+    cursor: pointer;
+    transition:
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .footer__link:hover {
+    color: var(--accent);
+    transform: translateX(2px);
+  }
+
+  .footer__link--social {
+    gap: 0.7rem;
+  }
+
+  .footer__social-icon {
+    width: 1rem;
+    display: inline-flex;
+    justify-content: center;
+    color: #8890a8;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer__link:hover .footer__social-icon {
+    color: var(--accent);
+  }
+
+  .footer__watermark {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    color: var(--watermark);
+    font-size: clamp(7rem, 19vw, 17.5rem);
+    line-height: 1.2em;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+    mask: linear-gradient(0deg, rgba(0, 0, 0, 0) 10%, rgb(0, 0, 0) 80%);
+  }
+
+  .footer__bottom {
+    flex-flow: row;
+    flex: none;
+    place-content: center space-between;
+    align-items: center;
+    width: 100%;
+    height: min-content;
+    display: flex;
+    position: relative;
+    overflow: visible;
+  }
+
+  .footer__credit {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 1.1em;
+    letter-spacing: 0em;
+  }
+
+  .footer__credit a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .footer__credit a:hover {
+    color: var(--accent-hover);
+  }
+
+  .footer__legal {
+    flex-flow: row;
+    flex: none;
+    place-content: center;
+    align-items: center;
+    gap: 40px;
+    width: min-content;
+    height: min-content;
+    padding: 0;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer__legal a {
+    color: var(--text-soft);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.3em;
+    letter-spacing: 0em;
+    text-wrap: nowrap;
+  }
+
+  .footer__legal a:hover {
+    color: var(--accent);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* <= 1240px */
+  @media (max-width: 1240px) {
+    .footer {
+      padding: 20px;
+    }
+
+    .footer__inner {
+      padding: 48px 28px 28px;
+      border-radius: 40px;
+    }
+
+    .footer__top {
+      gap: 40px;
+    }
+
+    .footer__right {
+      gap: 48px;
+    }
+
+    .footer__column {
+      max-width: 140px;
+    }
+  }
+
+  /* <= 1024px */
+  @media (max-width: 1024px) {
+    .footer {
+      padding: 18px;
+    }
+
+    .footer__inner {
+      padding: 40px 24px 24px;
+      border-radius: 36px;
+    }
+
+    .footer__top {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .footer__left,
+    .footer__right {
+      width: 100%;
+      max-width: none;
+    }
+
+    .footer__right {
+      justify-content: flex-start;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer__column {
+      min-width: 140px;
+    }
+
+    .footer__logo {
+      gap: 0.25rem;
+    }
+
+    .footer__logo-mark {
+      width: 2.2rem;
+    }
+
+    .footer__logo-text {
+      width: 7.25rem;
+    }
+  }
+
+  /* <= 900px */
+  @media (max-width: 900px) {
+    .footer {
+      padding: 16px;
+    }
+
+    .footer__inner {
+      padding: 32px 22px 22px;
+      border-radius: 32px;
+    }
+
+    .footer__left {
+      gap: 36px;
+    }
+
+    .footer__right {
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer__column {
+      min-width: 130px;
+    }
+
+    .footer__logo {
+      gap: 0.25rem;
+    }
+
+    .footer__logo-mark {
+      width: 2rem;
+    }
+
+    .footer__logo-text {
+      width: 6.5rem;
+    }
+
+    .footer__watermark {
+      font-size: clamp(5rem, 18vw, 9rem);
+    }
+  }
+
+  /* <= 640px */
+  @media (max-width: 640px) {
+    .footer {
+      padding: 14px;
+    }
+
+    .footer__inner {
+      padding: 28px 18px 18px;
+      border-radius: 28px;
+    }
+
+    .footer__top {
+      gap: 32px;
+    }
+
+    .footer__left {
+      gap: 28px;
+    }
+
+    .footer__right {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footer__newsletter {
+      max-width: 100%;
+    }
+
+    .footer__input {
+      height: 58px;
+      padding-right: 80px;
+    }
+
+    .footer__submit {
+      width: 64px;
+    }
+
+    .footer__logo {
+      gap: 0.25rem;
+    }
+
+    .footer__logo-mark {
+      width: 1.8rem;
+    }
+
+    .footer__logo-text {
+      width: 5.75rem;
+    }
+
+    .footer__watermark {
+      font-size: clamp(4rem, 22vw, 7rem);
+      margin-top: 20px;
+    }
+
+    .footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .footer__legal {
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+  }
+
+  /* <= 380px */
+  @media (max-width: 380px) {
+    .footer {
+      padding: 12px;
+    }
+
+    .footer__inner {
+      padding: 24px 14px 14px;
+      border-radius: 24px;
+    }
+
+    .footer__column {
+      min-width: 100%;
+    }
+
+    .footer__input {
+      height: 54px;
+      font-size: 14px;
+    }
+
+    .footer__submit {
+      width: 58px;
+    }
+
+    .footer__description {
+      font-size: 14px;
+    }
+
+    .footer__logo {
+      gap: 0.25rem;
+    }
+
+    .footer__logo-mark {
+      width: 1.55rem;
+    }
+
+    .footer__logo-text {
+      width: 5rem;
+    }
+
+    .footer__watermark {
+      font-size: clamp(3rem, 24vw, 5.5rem);
+    }
+
+    .footer__legal {
+      gap: 12px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "@lib/animations/gsap.setup";
+
+  (() => {
+    const footer = document.querySelector<HTMLElement>(".footer");
+    if (!footer) return;
+
+    const inner = footer.querySelector<HTMLElement>(".footer__inner");
+    const logo = footer.querySelector<HTMLElement>(".footer__logo");
+    const newsletter = footer.querySelector<HTMLElement>(".footer__newsletter");
+    const columns = gsap.utils.toArray<HTMLElement>(".footer__column");
+    const watermark = footer.querySelector<HTMLElement>(".footer__watermark");
+    const bottom = footer.querySelector<HTMLElement>(".footer__bottom");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footer,
+        start: "top 82%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (inner) {
+      tl.fromTo(
+        inner,
+        {
+          autoAlpha: 0,
+          y: 28,
+          scale: 0.985,
+          filter: "blur(12px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.8,
+        },
+      );
+    }
+
+    if (logo) {
+      tl.fromTo(
+        logo,
+        {
+          autoAlpha: 0,
+          x: -18,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          x: 0,
+          filter: "blur(0px)",
+          duration: 0.55,
+        },
+        0.12,
+      );
+    }
+
+    if (newsletter) {
+      tl.fromTo(
+        newsletter,
+        {
+          autoAlpha: 0,
+          y: 20,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.65,
+        },
+        0.18,
+      );
+    }
+
+    if (columns.length) {
+      tl.fromTo(
+        columns,
+        {
+          autoAlpha: 0,
+          y: 22,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.55,
+          stagger: 0.08,
+        },
+        0.24,
+      );
+    }
+
+    if (watermark) {
+      tl.fromTo(
+        watermark,
+        {
+          autoAlpha: 0,
+          y: 26,
+          scale: 0.98,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        },
+        0.34,
+      );
+    }
+
+    if (bottom) {
+      tl.fromTo(
+        bottom,
+        {
+          autoAlpha: 0,
+          y: 16,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.45,
+          ease: "power2.out",
+        },
+        0.44,
+      );
+    }
+  })();
+</script>

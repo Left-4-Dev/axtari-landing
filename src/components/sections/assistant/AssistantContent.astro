@@ -1,0 +1,503 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+---
+
+<div class="assitant__content">
+  <header class="assistant__header header">
+    <Eyebrow text="Asistencia inteligente" align="center" />
+
+    <div class="assistant__title title">
+      <svg viewBox="0 0 600 120" aria-hidden="true">
+        <defs>
+          <path
+            id="assistantCurve"
+            d="M 50 110 Q 300 -20 550 110"
+            fill="transparent"></path>
+        </defs>
+        <text
+          font-size="56"
+          font-weight="800"
+          fill="#6F76FF"
+          letter-spacing="1"
+        >
+          <textPath
+            href="#assistantCurve"
+            startOffset="50%"
+            text-anchor="middle"
+          >
+            ¡SOY AXTER!
+          </textPath>
+        </text>
+      </svg>
+    </div>
+
+    <p class="assistant__subtitle">Tu asistente IA Virtual</p>
+  </header>
+
+  <div class="assistant__layout">
+    <div class="assistant__rail assistant__rail--left">
+      <article class="assistant-card">
+        <div class="assistant-card__bg"></div>
+        <div class="assistant-card__triangle assistant-card__triangle--right">
+        </div>
+        <div class="assistant-card__sparkles">
+          <img src="/images/ui/axter-card-stars.svg" alt="" />
+        </div>
+        <div class="assistant-card__content">
+          <h3 class="assistant-card__title">
+            Te ayudo con cotizaciones rápidas.
+          </h3>
+        </div>
+      </article>
+
+      <article class="assistant-card">
+        <div class="assistant-card__bg"></div>
+        <div class="assistant-card__triangle assistant-card__triangle--right">
+        </div>
+        <div class="assistant-card__sparkles">
+          <img src="/images/ui/axter-card-stars.svg" alt="" />
+        </div>
+        <div class="assistant-card__content">
+          <h3 class="assistant-card__title">
+            Realizo la búsqueda y comparación de productos de manera sencilla.
+          </h3>
+        </div>
+      </article>
+    </div>
+
+    <div class="assistant__center">
+      <div class="assistant__antenna"></div>
+
+      <div class="assistant__avatar-shell">
+        <div class="assistant__avatar-bg"></div>
+        <div class="assistant__avatar-sparkles" aria-hidden="true">
+          <img src="/images/ui/axter-stars.svg" alt="" />
+        </div>
+        <div class="assistant__avatar-wrap">
+          <svg class="assistant__avatar-icon" aria-hidden="true">
+            <use xlink:href="assets/sprite.svg#voice-assistant"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="assistant__rail assistant__rail--right">
+      <article class="assistant-card">
+        <div class="assistant-card__bg"></div>
+        <div class="assistant-card__triangle assistant-card__triangle--left">
+        </div>
+        <div class="assistant-card__sparkles">
+          <img src="/images/ui/axter-card-stars.svg" alt="" />
+        </div>
+        <div class="assistant-card__content">
+          <h3 class="assistant-card__title">
+            Respondo tus consultas básicas en cada área.
+          </h3>
+        </div>
+      </article>
+
+      <article class="assistant-card">
+        <div class="assistant-card__bg"></div>
+        <div class="assistant-card__triangle assistant-card__triangle--left">
+        </div>
+        <div class="assistant-card__sparkles">
+          <img src="/images/ui/axter-card-stars.svg" alt="" />
+        </div>
+        <div class="assistant-card__content">
+          <h3 class="assistant-card__title">
+            Y mucho más, para que tengas siempre la mejor experiencia.
+          </h3>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+<style>
+  
+  .assitant__content {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+  }
+
+  .assistant__title {
+    --margin-title: 20px auto 0;
+    width: min(720px, 100%);
+  }
+
+  .assistant__subtitle {
+    margin: -56px auto 0;
+    color: var(--text-black);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.5em;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+  }
+
+  .assistant__layout {
+    display: grid;
+    grid-template-columns: 1fr minmax(240px, 30vw) 1fr;
+    gap: clamp(18px, 3vw, 34px);
+    align-items: center;
+    margin-top: 34px;
+  }
+
+  .assistant__rail {
+    display: grid;
+    gap: 28px;
+    &.assistant__rail--left {
+      --gradient-1-angle: 90deg;
+    }
+    &.assistant__rail--right {
+      --gradient-1-angle: 270deg;
+    }
+  }
+
+  .assistant__center {
+    position: relative;
+    display: grid;
+    justify-items: center;
+  }
+
+  .assistant__antenna {
+    width: 10px;
+    height: 54px;
+    border-radius: 999px;
+    background: var(--text-accent-2);
+    box-shadow: inset 0 6px 10px rgba(255, 255, 255, 0.15);
+  }
+
+  .assistant__avatar-shell {
+    position: relative;
+    width: min(100%, 360px);
+    aspect-ratio: 1 / 1;
+    margin-top: -8px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+  }
+
+  .assistant__avatar-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: var(--text-accent-2);
+    box-shadow: 10px 7px 8px rgba(196, 196, 242, 0.75);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .assistant__avatar-sparkles {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .assistant__avatar-wrap {
+    position: absolute;
+    inset: 0;
+    background-color: var(--text-accent-2);
+    color: var(--text-white);
+    border-radius: 999px;
+    z-index: 1;
+  }
+
+  .assistant-card {
+    position: relative;
+    padding: 24px 26px;
+    min-height: 136px;
+    border-radius: 24px;
+    overflow: visible;
+  }
+
+  .assistant-card__bg {
+    --gradient-1: linear-gradient(
+      var(--gradient-1-angle),
+      var(--gradient-1-stop-1-color) var(--gradient-1-stop-1-pos),
+      var(--gradient-1-stop-2-color) var(--gradient-1-stop-2-pos),
+      var(--gradient-1-stop-3-color) var(--gradient-1-stop-3-pos)
+    );
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-1);
+    box-shadow: 14px 11px 8px rgb(195, 195, 244, 0.5);
+    border-radius: 16px;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .assistant-card__triangle {
+    position: absolute;
+    width: 24px;
+    height: 32px;
+    background: var(--text-accent-2);
+    z-index: 1;
+  }
+
+  .assistant-card__triangle--right {
+    top: 50%;
+    right: 0.5px;
+    transform: translate(100%, -50%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+  }
+
+  .assistant-card__triangle--left {
+    top: 50%;
+    left: 0.5px;
+    transform: translate(-100%, -50%);
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+  }
+
+  .assistant-card__sparkles {
+    position: absolute;
+    inset: -56px;
+    z-index: 1;
+    pointer-events: none;
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .assistant-card__content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    place-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .assistant-card__title {
+    max-width: 300px;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.2em;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    text-wrap: pretty;
+    color: var(--text-white);
+  }
+
+  .assistant-card__text {
+    margin: 12px 0 0;
+    font-size: 0.9625rem;
+    line-height: 1.5em;
+    letter-spacing: 0em;
+    font-weight: 500;
+    color: var(--text-white);
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .assistant {
+      --padding-section-xl: 110px 28px 120px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .assitant__content {
+      padding-inline: 12px;
+    }
+
+    .assistant__layout {
+      grid-template-columns: 1fr minmax(220px, 28vw) 1fr;
+      gap: 28px;
+    }
+
+    .assistant__avatar-shell {
+      max-width: 320px;
+    }
+
+    .assistant-card {
+      padding: 22px 24px;
+      min-height: 130px;
+    }
+
+    .assistant-card__title {
+      font-size: 1.2rem;
+    }
+
+    .assistant-card__text {
+      font-size: 0.94rem;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .assistant {
+      --padding-section-lg: 88px 32px 96px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .assitant__content {
+      padding-inline: 16px;
+    }
+
+    .assistant__layout {
+      grid-template-columns: 1fr;
+      gap: 26px;
+      margin-top: 24px;
+    }
+
+    .assistant__center {
+      order: -1;
+    }
+
+    .assistant__avatar-shell {
+      max-width: 280px;
+    }
+
+    .assistant__rail {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .assistant__subtitle {
+      margin-top: -40px;
+      font-size: 1rem;
+    }
+
+    .assistant-card {
+      min-height: 120px;
+    }
+
+    .assistant-card__triangle {
+      display: none;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .assistant {
+      --padding-section-md: 80px 36px 90px;
+    }
+
+    .assitant__content {
+      padding-inline: 18px;
+    }
+
+    .assistant__layout {
+      gap: 22px;
+    }
+
+    .assistant__avatar-shell {
+      max-width: 260px;
+    }
+
+    .assistant__antenna {
+      height: 48px;
+    }
+
+    .assistant__rail {
+      gap: 16px;
+    }
+
+    .assistant-card {
+      padding: 20px 20px;
+      border-radius: 22px;
+    }
+
+    .assistant-card__title {
+      font-size: 1.1rem;
+    }
+
+    .assistant-card__text {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .assistant {
+      --padding-section-sm: 72px 28px 80px;
+    }
+
+    .assitant__content {
+      padding-inline: 14px;
+    }
+
+    .assistant__subtitle {
+      margin-top: -28px;
+      font-size: 0.92rem;
+    }
+
+    .assistant__title svg text {
+      font-size: 44px;
+    }
+
+    .assistant__avatar-shell {
+      max-width: 220px;
+    }
+
+    .assistant__antenna {
+      width: 8px;
+      height: 40px;
+    }
+
+    .assistant__rail {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .assistant-card {
+      min-height: 110px;
+      padding: 18px;
+      border-radius: 20px;
+    }
+
+    .assistant-card__title {
+      font-size: 1rem;
+    }
+
+    .assistant-card__text {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .assistant {
+      --padding-section-xs: 64px 20px 72px;
+    }
+
+    .assitant__content {
+      padding-inline: 10px;
+    }
+
+    .assistant__title svg text {
+      font-size: 36px;
+    }
+
+    .assistant__subtitle {
+      font-size: 0.82rem;
+    }
+
+    .assistant__avatar-shell {
+      max-width: 190px;
+    }
+
+    .assistant-card__title {
+      font-size: 0.9rem;
+    }
+
+    .assistant-card__text {
+      font-size: 0.78rem;
+    }
+  }
+</style>

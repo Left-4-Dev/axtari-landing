@@ -1,0 +1,196 @@
+/**
+ * global.css
+ * ----------
+ * Clases de layout reutilizables en todo el proyecto.
+ * Depende de tokens.css para variables.
+ *
+ * Importar en orden desde Layout.astro:
+ *   tokens.css → typography.css → reset.css → global.css
+ */
+
+/* ===========================
+   LAYOUT UTILITIES
+=========================== */
+
+.section {
+  position: var(--position-section, relative);
+  padding: var(--padding-section, 100px 40px 50px);
+  height: var(--height-section, min-content);
+  background: var(--background-section, #ffffff);
+  overflow: var(--overflow-section, hidden);
+}
+
+.container {
+  position: var(--position-container, relative);
+  width: var(--width-container, 100%);
+  max-width: var(--max-width-container, 1440px);
+  overflow: var(--overflow-container, visible);
+  margin: var(--margin-container, 0 auto);
+}
+
+.header {
+  width: var(--width-header, 100%);
+  max-width: var(--max-width-header, 980px);
+  text-align: var(--text-align-header, center);
+}
+
+.title {
+  margin: var(--margin-title, 20px 0 0);
+  font-size: var(--font-size-title, clamp(2.25rem, 4vw, 3.5rem));
+  line-height: var(--line-height-title, 1.2em);
+  font-weight: var(--font-weight-title, 500);
+  letter-spacing: var(--letter-spacing-title, 0em);
+  text-wrap: var(--text-wrap-title, balance);
+  color: var(--color-title, var(--text-black));
+
+  span {
+    color: var(--color-title-span, var(--text-accent));
+    font-weight: var(--font-weight-title-span, 700);
+  }
+}
+
+.description {
+  max-width: var(--max-width-description, 1056px);
+  margin: var(--margin-description, 16px auto 0);
+  font-weight: var(--font-weight-description, 300);
+  font-size: var(--font-size-description, clamp(0.8rem, 1.1vw, 0.9625rem));
+  font-family: var(--font-family-description, "Noto Sans", sans-serif);
+  line-height: var(--line-height-description, 1.5em);
+  letter-spacing: var(--letter-spacing-description, 0em);
+  text-wrap: var(--text-wrap-description, pretty);
+  color: var(--color-description, var(--text-black));
+}
+
+/* ===========================
+   GLOBAL RESPONSIVE TOKENS
+=========================== */
+
+@media (max-width: 1240px) {
+  .section {
+    padding: var(--padding-section-xl, var(--padding-section, 96px 28px 48px));
+  }
+
+  .container {
+    max-width: var(--max-width-container-xl, var(--max-width-container, 1120px));
+  }
+
+  .header {
+    max-width: var(--max-width-header-xl, var(--max-width-header, 920px));
+  }
+
+  .title {
+    margin: var(--margin-title-xl, var(--margin-title, 20px 0 0));
+    font-size: var(--font-size-title-xl, var(--font-size-title, clamp(2.15rem, 4vw, 3.2rem)));
+    line-height: var(--line-height-title-xl, var(--line-height-title, 1.15em));
+  }
+
+  .description {
+    max-width: var(--max-width-description-xl, var(--max-width-description, 960px));
+    font-size: var(--font-size-description-xl, var(--font-size-description, 0.92rem));
+    line-height: var(--line-height-description-xl, var(--line-height-description, 1.5em));
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: var(--padding-section-lg, var(--padding-section, 88px 32px 44px));
+  }
+
+  .container {
+    max-width: var(--max-width-container-lg, var(--max-width-container, 1000px));
+  }
+
+  .header {
+    max-width: var(--max-width-header-lg, var(--max-width-header, 860px));
+  }
+
+  .title {
+    margin: var(--margin-title-lg, var(--margin-title, 18px 0 0));
+    font-size: var(--font-size-title-lg, var(--font-size-title, clamp(2rem, 4.8vw, 2.9rem)));
+    line-height: var(--line-height-title-lg, var(--line-height-title, 1.12em));
+  }
+
+  .description {
+    max-width: var(--max-width-description-lg, var(--max-width-description, 820px));
+    font-size: var(--font-size-description-lg, var(--font-size-description, 0.88rem));
+    line-height: var(--line-height-description-lg, var(--line-height-description, 1.48em));
+  }
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: var(--padding-section-md, var(--padding-section, 72px 36px 40px));
+  }
+
+  .container {
+    max-width: var(--max-width-container-md, var(--max-width-container, 100%));
+  }
+
+  .header {
+    max-width: var(--max-width-header-md, var(--max-width-header, 760px));
+  }
+
+  .title {
+    margin: var(--margin-title-md, var(--margin-title, 16px 0 0));
+    font-size: var(--font-size-title-md, var(--font-size-title, clamp(1.9rem, 6.4vw, 2.6rem)));
+    line-height: var(--line-height-title-md, var(--line-height-title, 1.08em));
+  }
+
+  .description {
+    max-width: var(--max-width-description-md, var(--max-width-description, 680px));
+    font-size: var(--font-size-description-md, var(--font-size-description, 0.85rem));
+    line-height: var(--line-height-description-md, var(--line-height-description, 1.46em));
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: var(--padding-section-sm, var(--padding-section, 64px 28px 36px));
+  }
+
+  .container {
+    max-width: var(--max-width-container-sm, var(--max-width-container, 100%));
+  }
+
+  .header {
+    max-width: var(--max-width-header-sm, var(--max-width-header, 100%));
+  }
+
+  .title {
+    margin: var(--margin-title-sm, var(--margin-title, 14px 0 0));
+    font-size: var(--font-size-title-sm, var(--font-size-title, clamp(1.7rem, 8.8vw, 2.2rem)));
+    line-height: var(--line-height-title-sm, var(--line-height-title, 1.05em));
+  }
+
+  .description {
+    max-width: var(--max-width-description-sm, var(--max-width-description, 100%));
+    font-size: var(--font-size-description-sm, var(--font-size-description, 0.80rem));
+    line-height: var(--line-height-description-sm, var(--line-height-description, 1.42em));
+  }
+}
+
+@media (max-width: 380px) {
+  .section {
+    padding: var(--padding-section-xs, var(--padding-section, 56px 20px 32px));
+  }
+
+  .container {
+    max-width: var(--max-width-container-xs, var(--max-width-container, 100%));
+  }
+
+  .header {
+    max-width: var(--max-width-header-xs, var(--max-width-header, 100%));
+  }
+
+  .title {
+    margin: var(--margin-title-xs, var(--margin-title, 12px 0 0));
+    font-size: var(--font-size-title-xs, var(--font-size-title, clamp(1.5rem, 9vw, 1.9rem)));
+    line-height: var(--line-height-title-xs, var(--line-height-title, 1.02em));
+  }
+
+  .description {
+    max-width: var(--max-width-description-xs, var(--max-width-description, 100%));
+    font-size: var(--font-size-description-xs, var(--font-size-description, 0.76rem));
+    line-height: var(--line-height-description-xs, var(--line-height-description, 1.38em));
+  }
+}

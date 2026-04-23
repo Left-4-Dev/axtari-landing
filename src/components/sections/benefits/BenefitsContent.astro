@@ -1,0 +1,447 @@
+﻿---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+import BenefitCard from "@components/ui/BenefitCard.astro";
+import { benefitsData } from "@data/benefits.data";
+---
+
+<div class="benefits__content">
+  <header class="benefits__header header">
+    <Eyebrow text="Beneficios" align="center" />
+
+    <h2 class="benefits__title title">
+      Nuestros <span>beneficios</span>
+    </h2>
+
+    <p class="benefits__description description">
+      Ayudamos a que las empresas compren de forma más estratégica, precisa y
+      rentable, eliminando pérdidas, reprocesos y compras de emergencia. Estos
+      son algunos datos que lo confirman:
+    </p>
+  </header>
+
+  <div class="benefits__grid">
+    {benefitsData.map((benefit) => <BenefitCard {...benefit} />)}
+  </div>
+
+  <div class="benefits__comparison">
+    <div class="benefits__comparison-line" aria-hidden="true"></div>
+
+    <div class="benefits__comparison-card">
+      <div class="benefits__comparison-side benefits__comparison-side--before">
+        <h3 class="benefits__comparison-title">Antes</h3>
+        <p class="benefits__comparison-text">
+          De 2 a 3 horas revisando catálogos, WhatsApp o llamadas.
+        </p>
+      </div>
+
+      <div class="benefits__comparison-divider" aria-hidden="true">
+        <span class="benefits__comparison-arrow"></span>
+      </div>
+
+      <div class="benefits__comparison-side benefits__comparison-side--after">
+        <h3 class="benefits__comparison-title">Después</h3>
+        <p class="benefits__comparison-text">
+          Menos de 10 minutos con filtros técnicos y búsqueda con IA.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  
+
+  .benefits__content {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .benefits__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2vw, 1.75rem);
+  }
+
+  .benefits__comparison {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 3.5rem;
+  }
+
+  .benefits__comparison-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 10px;
+    height: 4rem;
+    border-radius: 999px;
+    background: var(--text-accent-2);
+    transform: translateX(-50%);
+    box-shadow: 0 10px 20px rgba(124, 130, 255, 0.22);
+  }
+
+  .benefits__comparison-line::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    width: 1rem;
+    aspect-ratio: 1 / 1;
+    border: 10px solid var(--text-accent-2);
+    border-radius: 50%;
+    background: #f6f4f8;
+    transform: translateX(-50%);
+  }
+
+  .benefits__comparison-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: min(100%, 720px);
+    padding: clamp(1.25rem, 3.5vw, 3.5rem);
+    border-radius: 999px;
+    background: var(--gradient-1);
+    box-shadow: var(--benefits-shadow-md);
+    overflow: hidden;
+  }
+
+  .benefits__comparison-card::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -28px;
+    width: 38%;
+    height: 50px;
+    border-radius: 999px;
+    background: rgba(122, 109, 255, 0.18);
+    transform: translateX(-50%);
+    filter: blur(26px);
+    pointer-events: none;
+  }
+
+  .benefits__comparison-side {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .benefits__comparison-title {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    line-height: 1.2em;
+    font-weight: 700;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+    color: var(--text-white);
+  }
+
+  .benefits__comparison-text {
+    max-width: 340px;
+    font-size: clamp(0.8rem, 1vw, 0.9625rem);
+    line-height: 1.5em;
+    letter-spacing: 0em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--text-white);
+    text-wrap: balance;
+  }
+
+  .benefits__comparison-divider {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(3rem, 4vw, 4.5rem);
+    height: 100%;
+  }
+
+  .benefits__comparison-arrow {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 18px solid var(--text-white);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.12));
+  }
+
+  .benefits__comparison-arrow::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    transform: translateY(-50%);
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .benefits {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .benefits__content {
+      gap: 2.75rem;
+      padding-inline: 12px;
+    }
+
+    .benefits__grid {
+      gap: 1.25rem;
+    }
+
+    .benefits__comparison {
+      padding-top: 3.25rem;
+    }
+
+    .benefits__comparison-line {
+      height: 3.5rem;
+    }
+
+    .benefits__comparison-card {
+      width: min(100%, 680px);
+      padding: 1.5rem 2rem;
+    }
+
+    .benefits__comparison-text {
+      max-width: 300px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .benefits {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .benefits__content {
+      gap: 2.5rem;
+      padding-inline: 16px;
+    }
+
+    .benefits__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .benefits__comparison {
+      width: 100%;
+      padding-top: 3rem;
+    }
+
+    .benefits__comparison-line {
+      height: 3.25rem;
+    }
+
+    .benefits__comparison-card {
+      width: min(100%, 640px);
+      padding: 1.5rem 1.75rem;
+      border-radius: 48px;
+    }
+
+    .benefits__comparison-title {
+      font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+    }
+
+    .benefits__comparison-text {
+      max-width: 260px;
+      font-size: 0.88rem;
+    }
+
+    .benefits__comparison-divider {
+      width: 3rem;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .benefits {
+      --padding-section-md: 3.25rem 36px;
+    }
+
+    .benefits__content {
+      gap: 2.25rem;
+      padding-inline: 18px;
+    }
+
+    .benefits__grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      width: min(100%, 620px);
+    }
+
+    .benefits__comparison {
+      width: 100%;
+      padding-top: 2.75rem;
+    }
+
+    .benefits__comparison-line {
+      height: 3rem;
+    }
+
+    .benefits__comparison-line::before {
+      top: -0.85rem;
+      width: 0.9rem;
+      border-width: 8px;
+    }
+
+    .benefits__comparison-card {
+      width: min(100%, 560px);
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.5rem 1.25rem;
+      border-radius: 32px;
+    }
+
+    .benefits__comparison-card::after {
+      width: 56%;
+      bottom: -22px;
+      height: 40px;
+    }
+
+    .benefits__comparison-divider {
+      width: 100%;
+      height: auto;
+    }
+
+    .benefits__comparison-arrow {
+      transform: rotate(90deg);
+    }
+
+    .benefits__comparison-title {
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .benefits__comparison-text {
+      max-width: 100%;
+      font-size: 0.9rem;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .benefits {
+      --padding-section-sm: 3rem 28px;
+    }
+
+    .benefits__content {
+      gap: 2rem;
+      padding-inline: 14px;
+    }
+
+    .benefits__grid {
+      width: 100%;
+      gap: 0.875rem;
+    }
+
+    .benefits__comparison {
+      padding-top: 2.5rem;
+    }
+
+    .benefits__comparison-line {
+      width: 8px;
+      height: 2.75rem;
+    }
+
+    .benefits__comparison-line::before {
+      top: -0.75rem;
+      width: 0.85rem;
+      border-width: 7px;
+    }
+
+    .benefits__comparison-card {
+      width: 100%;
+      gap: 0.875rem;
+      padding: 1.25rem 1rem;
+      border-radius: 28px;
+    }
+
+    .benefits__comparison-title {
+      font-size: 1rem;
+    }
+
+    .benefits__comparison-text {
+      font-size: 0.82rem;
+      line-height: 1.42em;
+    }
+
+    .benefits__comparison-divider {
+      min-height: 2.5rem;
+    }
+
+    .benefits__comparison-arrow {
+      border-top-width: 9px;
+      border-bottom-width: 9px;
+      border-left-width: 15px;
+    }
+
+    .benefits__comparison-arrow::before {
+      left: -15px;
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .benefits {
+      --padding-section-xs: 2.75rem 20px;
+    }
+
+    .benefits__content {
+      gap: 1.75rem;
+      padding-inline: 10px;
+    }
+
+    .benefits__grid {
+      gap: 0.75rem;
+    }
+
+    .benefits__comparison {
+      padding-top: 2.25rem;
+    }
+
+    .benefits__comparison-line {
+      height: 2.5rem;
+    }
+
+    .benefits__comparison-card {
+      padding: 1rem 0.875rem;
+      border-radius: 24px;
+    }
+
+    .benefits__comparison-title {
+      font-size: 0.92rem;
+    }
+
+    .benefits__comparison-text {
+      font-size: 0.76rem;
+      line-height: 1.38em;
+    }
+  }
+</style>

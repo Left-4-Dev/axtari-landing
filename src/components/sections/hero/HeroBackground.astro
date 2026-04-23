@@ -1,0 +1,245 @@
+<div class="hero__bg" aria-hidden="true">
+  <div class="hero__gradient"></div>
+
+  <div class="hero__image">
+    <img src="/images/sections/hero/hero__background.webp" alt="" />
+  </div>
+
+  <canvas class="hero__stars"></canvas>
+</div>
+
+<style>
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--bg-primary);
+    z-index: 0;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .hero__gradient {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--gradient-1);
+    mix-blend-mode: color;
+    z-index: 1;
+  }
+
+  .hero__image {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: normal;
+    z-index: 0;
+  }
+
+  .hero__stars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.9;
+  }
+</style>
+
+<script>
+  (() => {
+    const canvas = document.querySelector<HTMLCanvasElement>(".hero__stars");
+    const hero = document.querySelector<HTMLElement>(".hero");
+
+    if (!canvas || !hero) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    type Star = {
+      x: number;
+      y: number;
+      r: number;
+      baseAlpha: number;
+      alpha: number;
+      twinkleSpeed: number;
+      twinkleOffset: number;
+      driftX: number;
+      driftY: number;
+      blur: number;
+      pulse: number;
+      sparkle: boolean;
+      sparkleSize: number;
+      sparklePhase: number;
+    };
+
+    let width = 0;
+    let height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let stars: Star[] = [];
+    let animationId = 0;
+    let lastTime = 0;
+
+    const STAR_DENSITY = 0.000055;
+    const MIN_STARS = 45;
+    const MAX_STARS = 120;
+
+    const random = (min: number, max: number): number =>
+      Math.random() * (max - min) + min;
+
+    const clamp = (value: number, min: number, max: number): number =>
+      Math.max(min, Math.min(max, value));
+
+    const createStar = (): Star => ({
+      x: random(0, width),
+      y: random(0, height),
+      r: random(0.7, 2.1),
+      baseAlpha: random(0.24, 0.82),
+      alpha: random(0.24, 0.82),
+      twinkleSpeed: random(0.35, 1.1),
+      twinkleOffset: random(0, Math.PI * 2),
+      driftX: random(-0.006, 0.006),
+      driftY: random(-0.004, 0.004),
+      blur: random(6, 16),
+      pulse: random(0.92, 1.08),
+      sparkle: Math.random() > 0.82,
+      sparkleSize: random(6, 12),
+      sparklePhase: random(0, Math.PI * 2),
+    });
+
+    const resize = (): void => {
+      const rect = hero.getBoundingClientRect();
+      width = Math.max(1, Math.floor(rect.width));
+      height = Math.max(1, Math.floor(rect.height));
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const count = clamp(
+        Math.round(width * height * STAR_DENSITY),
+        MIN_STARS,
+        MAX_STARS,
+      );
+
+      stars = Array.from({ length: count }, createStar);
+    };
+
+    const drawSparkle = (
+      x: number,
+      y: number,
+      size: number,
+      alpha: number,
+    ): void => {
+      ctx.save();
+      ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+      ctx.lineWidth = 1;
+
+      ctx.beginPath();
+      ctx.moveTo(x - size, y);
+      ctx.lineTo(x + size, y);
+      ctx.moveTo(x, y - size);
+      ctx.lineTo(x, y + size);
+      ctx.stroke();
+
+      ctx.restore();
+    };
+
+    const drawStar = (star: Star, time: number): void => {
+      ctx.save();
+
+      const pulseScale =
+        1 + 0.06 * Math.sin(time * 0.8 + star.twinkleOffset) * star.pulse;
+      const glow = star.blur * pulseScale;
+
+      const gradient = ctx.createRadialGradient(
+        star.x,
+        star.y,
+        0,
+        star.x,
+        star.y,
+        glow,
+      );
+
+      gradient.addColorStop(0, `rgba(255,255,255,${star.alpha})`);
+      gradient.addColorStop(0.4, `rgba(255,255,255,${star.alpha * 0.45})`);
+      gradient.addColorStop(1, "rgba(255,255,255,0)");
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, glow, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = `rgba(255,255,255,${Math.min(1, star.alpha + 0.1)})`;
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.r * pulseScale, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (star.sparkle) {
+        const sparkleStrength =
+          0.5 + 0.5 * Math.sin(time * 1.2 + star.sparklePhase);
+        const sparkleAlpha = star.alpha * 0.4 * sparkleStrength;
+
+        if (sparkleAlpha > 0.08) {
+          drawSparkle(
+            star.x,
+            star.y,
+            star.sparkleSize * sparkleStrength,
+            sparkleAlpha,
+          );
+        }
+      }
+
+      ctx.restore();
+    };
+
+    const render = (timeMs: number): void => {
+      const time = timeMs * 0.001;
+      const delta = lastTime ? (timeMs - lastTime) * 0.001 : 0.016;
+      lastTime = timeMs;
+
+      ctx.clearRect(0, 0, width, height);
+
+      for (const star of stars) {
+        star.x += star.driftX * 60 * delta;
+        star.y += star.driftY * 60 * delta;
+
+        if (star.x < -24) star.x = width + 24;
+        if (star.x > width + 24) star.x = -24;
+        if (star.y < -24) star.y = height + 24;
+        if (star.y > height + 24) star.y = -24;
+
+        const twinkle =
+          0.78 + 0.22 * Math.sin(time * star.twinkleSpeed + star.twinkleOffset);
+
+        star.alpha = star.baseAlpha * twinkle;
+
+        drawStar(star, time);
+      }
+
+      animationId = window.requestAnimationFrame(render);
+    };
+
+    const onResize = (): void => {
+      resize();
+    };
+
+    resize();
+    animationId = window.requestAnimationFrame(render);
+    window.addEventListener("resize", onResize);
+
+    const cleanup = (): void => {
+      window.cancelAnimationFrame(animationId);
+      window.removeEventListener("resize", onResize);
+    };
+
+    window.addEventListener("pagehide", cleanup, { once: true });
+  })();
+</script>

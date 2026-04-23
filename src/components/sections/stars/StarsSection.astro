@@ -1,0 +1,667 @@
+﻿---
+import StarsContent from "@components/sections/stars/StarsContent.astro";
+---
+
+<section class="stars section">
+  <div class="stars__container container">
+    <StarsContent />
+  </div>
+</section>
+<style>
+  
+
+  .stars {
+    background: linear-gradient(
+      180deg,
+      rgba(219, 214, 255, 0.6) 16%,
+      rgba(219, 214, 255, 0.4) 20%,
+      rgba(230, 226, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    --padding-section: 4rem 0;
+    text-transform: uppercase;
+  }
+
+  .stars__container {
+    --max-width-container: 1200px;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .stars {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .stars {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .stars {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .stars {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .stars {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>
+<!-- <script>
+  import gsap from "gsap";
+
+  (() => {
+    const slider = document.querySelector<HTMLElement>(".stars__slider");
+    const track = document.querySelector<HTMLElement>(".stars__track");
+    const heroImage =
+      document.querySelector<HTMLImageElement>(".stars__hero img");
+
+    if (!slider || !track || !heroImage) return;
+
+    let slides = Array.from(
+      track.querySelectorAll<HTMLButtonElement>(".stars__slide"),
+    );
+    if (slides.length === 0) return;
+
+    let animation: gsap.core.Tween | null = null;
+    let isChangingHero = false;
+
+    const clearTrackClones = (): void => {
+      const clones = track.querySelectorAll<HTMLElement>("[data-clone='true']");
+      clones.forEach((clone) => clone.remove());
+    };
+
+    const buildInfiniteTrack = (): HTMLButtonElement[] => {
+      clearTrackClones();
+
+      const originalSlides = Array.from(
+        track.querySelectorAll<HTMLButtonElement>(
+          ".stars__slide:not([data-clone='true'])",
+        ),
+      );
+
+      originalSlides.forEach((slide) => {
+        const clone = slide.cloneNode(true) as HTMLButtonElement;
+        clone.dataset.clone = "true";
+        clone.setAttribute("aria-hidden", "true");
+        clone.tabIndex = -1;
+        track.appendChild(clone);
+      });
+
+      return Array.from(
+        track.querySelectorAll<HTMLButtonElement>(".stars__slide"),
+      );
+    };
+
+    const getLoopDistance = (): number => {
+      const originals = Array.from(
+        track.querySelectorAll<HTMLElement>(
+          ".stars__slide:not([data-clone='true'])",
+        ),
+      );
+
+      if (originals.length === 0) return 0;
+
+      const gap = parseFloat(
+        window.getComputedStyle(track).columnGap ||
+          window.getComputedStyle(track).gap ||
+          "0",
+      );
+
+      return originals.reduce((total, slide, index) => {
+        const slideWidth = slide.offsetWidth;
+        const extraGap = index < originals.length - 1 ? gap : 0;
+        return total + slideWidth + extraGap;
+      }, 0);
+    };
+
+    const createLoop = (): void => {
+      if (animation) {
+        animation.kill();
+        animation = null;
+      }
+
+      slides = buildInfiniteTrack();
+
+      const distance = getLoopDistance();
+      if (!distance) return;
+
+      gsap.set(track, { x: 0 });
+
+      animation = gsap.to(track, {
+        x: -distance,
+        duration: 22,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          x: (value: string) => {
+            const numericValue = parseFloat(value);
+            return `${gsap.utils.wrap(-distance, 0, numericValue)}px`;
+          },
+        },
+      });
+    };
+
+    const setActiveSlide = (selectedSlide: HTMLButtonElement): void => {
+      const originalHero = selectedSlide.dataset.hero;
+      if (!originalHero) return;
+
+      const logo =
+        selectedSlide.querySelector<HTMLImageElement>(".stars__logo");
+      const altText = logo?.alt
+        ? `Marca seleccionada: ${logo.alt}`
+        : "Marca seleccionada";
+
+      const originalSlides = Array.from(
+        track.querySelectorAll<HTMLButtonElement>(
+          ".stars__slide:not([data-clone='true'])",
+        ),
+      );
+
+      originalSlides.forEach((slide) => {
+        slide.classList.toggle("is-active", slide === selectedSlide);
+      });
+
+      if (isChangingHero) return;
+      if (heroImage.getAttribute("src") === originalHero) return;
+
+      isChangingHero = true;
+      gsap.to(heroImage, {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power1.out",
+        onComplete: () => {
+          heroImage.src = originalHero;
+          heroImage.alt = altText;
+
+          gsap.to(heroImage, {
+            opacity: 1,
+            duration: 0.35,
+            ease: "power2.out",
+            onComplete: () => {
+              isChangingHero = false;
+            },
+          });
+        },
+      });
+    };
+
+    const handleClick = (event: Event): void => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const clickedSlide = target.closest<HTMLButtonElement>(".stars__slide");
+      if (!clickedSlide) return;
+      if (clickedSlide.dataset.clone === "true") return;
+
+      setActiveSlide(clickedSlide);
+    };
+
+    const pauseLoop = (): void => {
+      animation?.pause();
+    };
+
+    const resumeLoop = (): void => {
+      animation?.resume();
+    };
+
+    let resizeTimeout = 0;
+    const handleResize = (): void => {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        createLoop();
+      }, 180);
+    };
+
+    slider.addEventListener("mouseenter", pauseLoop);
+    slider.addEventListener("mouseleave", resumeLoop);
+    slider.addEventListener("click", handleClick);
+    window.addEventListener("resize", handleResize);
+
+    createLoop();
+  })();
+</script> -->
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+  (() => {
+    const heroImage =
+      document.querySelector<HTMLImageElement>(".stars__hero-image");
+
+    const desktopSlider = document.querySelector<HTMLElement>(
+      ".stars__slider--desktop",
+    );
+
+    const mobileSliders = Array.from(
+      document.querySelectorAll<HTMLElement>(".stars__sliders .stars__slider"),
+    );
+
+    const allSliders: HTMLElement[] = [
+      ...(desktopSlider ? [desktopSlider] : []),
+      ...mobileSliders,
+    ];
+
+    if (allSliders.length === 0) return;
+
+    let isChangingHero = false;
+    const animations = new Map<HTMLElement, gsap.core.Tween>();
+
+    const clearTrackClones = (track: HTMLElement): void => {
+      const clones = track.querySelectorAll<HTMLElement>("[data-clone='true']");
+      clones.forEach((clone) => clone.remove());
+    };
+
+    const buildInfiniteTrack = (track: HTMLElement): HTMLButtonElement[] => {
+      clearTrackClones(track);
+
+      const originalSlides = Array.from(
+        track.querySelectorAll<HTMLButtonElement>(
+          ".stars__slide:not([data-clone='true'])",
+        ),
+      );
+
+      originalSlides.forEach((slide) => {
+        const clone = slide.cloneNode(true) as HTMLButtonElement;
+        clone.dataset.clone = "true";
+        clone.setAttribute("aria-hidden", "true");
+        clone.tabIndex = -1;
+        clone.classList.remove("is-active");
+        track.appendChild(clone);
+      });
+
+      return Array.from(
+        track.querySelectorAll<HTMLButtonElement>(".stars__slide"),
+      );
+    };
+
+    const getLoopDistance = (track: HTMLElement): number => {
+      const originals = Array.from(
+        track.querySelectorAll<HTMLElement>(
+          ".stars__slide:not([data-clone='true'])",
+        ),
+      );
+
+      if (originals.length === 0) return 0;
+
+      const styles = window.getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap || "0");
+
+      return originals.reduce((total, slide, index) => {
+        const slideWidth = slide.offsetWidth;
+        const extraGap = index < originals.length - 1 ? gap : 0;
+        return total + slideWidth + extraGap;
+      }, 0);
+    };
+
+    const clearActiveSlides = (): void => {
+      allSliders.forEach((slider) => {
+        slider
+          .querySelectorAll<HTMLButtonElement>(".stars__slide")
+          .forEach((slide) => slide.classList.remove("is-active"));
+      });
+    };
+
+    const setActiveSlide = (selectedSlide: HTMLButtonElement): void => {
+      const selectedHero = selectedSlide.dataset.hero;
+      const selectedId = selectedSlide.dataset.slideId;
+
+      if (!selectedHero || !selectedId) return;
+
+      const logo =
+        selectedSlide.querySelector<HTMLImageElement>(".stars__logo");
+
+      const altText = logo?.alt
+        ? `Marca seleccionada: ${logo.alt}`
+        : "Marca seleccionada";
+
+      clearActiveSlides();
+
+      allSliders.forEach((slider) => {
+        slider
+          .querySelectorAll<HTMLButtonElement>(".stars__slide")
+          .forEach((slide) => {
+            if (slide.dataset.slideId === selectedId) {
+              slide.classList.add("is-active");
+            }
+          });
+      });
+
+      if (!heroImage) return;
+      if (isChangingHero) return;
+      if (heroImage.getAttribute("src") === selectedHero) return;
+
+      isChangingHero = true;
+
+      gsap.to(heroImage, {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power1.out",
+        onComplete: () => {
+          heroImage.src = selectedHero;
+          heroImage.alt = altText;
+
+          gsap.to(heroImage, {
+            opacity: 1,
+            duration: 0.35,
+            ease: "power2.out",
+            onComplete: () => {
+              isChangingHero = false;
+            },
+          });
+        },
+      });
+    };
+
+    const createLoopForSlider = (
+      slider: HTMLElement,
+      direction: 1 | -1,
+      duration: number,
+    ): void => {
+      const track = slider.querySelector<HTMLElement>(".stars__track");
+      if (!track) return;
+
+      const previous = animations.get(slider);
+      if (previous) {
+        previous.kill();
+        animations.delete(slider);
+      }
+
+      buildInfiniteTrack(track);
+
+      const distance = getLoopDistance(track);
+      if (!distance) return;
+
+      gsap.set(track, { x: 0 });
+
+      const tween = gsap.to(track, {
+        x: direction === -1 ? -distance : distance,
+        duration,
+        ease: "none",
+        repeat: -1,
+        modifiers: {
+          x: (value: string) => {
+            const numericValue = parseFloat(value);
+            return `${gsap.utils.wrap(-distance, 0, numericValue)}px`;
+          },
+        },
+      });
+
+      animations.set(slider, tween);
+    };
+
+    const createLoops = (): void => {
+      if (desktopSlider) {
+        createLoopForSlider(desktopSlider, -1, 22);
+      }
+
+      if (mobileSliders.length > 0) {
+        mobileSliders.forEach((slider, index) => {
+          const direction: 1 | -1 = index % 2 === 0 ? -1 : 1;
+          createLoopForSlider(slider, direction, 18 + index);
+        });
+      }
+    };
+
+    const handleClick = (event: Event): void => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const clickedSlide = target.closest<HTMLButtonElement>(".stars__slide");
+      if (!clickedSlide) return;
+
+      setActiveSlide(clickedSlide);
+    };
+
+    const pauseLoop = (slider: HTMLElement): void => {
+      animations.get(slider)?.pause();
+    };
+
+    const resumeLoop = (slider: HTMLElement): void => {
+      animations.get(slider)?.resume();
+    };
+
+    let resizeTimeout = 0;
+    const handleResize = (): void => {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        createLoops();
+      }, 180);
+    };
+
+    allSliders.forEach((slider) => {
+      slider.addEventListener("mouseenter", () => pauseLoop(slider));
+      slider.addEventListener("mouseleave", () => resumeLoop(slider));
+      slider.addEventListener("click", handleClick);
+    });
+
+    window.addEventListener("resize", handleResize);
+
+    createLoops();
+  })();
+</script>
+
+<script>
+
+
+  const initStarsEntrance = (): void => {
+    const section = document.querySelector<HTMLElement>(".stars");
+    if (!section) return;
+
+    const title = section.querySelector<HTMLElement>(".stars__title");
+    const description = section.querySelector<HTMLElement>(
+      ".stars__description",
+    );
+    const hero = section.querySelector<HTMLElement>(".stars__hero");
+    const desktopSlider = section.querySelector<HTMLElement>(
+      ".stars__slider--desktop",
+    );
+    const mobileSliders = section.querySelector<HTMLElement>(".stars__sliders");
+
+    const desktopSlides = gsap.utils.toArray<HTMLElement>(
+      ".stars__slider--desktop .stars__slide:not([data-clone='true'])",
+    );
+
+    const mobileTopSlides = gsap.utils.toArray<HTMLElement>(
+      ".stars__slider--top .stars__slide:not([data-clone='true'])",
+    );
+
+    const mobileBottomSlides = gsap.utils.toArray<HTMLElement>(
+      ".stars__slider--bottom .stars__slide:not([data-clone='true'])",
+    );
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 72%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (title) {
+      tl.fromTo(
+        title,
+        {
+          autoAlpha: 0,
+          y: 20,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.65,
+        },
+      );
+    }
+
+    if (description) {
+      tl.fromTo(
+        description,
+        {
+          autoAlpha: 0,
+          y: 18,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.55,
+        },
+        0.08,
+      );
+    }
+
+    if (hero) {
+      tl.fromTo(
+        hero,
+        {
+          autoAlpha: 0,
+          y: 24,
+          scale: 0.97,
+          filter: "blur(10px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.85,
+          ease: "back.out(1.1)",
+        },
+        0.16,
+      );
+    }
+
+    if (desktopSlider) {
+      tl.fromTo(
+        desktopSlider,
+        {
+          autoAlpha: 0,
+          y: 20,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.55,
+          ease: "power2.out",
+        },
+        0.24,
+      );
+
+      if (desktopSlides.length) {
+        tl.fromTo(
+          desktopSlides,
+          {
+            autoAlpha: 0,
+            y: 20,
+            scale: 0.96,
+          },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.5,
+            stagger: 0.06,
+            ease: "power2.out",
+          },
+          0.3,
+        );
+      }
+    }
+
+    if (mobileSliders) {
+      tl.fromTo(
+        mobileSliders,
+        {
+          autoAlpha: 0,
+          y: 18,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        0.24,
+      );
+
+      if (mobileTopSlides.length) {
+        tl.fromTo(
+          mobileTopSlides,
+          {
+            autoAlpha: 0,
+            x: 24,
+            scale: 0.96,
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.45,
+            stagger: 0.05,
+            ease: "power2.out",
+          },
+          0.3,
+        );
+      }
+
+      if (mobileBottomSlides.length) {
+        tl.fromTo(
+          mobileBottomSlides,
+          {
+            autoAlpha: 0,
+            x: -24,
+            scale: 0.96,
+          },
+          {
+            autoAlpha: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.45,
+            stagger: 0.05,
+            ease: "power2.out",
+          },
+          0.34,
+        );
+      }
+    }
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initStarsEntrance, {
+      once: true,
+    });
+  } else {
+    initStarsEntrance();
+  }
+</script>

@@ -1,0 +1,562 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+---
+
+<div class="about__content">
+  <div class="about__header header">
+    <Eyebrow text="Quiénes somos" align="center" />
+    <h2 class="about__title title">
+      Sobre <span>Axtari</span>
+    </h2>
+    <p class="about__description description">
+      Somos una plataforma digital especializada en conectar a las industrias
+      con los mejores proveedores del mercado, con el fin de asegurar una venta
+      profesional, sin fraudes o procesos informales. Centralizamos productos,
+      marcas, cotizaciones y entregas dentro de un solo ecosistema para
+      garantizar eficiencia y estabilidad completa en todo el proceso de
+      adquisición.
+    </p>
+  </div>
+
+  <div class="about__grid">
+    <article class="about__card about__card--mission">
+      <div class="about__icon-shadow"></div>
+      <div class="about__icon-wrap">
+        <svg class="about__icon" aria-hidden="true">
+          <use xlink:href="assets/sprite.svg#mision"></use>
+        </svg>
+      </div>
+      <h3 class="about__card-title">Nuestra misión</h3>
+      <p class="about__card-description">
+        Conectar a las industrias con los mejores proveedores a través de una
+        plataforma rápida, segura e intuitiva, que centraliza productos, precios
+        y comunicación, garantizando eficiencia en cada compra y fortaleciendo
+        la cadena de compra industrial.
+      </p>
+    </article>
+
+    <article class="about__card about__card--vision">
+      <div class="about__icon-shadow"></div>
+      <div class="about__icon-wrap">
+        <svg class="about__icon" aria-hidden="true">
+          <use xlink:href="assets/sprite.svg#vision"></use>
+        </svg>
+      </div>
+      <h3 class="about__card-title">Nuestra visión</h3>
+      <p class="about__card-description">
+        Liderar el mercado industrial como el ecosistema digital que implementa
+        procesos innovadores, simplifica el abastecimiento y fortalece la
+        conexión profesional, ofreciendo una plataforma de búsqueda intuitiva
+        con seguridad total para el comercio B2B.
+      </p>
+    </article>
+  </div>
+
+  <div class="about__pillars">
+    <span>Confianza</span>
+    <span>Agilidad</span>
+    <span>Transparencia</span>
+  </div>
+</div>
+
+<style>
+  .about__content {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+    gap: 3rem;
+    text-transform: uppercase;
+  }
+
+  .about__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+    width: 100%;
+  }
+
+  .about__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    place-content: space-evenly;
+    align-items: flex-start;
+    padding: 48px;
+    border-radius: 16px;
+    min-height: 280px;
+    overflow: hidden;
+    box-shadow: 8px 8px 7px rgba(168, 168, 239, 0.48);
+    aspect-ratio: 32/19;
+  }
+
+  .about__card--vision {
+    --color-icon: #9d98fc;
+    --gradient-3-angle: 102.1135deg;
+    --gradient-3-stop-1-color: #a0d5fd;
+    --gradient-3-stop-1-pos: 0%;
+    --gradient-3-stop-2-color: #9fb7fd;
+    --gradient-3-stop-2-pos: 1%;
+    --gradient-3-stop-3-color: #9d98fc;
+    --gradient-3-stop-3-pos: 100%;
+
+    background: linear-gradient(
+      var(--gradient-3-angle),
+      var(--gradient-3-stop-1-color) var(--gradient-3-stop-1-pos),
+      var(--gradient-3-stop-2-color) var(--gradient-3-stop-2-pos),
+      var(--gradient-3-stop-3-color) var(--gradient-3-stop-3-pos)
+    );
+  }
+
+  .about__card--mission {
+    --color-icon: #a0d5fd;
+    --gradient-3-angle: 102.1135deg;
+    --gradient-3-stop-1-color: #a0d5fd;
+    --gradient-3-stop-1-pos: 6.6292%;
+    --gradient-3-stop-2-color: #9fb7fd;
+    --gradient-3-stop-2-pos: 99%;
+    --gradient-3-stop-3-color: #9d98fc;
+    --gradient-3-stop-3-pos: 100%;
+
+    background: linear-gradient(
+      var(--gradient-3-angle),
+      var(--gradient-3-stop-1-color) var(--gradient-3-stop-1-pos),
+      var(--gradient-3-stop-2-color) var(--gradient-3-stop-2-pos),
+      var(--gradient-3-stop-3-color) var(--gradient-3-stop-3-pos)
+    );
+  }
+
+  .about__icon-wrap {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 80px;
+    height: 80px;
+    padding: 12px;
+    border-radius: 999px;
+    background: #fff;
+    z-index: 1;
+  }
+
+  .about__icon-shadow {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 80px;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 999px;
+    background: var(--bg-primary, #fff);
+    box-shadow: 2.6661px 2.6661px 1.9044px rgba(175, 157, 209, 0.75);
+    mix-blend-mode: multiply;
+    z-index: 0;
+  }
+
+  .about__icon {
+    color: var(--color-icon);
+    z-index: 2;
+  }
+
+  .about__card-title {
+    /* Exo */
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2em;
+    letter-spacing: 0em;
+    text-wrap: pretty;
+  }
+
+  .about__card-description {
+    /* Noto */
+    max-width: 440px;
+    color: var(--text-white);
+    font-size: 0.9625rem;
+    font-weight: 500;
+    line-height: 1.5em;
+    letter-spacing: 0em;
+    text-wrap: pretty;
+    font-family: "Noto Sans", sans-serif;
+  }
+
+  .about__pillars {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .about__pillars span {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(111, 118, 255, 0.08);
+    color: #5f667f;
+    font-size: 0.92rem;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(146, 157, 255, 0.08);
+  }
+
+  .about__eyebrow,
+  .about__title,
+  .about__description,
+  .about__card,
+  .about__pillars span,
+  .about__icon-wrap {
+    will-change: transform, opacity, filter;
+    transform: translateZ(0);
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .about {
+      --padding-section-xl: 2rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+
+    .about__content {
+      gap: 2.75rem;
+      padding-inline: 12px;
+    }
+
+    .about__grid {
+      gap: 32px;
+    }
+
+    .about__card {
+      padding: 40px;
+    }
+
+    .about__card-title {
+      font-size: 1.75rem;
+    }
+
+    .about__card-description {
+      max-width: 400px;
+      font-size: 0.93rem;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .about {
+      --padding-section-lg: 2rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .about__content {
+      gap: 2.5rem;
+      padding-inline: 16px;
+    }
+
+    .about__grid {
+      gap: 24px;
+    }
+
+    .about__card {
+      padding: 32px;
+      min-height: 240px;
+    }
+
+    .about__icon-wrap {
+      top: 20px;
+      right: 20px;
+      width: 72px;
+      height: 72px;
+      padding: 11px;
+    }
+
+    .about__icon-shadow {
+      top: 20px;
+      right: 20px;
+      width: 72px;
+    }
+
+    .about__card-title {
+      font-size: 1.55rem;
+    }
+
+    .about__card-description {
+      max-width: 360px;
+      font-size: 0.9rem;
+      line-height: 1.45em;
+    }
+
+    .about__pillars {
+      gap: 14px;
+    }
+
+    .about__pillars span {
+      min-height: 38px;
+      padding: 0 15px;
+      font-size: 0.88rem;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .about {
+      --padding-section-md: 2rem 32px;
+    }
+
+    .about__content {
+      gap: 2.25rem;
+      padding-inline: 18px;
+    }
+
+    .about__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      width: min(100%, 680px);
+    }
+
+    .about__card {
+      padding: 32px 28px;
+      min-height: 260px;
+      aspect-ratio: 32 / 18;
+    }
+
+    .about__icon-wrap {
+      top: 20px;
+      right: 20px;
+      width: 68px;
+      height: 68px;
+      padding: 10px;
+    }
+
+    .about__icon-shadow {
+      top: 20px;
+      right: 20px;
+      width: 68px;
+    }
+
+    .about__card-title {
+      font-size: 1.45rem;
+      max-width: 75%;
+    }
+
+    .about__card-description {
+      max-width: 100%;
+      font-size: 0.8125rem;
+    }
+
+    .about__pillars {
+      gap: 12px;
+      width: min(100%, 560px);
+    }
+
+    .about__pillars span {
+      min-height: 38px;
+      padding: 0 14px;
+      font-size: 0.86rem;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .about {
+      --padding-section-sm: 2.5rem 28px;
+    }
+
+    .about__content {
+      gap: 2rem;
+      padding-inline: 14px;
+    }
+
+    .about__grid {
+      width: 100%;
+      gap: 16px;
+    }
+
+    .about__card {
+      padding: 26px 20px;
+      min-height: 220px;
+      aspect-ratio: auto;
+    }
+
+    .about__icon-wrap {
+      top: 16px;
+      right: 16px;
+      width: 60px;
+      height: 60px;
+      padding: 9px;
+    }
+
+    .about__icon-shadow {
+      top: 16px;
+      right: 16px;
+      width: 60px;
+    }
+
+    .about__card-title {
+      font-size: 1.2rem;
+      max-width: 72%;
+    }
+
+    .about__card-description {
+      max-width: 100%;
+      font-size: 0.75rem;
+      line-height: 1.42em;
+    }
+
+    .about__pillars {
+      gap: 10px;
+    }
+
+    .about__pillars span {
+      min-height: 36px;
+      padding: 0 13px;
+      font-size: 0.8rem;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .about {
+      --padding-section-xs: 2.25rem 20px;
+    }
+
+    .about__content {
+      gap: 1.75rem;
+      padding-inline: 10px;
+    }
+
+    .about__grid {
+      gap: 14px;
+    }
+
+    .about__card {
+      padding: 22px 16px;
+      min-height: 205px;
+    }
+
+    .about__icon-wrap {
+      top: 14px;
+      right: 14px;
+      width: 54px;
+      height: 54px;
+      padding: 8px;
+    }
+
+    .about__icon-shadow {
+      top: 14px;
+      right: 14px;
+      width: 54px;
+    }
+
+    .about__card-title {
+      font-size: 1.05rem;
+      max-width: 70%;
+    }
+
+    .about__card-description {
+      font-size: 0.75rem;
+      line-height: 1.38em;
+    }
+
+    .about__pillars {
+      gap: 8px;
+    }
+
+    .about__pillars span {
+      min-height: 34px;
+      padding: 0 12px;
+      font-size: 0.76rem;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+  const initAboutEntrance = (): void => {
+    const section = document.querySelector<HTMLElement>(".about");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>(".eyebrow");
+    const title = section.querySelector<HTMLElement>(".about__title");
+    const description = section.querySelector<HTMLElement>(
+      ".about__description",
+    );
+    const cards = section.querySelectorAll<HTMLElement>(".about__card");
+    const pillars = section.querySelectorAll<HTMLElement>(
+      ".about__pillars span",
+    );
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 72%",
+        once: true,
+      },
+      defaults: { ease: "power3.out" },
+    });
+
+    if (eyebrow) {
+      tl.fromTo(
+        eyebrow,
+        { autoAlpha: 0, y: 18, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.7 },
+      );
+    }
+
+    if (title) {
+      tl.fromTo(
+        title,
+        { autoAlpha: 0, y: 28, filter: "blur(8px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 },
+        "-=0.42",
+      );
+    }
+
+    if (description) {
+      tl.fromTo(
+        description,
+        { autoAlpha: 0, y: 24, filter: "blur(8px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.75 },
+        "-=0.45",
+      );
+    }
+
+    if (cards.length) {
+      tl.fromTo(
+        cards,
+        { autoAlpha: 0, y: 38, scale: 0.98, filter: "blur(10px)" },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.9,
+          stagger: 0.14,
+        },
+        "-=0.35",
+      );
+    }
+
+    if (pillars.length) {
+      tl.fromTo(
+        pillars,
+        { autoAlpha: 0, y: 18, scale: 0.96 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.08 },
+        "-=0.45",
+      );
+    }
+  };
+
+  window.addEventListener("load", initAboutEntrance);
+</script>

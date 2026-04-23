@@ -1,0 +1,390 @@
+---
+import Eyebrow from "@components/ui/Eyebrow.astro";
+---
+
+<div class="audience__content">
+  <header class="audience__header header">
+    <Eyebrow text="A quién conectamos" align="center" />
+    <h2 class="audience__title title">
+      Nuestro <span>público B2B</span>
+    </h2>
+    <p class="audience__description description">
+      Conectamos fabricantes, importadores, distribuidores y compradores a
+      través de una plataforma digital que simplifica operaciones, impulsa
+      oportunidades y fortalece relaciones comerciales en distintos sectores.
+    </p>
+  </header>
+  <div class="audience__layout">
+    <article class="audience-card audience-card--left">
+      <div class="audience-card__inner">
+        <h3 class="audience-card__title">
+          Fabricantes, importadores y distribuidores
+        </h3>
+        <p class="audience-card__text">
+          Impulsamos a proveedores y aliados con herramientas digitales que
+          amplían su alcance, mejoran su exposición y optimizan sus canales de
+          venta dentro de un ecosistema más eficiente.
+        </p>
+      </div>
+    </article>
+
+    <div class="audience__visual">
+      <div class="audience__visual-glow audience__visual-glow--left"></div>
+      <div class="audience__visual-glow audience__visual-glow--right"></div>
+
+      <div class="audience__image-shell">
+        <img
+          src="/images/sections/audience/audience.svg"
+          alt="Ilustración de conexión entre proveedores y compradores"
+        />
+      </div>
+    </div>
+
+    <article class="audience-card audience-card--right">
+      <div class="audience-card__inner">
+        <h3 class="audience-card__title">Compradores</h3>
+        <p class="audience-card__text">
+          Ayudamos a negocios y clientes que necesitan adquirir productos de
+          forma ágil y confiable, accediendo a un catálogo amplio de proveedores
+          dentro de una experiencia más clara y segura.
+        </p>
+      </div>
+    </article>
+  </div>
+</div>
+
+<style>
+  .audience__content {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    align-items: center;
+  }
+
+  .audience__header {
+    --max-width-header: 1200px;
+    text-align: center;
+    /* width: min(1200px, calc(100% - 48px)); */
+  }
+
+  .audience__layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 380px) minmax(
+        280px,
+        1fr
+      );
+    width: 100%;
+    align-items: center;
+    gap: 0rem;
+  }
+
+  .audience-card {
+    position: relative;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow:
+      0 18px 36px rgba(109, 122, 255, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  }
+
+  .audience-card--left {
+    justify-content: flex-end;
+    border-radius: 0 999px 999px 0;
+    background: linear-gradient(135deg, #a0d5fd 0%, #9cbefc 100%);
+  }
+
+  .audience-card--right {
+    justify-content: flex-start;
+    border-radius: 999px 0 0 999px;
+    background: linear-gradient(135deg, #9fa3fb 0%, #9d98fc 100%);
+  }
+
+  .audience-card__inner {
+    max-width: 480px;
+    padding: 40px 64px 40px 32px;
+    color: var(--text-white);
+  }
+
+  .audience-card--right .audience-card__inner {
+    text-align: right;
+    padding: 40px 32px 40px 64px;
+  }
+
+  .audience-card__title {
+    font-size: clamp(1.7rem, 2vw, 2.3rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+    text-transform: uppercase;
+  }
+
+  .audience-card__text {
+    margin: 18px 0 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    font-weight: 600;
+    color: var(--text-white);
+  }
+
+  .audience__visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 420px;
+  }
+
+  .audience__visual-glow {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(70px);
+    opacity: 0.4;
+  }
+
+  .audience__visual-glow--left {
+    width: 180px;
+    height: 180px;
+    left: 10%;
+    top: 35%;
+    background: rgba(160, 213, 253, 0.32);
+  }
+
+  .audience__visual-glow--right {
+    width: 210px;
+    height: 210px;
+    right: 10%;
+    top: 28%;
+    background: rgba(157, 152, 252, 0.26);
+  }
+
+  .audience__image-shell {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: min(100%, 360px);
+    img {
+      object-fit: contain;
+      filter: drop-shadow(0 26px 34px rgba(109, 122, 255, 0.14));
+    }
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .audience {
+      --padding-section-xl: 2rem 28px;
+      --max-width-container-xl: 1120px;
+      --max-width-header-xl: 1120px;
+    }
+
+    .audience__content {
+      padding-inline: 0px;
+    }
+
+    .audience__layout {
+      grid-template-columns: minmax(240px, 1fr) minmax(240px, 320px) minmax(
+          240px,
+          1fr
+        );
+      gap: 0rem;
+    }
+
+    .audience-card {
+      min-height: 320px;
+    }
+
+    /* .audience-card__inner {
+      padding: 36px 32px;
+    } */
+
+    .audience-card__title {
+      font-size: clamp(1.5rem, 2vw, 2rem);
+    }
+
+    .audience-card__text {
+      font-size: 0.95rem;
+    }
+
+    .audience__image-shell {
+      max-width: 320px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .audience {
+      --padding-section-lg: 80px 32px 88px;
+      --max-width-container-lg: 1000px;
+      --max-width-header-lg: 1000px;
+    }
+
+    .audience__content {
+      padding-inline: 0px;
+    }
+
+    .audience__layout {
+      margin-top: 24px;
+      grid-template-columns: 1fr 0.8fr 1fr;
+      gap: 0px;
+    }
+
+    .audience__visual {
+      order: 0;
+      min-height: 320px;
+    }
+
+    .audience__image-shell {
+      max-width: 300px;
+    }
+
+    .audience-card {
+      min-height: 100%;
+      /* border-radius: 28px; */
+    }
+
+    .audience-card__inner,
+    .audience-card--right .audience-card__inner {
+      /* text-align: center; */
+      padding: 30px 24px;
+    }
+
+    .audience-card__title {
+      font-size: 1.5rem;
+    }
+
+    .audience-card__text {
+      font-size: 0.92rem;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .audience {
+      --padding-section-md: 72px 36px 80px;
+      --font-size-title-md: clamp(1.8rem, 6vw, 2.6rem);
+      --max-width-description-md: 680px;
+      --font-size-description-md: 0.92rem;
+    }
+
+    .audience__content {
+      padding-inline: 18px;
+    }
+
+    .audience__layout {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .audience__visual {
+      order: -1;
+      min-height: 280px;
+    }
+
+    .audience__image-shell {
+      max-width: 260px;
+    }
+
+    .audience-card {
+      padding: 0;
+      justify-content: center;
+      border-radius: 28px;
+    }
+
+    .audience-card__inner,
+    .audience-card--right .audience-card__inner {
+      text-align: center;
+      padding: 26px 20px;
+    }
+
+    .audience-card__title {
+      font-size: 1.35rem;
+    }
+
+    .audience-card__text {
+      font-size: 0.9rem;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .audience {
+      --padding-section-sm: 64px 28px 72px;
+      --font-size-title-sm: clamp(1.6rem, 8vw, 2.2rem);
+      --max-width-description-sm: 100%;
+      --font-size-description-sm: 0.88rem;
+      --line-height-description-sm: 1.55em;
+    }
+
+    .audience__content {
+      padding-inline: 14px;
+    }
+
+    .audience__layout {
+      gap: 16px;
+    }
+
+    .audience__visual {
+      min-height: 240px;
+    }
+
+    .audience__image-shell {
+      max-width: 220px;
+    }
+
+    .audience-card {
+      border-radius: 18px;
+    }
+
+    .audience-card__inner,
+    .audience-card--right .audience-card__inner {
+      padding: 22px 18px;
+    }
+
+    .audience-card__title {
+      font-size: 1.2rem;
+    }
+
+    .audience-card__text {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .audience {
+      --padding-section-xs: 56px 20px 64px;
+      --font-size-title-xs: 1.4rem;
+      --font-size-description-xs: 0.8rem;
+    }
+
+    .audience__content {
+      padding-inline: 10px;
+    }
+
+    .audience__image-shell {
+      max-width: 190px;
+    }
+
+    .audience-card__title {
+      font-size: 1.05rem;
+    }
+
+    .audience-card__text {
+      font-size: 0.78rem;
+    }
+  }
+</style>

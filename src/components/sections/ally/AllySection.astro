@@ -1,0 +1,245 @@
+﻿---
+import AllyContent from "@components/sections/ally/AllyContent.astro";
+---
+
+<section id="contact" class="ally section">
+  <div class="ally__container container">
+    <AllyContent />
+  </div>
+</section>
+
+<style>
+  
+
+  .ally {
+    --padding-section: 4rem 0;
+    text-transform: uppercase;
+  }
+
+  .ally__container {
+    --max-width-container: 1200px;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .ally {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .ally {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .ally {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .ally {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .ally {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+
+  (() => {
+    const section = document.querySelector<HTMLElement>(".ally");
+    if (!section) return;
+
+    const panel = section.querySelector<HTMLElement>(".ally__panel");
+    const visual = section.querySelector<HTMLElement>(".ally__visual img");
+    const illustration = section.querySelector<HTMLElement>(
+      ".ally__illustration",
+    );
+    const textContent = section.querySelector<HTMLElement>(
+      ".ally__text-content",
+    );
+    const title = section.querySelector<HTMLElement>(".ally__title");
+    const description =
+      section.querySelector<HTMLElement>(".ally__description");
+    const cta = section.querySelector<HTMLElement>(".ally__cta");
+    const button = section.querySelector<HTMLElement>(".ally__button");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (panel) {
+      tl.fromTo(
+        panel,
+        {
+          autoAlpha: 0,
+          y: 24,
+          scale: 0.98,
+          filter: "blur(10px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.7,
+        },
+      );
+    }
+
+    if (visual) {
+      tl.fromTo(
+        visual,
+        {
+          autoAlpha: 0,
+          x: -28,
+        },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.7,
+        },
+        0.1,
+      );
+    }
+
+    if (illustration) {
+      tl.fromTo(
+        illustration,
+        {
+          autoAlpha: 0,
+          y: 18,
+          scale: 0.94,
+          rotation: -2,
+          filter: "blur(10px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          filter: "blur(0px)",
+          duration: 0.9,
+          ease: "back.out(1.15)",
+        },
+        0.16,
+      );
+    }
+
+    if (textContent) {
+      tl.fromTo(
+        textContent,
+        {
+          autoAlpha: 0,
+          x: 24,
+        },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.65,
+        },
+        0.12,
+      );
+    }
+
+    if (title) {
+      tl.fromTo(
+        title,
+        {
+          autoAlpha: 0,
+          y: 18,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.55,
+        },
+        0.2,
+      );
+    }
+
+    if (description) {
+      tl.fromTo(
+        description,
+        {
+          autoAlpha: 0,
+          y: 16,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.5,
+        },
+        0.28,
+      );
+    }
+
+    if (cta) {
+      tl.fromTo(
+        cta,
+        {
+          autoAlpha: 0,
+          y: 14,
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.45,
+        },
+        0.36,
+      );
+    }
+
+    if (button) {
+      tl.fromTo(
+        button,
+        {
+          scale: 0.94,
+        },
+        {
+          scale: 1,
+          duration: 0.4,
+          ease: "back.out(1.3)",
+        },
+        0.42,
+      );
+    }
+  })();
+</script>

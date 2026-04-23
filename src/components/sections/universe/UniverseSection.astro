@@ -1,0 +1,287 @@
+---
+import UniverseContent from "@components/sections/universe/UniverseContent.astro";
+---
+
+<section id="universe" class="universe section">
+  <div class="universe__container container">
+    <UniverseContent />
+  </div>
+</section>
+<style>
+  .universe {
+    background: linear-gradient(
+      202.5deg,
+      #ada4fb 0%,
+      #aba2fb 8%,
+      #8385fe 35%,
+      #7076ff 50%,
+      #4f52ff 71%,
+      #3737ff 90%,
+      #2d2cff 100%
+    );
+    --padding-section: 4rem 0;
+    text-transform: uppercase;
+  }
+
+  .universe__container {
+    --max-width-container: 1200px;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .universe {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .universe {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .universe {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .universe {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .universe {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger, Flip } from "@lib/animations/gsap.setup";
+
+  type UniverseCard = HTMLElement;
+
+  (() => {
+    const grid = document.querySelector<HTMLElement>(".universe__grid");
+    if (!grid) return;
+
+    let cards: UniverseCard[] = Array.from(
+      grid.querySelectorAll<UniverseCard>(".universe__card"),
+    );
+
+    let current: UniverseCard | null =
+      grid.querySelector<UniverseCard>(".universe__card.is-expanded") ??
+      cards[0] ??
+      null;
+
+    if (!current || cards.length === 0) return;
+
+    const getColumns = (): number => {
+      if (window.innerWidth <= 640) return 1;
+      if (window.innerWidth <= 1024) return 2;
+      return 3;
+    };
+
+    const getColumn = (card: UniverseCard, columns: number): number => {
+      const gridRect = grid.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+
+      const colWidth = gridRect.width / columns;
+      const relativeX = cardRect.left - gridRect.left;
+
+      let colIndex = Math.floor(relativeX / colWidth);
+      colIndex = Math.max(0, Math.min(columns - 1, colIndex));
+
+      return colIndex + 1;
+    };
+
+    const setExpandedCard = (card: UniverseCard): void => {
+      const columns = getColumns();
+      const clickedColumn = getColumn(card, columns);
+
+      cards.forEach((item) => {
+        item.classList.remove("is-expanded");
+        item.style.gridColumn = "";
+      });
+
+      card.classList.add("is-expanded");
+      card.style.gridColumn = `${clickedColumn} / span 1`;
+
+      current = card;
+    };
+
+    const expand = (card: UniverseCard): void => {
+      if (!card || card === current) return;
+      if (card.classList.contains("universe__card--locked")) return;
+
+      const state = Flip.getState(cards);
+
+      setExpandedCard(card);
+
+      Flip.from(state, {
+        duration: 0.2,
+        ease: "power2.out",
+        absolute: false,
+        prune: true,
+      });
+    };
+
+    const handleGridClick = (event: Event): void => {
+      const target = event.target as HTMLElement | null;
+      if (!target) return;
+
+      const card = target.closest<UniverseCard>(".universe__card");
+      if (!card) return;
+
+      expand(card);
+    };
+
+    const syncLayoutOnResize = (): void => {
+      cards = Array.from(
+        grid.querySelectorAll<UniverseCard>(".universe__card"),
+      );
+
+      if (!current) return;
+
+      const columns = getColumns();
+
+      if (columns === 1) {
+        current.style.gridColumn = "1 / span 1";
+        return;
+      }
+
+      const currentColumn = getColumn(current, columns);
+      if (currentColumn > columns) {
+        current.style.gridColumn = "1 / span 1";
+      }
+    };
+
+    grid.addEventListener("click", handleGridClick);
+    window.addEventListener("resize", syncLayoutOnResize);
+
+    syncLayoutOnResize();
+  })();
+</script>
+<script>
+  const initUniverseEntrance = (): void => {
+    const section = document.querySelector<HTMLElement>(".universe");
+    if (!section) return;
+
+    const title = section.querySelector<HTMLElement>(".universe__title");
+    const description = section.querySelector<HTMLElement>(
+      ".universe__description",
+    );
+    const grid = section.querySelector<HTMLElement>(".universe__grid");
+    const cards = gsap.utils.toArray<HTMLElement>(".universe__card");
+
+    if (!grid || cards.length === 0) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 75%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (title) {
+      tl.fromTo(
+        title,
+        {
+          autoAlpha: 0,
+          y: 20,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.65,
+        },
+      );
+    }
+
+    if (description) {
+      tl.fromTo(
+        description,
+        {
+          autoAlpha: 0,
+          y: 18,
+          filter: "blur(8px)",
+        },
+        {
+          autoAlpha: 1,
+          y: 0,
+          filter: "blur(0px)",
+          duration: 0.55,
+        },
+        0.08,
+      );
+    }
+
+    tl.fromTo(
+      grid,
+      {
+        autoAlpha: 0,
+        y: 18,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.45,
+        ease: "power2.out",
+      },
+      0.14,
+    );
+
+    tl.fromTo(
+      cards,
+      {
+        autoAlpha: 0,
+        y: 28,
+        scale: 0.8,
+        filter: "blur(10px)",
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 1.0,
+        stagger: 0.08,
+        ease: "power3.out",
+      },
+      0.18,
+    );
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initUniverseEntrance, {
+      once: true,
+    });
+  } else {
+    initUniverseEntrance();
+  }
+</script>

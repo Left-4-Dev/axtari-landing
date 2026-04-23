@@ -1,0 +1,19 @@
+/**
+ * typography.css
+ * --------------
+ * Fuentes del proyecto y estilos base de tipografía del body.
+ * Depende de tokens.css para variables de color.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+body {
+  font-family: "Exo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  color: var(--text-gray);
+  background: var(--bg-primary);
+}

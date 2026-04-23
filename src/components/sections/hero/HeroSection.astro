@@ -1,0 +1,863 @@
+﻿---
+import HeroBackground from "@components/sections/hero/HeroBackground.astro";
+import HeroContent from "@components/sections/hero/HeroContent.astro";
+---
+
+<section id="hero" class="hero section">
+  <HeroBackground />
+  <div class="hero__container container">
+    <HeroContent />
+  </div>
+</section>
+
+<div class="hero-modal-layer" aria-hidden="true">
+  <div class="hero-modal-layer__backdrop" data-close-modal></div>
+
+  <!-- MODAL EXPLORAR -->
+  <section
+    class="hero-modal hero-modal--explore"
+    data-modal="explore"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="explore-modal-title"
+  >
+    <div class="hero-modal__bg hero-modal__bg--explore" aria-hidden="true">
+      <svg
+        class="hero-modal__bg-shape"
+        viewBox="403.56 190.73 1112.89 687.82"
+        preserveAspectRatio="none"
+      >
+        <path
+          class="hero-modal__bg-fill"
+          d="M725.27,219.2v18.41c0,15.72-12.75,28.47-28.47,28.47h-264.77c-15.72,0-28.47,12.75-28.47,28.47v584c0,15.72,12.75,28.47,28.47,28.47h1055.95c15.72,0,28.47-12.75,28.47-28.47V219.2c0-15.72-12.75-28.47-28.47-28.47h-734.24c-15.72,0-28.47,12.75-28.47,28.47Z"
+        ></path>
+      </svg>
+    </div>
+
+    <div class="hero-modal__tab">
+      <span>EXPLORAR</span>
+    </div>
+
+    <button
+      type="button"
+      class="hero-modal__close"
+      aria-label="Cerrar"
+      data-close-modal
+    >
+      ✕
+    </button>
+
+    <div class="hero-modal__content hero-modal__content--explore">
+      <h2
+        id="explore-modal-title"
+        class="hero-modal__title hero-modal__title--explore"
+      >
+        ¿CUÁLES SON TUS <span>INTERESES</span>?
+      </h2>
+
+      <div class="hero-modal__interest-grid">
+        <article class="hero-modal__interest-card">
+          <div
+            class="hero-modal__interest-card-bg hero-modal__interest-card-bg--left"
+          >
+          </div>
+          <div class="hero-modal__interest-content">
+            <div class="hero-modal__interest-brand">AXTE</div>
+            <div class="hero-modal__interest-name">INDUX</div>
+          </div>
+        </article>
+
+        <article class="hero-modal__interest-card">
+          <div
+            class="hero-modal__interest-card-bg hero-modal__interest-card-bg--right"
+          >
+          </div>
+          <div class="hero-modal__interest-content">
+            <div class="hero-modal__interest-brand">AXTE</div>
+            <div class="hero-modal__interest-name">AGRO</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero-modal__interest-copy">
+        <p>EXPLORA NUESTRO CATÁLOGO DE COMPONENTES INDUSTRIALES.</p>
+        <p>ENCUENTRA TODO LO NECESARIO PARA EL CAMPO.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL UNIRSE -->
+  <section
+    class="hero-modal hero-modal--join"
+    data-modal="join"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="join-modal-title"
+  >
+    <div class="hero-modal__bg hero-modal__bg--join" aria-hidden="true">
+      <svg
+        class="hero-modal__bg-shape"
+        viewBox="403.56 190.73 1112.89 687.82"
+        preserveAspectRatio="none"
+      >
+        <path
+          class="hero-modal__bg-fill"
+          d="M725.27,219.2v18.41c0,15.72-12.75,28.47-28.47,28.47h-264.77c-15.72,0-28.47,12.75-28.47,28.47v584c0,15.72,12.75,28.47,28.47,28.47h1055.95c15.72,0,28.47-12.75,28.47-28.47V219.2c0-15.72-12.75-28.47-28.47-28.47h-734.24c-15.72,0-28.47,12.75-28.47,28.47Z"
+        ></path>
+      </svg>
+    </div>
+
+    <div class="hero-modal__tab">
+      <span>REGISTRARSE</span>
+    </div>
+
+    <button
+      type="button"
+      class="hero-modal__close"
+      aria-label="Cerrar"
+      data-close-modal
+    >
+      ✕
+    </button>
+
+    <div class="hero-modal__content hero-modal__content--join">
+      <h2
+        id="join-modal-title"
+        class="hero-modal__title hero-modal__title--join"
+      >
+        <span>ÚNETE</span> A<br />
+        NOSOTROS COMO
+      </h2>
+
+      <div class="hero-modal__role-actions">
+        <a href="#vendedor" class="hero-modal__role hero-modal__role--seller">
+          VENDEDOR
+        </a>
+        <a href="#comprador" class="hero-modal__role hero-modal__role--buyer">
+          COMPRADOR
+        </a>
+      </div>
+
+      <p class="hero-modal__signin">
+        ¿YA TIENES UNA CUENTA?
+        <a href="#login">INICIA SESIÓN</a>
+      </p>
+    </div>
+  </section>
+</div>
+
+<style>
+  .hero {
+    --hero-bg-1: #bfe2ff;
+    --hero-bg-2: #cfcfff;
+    --hero-bg-3: #ddd7ff;
+
+    --hero-text: #2f3448;
+    --hero-text-soft: #5f667f;
+    --hero-white: rgba(255, 255, 255, 0.72);
+    --hero-white-strong: rgba(255, 255, 255, 0.9);
+
+    --hero-accent: #7379ff;
+    --hero-accent-hover: #6268f4;
+    --hero-accent-soft: rgba(111, 118, 255, 0.16);
+
+    --hero-border: rgba(255, 255, 255, 0.35);
+    --hero-glass: rgba(255, 255, 255, 0.22);
+    --hero-shadow: rgba(109, 122, 255, 0.12);
+    --padding-section: 0px;
+    min-height: 100vh;
+  }
+
+  .hero__container {
+    --max-width-container: 1200px;
+    height: 100%;
+  }
+
+  .hero-modal-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.28s ease,
+      visibility 0.28s ease;
+  }
+
+  .hero-modal-layer.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .hero-modal-layer__backdrop {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(157, 155, 252, 0.28) 0%,
+        rgba(191, 226, 255, 0.2) 100%
+      ),
+      rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-modal {
+    --modal-surface: #f3f3f5;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    pointer-events: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    border-bottom-left-radius: 28px;
+    overflow: hidden;
+    filter: drop-shadow(0 18px 24px rgba(91, 86, 160, 0.32))
+      drop-shadow(0 0 34px rgba(144, 136, 255, 0.3));
+  }
+
+  .hero-modal.is-active {
+    pointer-events: auto;
+  }
+
+  .hero-modal--explore {
+    width: min(calc(100% - 32px), 960px);
+    min-height: 630px;
+  }
+
+  .hero-modal--join {
+    width: min(calc(100% - 32px), 960px);
+    min-height: 560px;
+  }
+
+  .hero-modal__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-modal__bg-shape {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .hero-modal__bg-fill {
+    fill: var(--modal-surface);
+  }
+
+  .hero-modal__content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    text-align: center;
+  }
+
+  .hero-modal__content--explore {
+    padding: 84px 72px 78px;
+  }
+
+  .hero-modal__content--join {
+    padding: 70px 72px 68px;
+  }
+
+  .hero-modal__tab {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: clamp(248px, 26vw, 256px);
+    height: clamp(40px, 5.2vw, 48px);
+    border-radius: 999px;
+    background: var(--modal-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 14px 18px rgba(91, 86, 160, 0.24),
+      0 0 28px rgba(144, 136, 255, 0.24);
+    z-index: 3;
+  }
+
+  .hero-modal__tab span {
+    color: #6e74ff;
+    font-size: 1.5rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .hero-modal__close {
+    appearance: none;
+    border: none;
+    background: transparent;
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    color: #9aa0ac;
+    font-size: 2.05rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 4;
+  }
+
+  .hero-modal__title {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+
+  .hero-modal__title--explore {
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.06;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .hero-modal__title--explore span {
+    color: #6f76ff;
+    font-weight: 700;
+  }
+
+  .hero-modal__title--join {
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.02;
+    font-weight: 500;
+    color: #000;
+  }
+
+  .hero-modal__title--join span {
+    color: #6f76ff;
+    font-weight: 700;
+  }
+
+  .hero-modal__interest-grid {
+    margin-top: 72px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 80px;
+    justify-content: center;
+  }
+
+  .hero-modal__interest-card {
+    position: relative;
+    width: 100%;
+    max-width: 318px;
+    min-height: 170px;
+    margin-inline: auto;
+    border-radius: 24px;
+    padding: 30px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+  }
+
+  .hero-modal__interest-card-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  .hero-modal__interest-card-bg--left {
+    background: linear-gradient(90deg, #90c8f3 0%, #98aaf1 100%);
+  }
+
+  .hero-modal__interest-card-bg--right {
+    background: linear-gradient(90deg, #9ac9ef 0%, #98a0f1 100%);
+  }
+
+  .hero-modal__interest-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .hero-modal__interest-brand,
+  .hero-modal__interest-name {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  .hero-modal__interest-brand {
+    font-size: 1.15rem;
+    line-height: 1;
+    font-weight: 300;
+    letter-spacing: 0;
+    opacity: 0.92;
+  }
+
+  .hero-modal__interest-name {
+    margin-top: 10px;
+    font-size: clamp(2.3rem, 4vw, 4rem);
+    line-height: 0.95;
+    font-weight: 700;
+  }
+
+  .hero-modal__interest-copy {
+    margin: 32px 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    place-items: center;
+    gap: 80px;
+  }
+
+  .hero-modal__interest-copy p {
+    max-width: 288px;
+    margin: 0;
+    color: #7f8999;
+    font-size: 1rem;
+    line-height: 1.35;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .hero-modal__role-actions {
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    gap: 34px;
+    flex-wrap: wrap;
+  }
+
+  .hero-modal__role {
+    min-width: 280px;
+    height: 102px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(1.7rem, 2vw, 2.25rem);
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .hero-modal__role--seller {
+    background: linear-gradient(90deg, #90c8f3 0%, #8cb5ef 100%);
+  }
+
+  .hero-modal__role--buyer {
+    background: linear-gradient(90deg, #98aaf1 0%, #9d93f2 100%);
+  }
+
+  .hero-modal__signin {
+    margin: 34px 0 0;
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .hero-modal__signin a {
+    color: #6f76ff;
+    text-decoration: none;
+  }
+
+  /* =========================
+     LARGE DESKTOP (<= 1240px)
+  ========================= */
+  @media (max-width: 1240px) {
+    .hero {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+     LAPTOP (<= 1024px)
+  ========================= */
+  @media (max-width: 1024px) {
+    .hero {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+
+    .hero-modal__tab {
+      width: clamp(200px, 26vw, 248px);
+      height: 48px;
+    }
+
+    .hero-modal__tab span {
+      font-size: 1.2rem;
+    }
+  }
+
+  /* =========================
+     TABLET (<= 900px)
+  ========================= */
+  @media (max-width: 900px) {
+    .hero {
+      --padding-section-md: 3.25rem 36px;
+    }
+
+    .hero-modal--explore,
+    .hero-modal--join {
+      width: calc(100% - 40px);
+      min-height: auto;
+    }
+
+    .hero-modal__bg-shape {
+      height: auto;
+    }
+
+    .hero-modal__content--explore {
+      padding: 72px 32px 40px;
+    }
+
+    .hero-modal__content--join {
+      padding: 64px 32px 40px;
+    }
+
+    .hero-modal__tab {
+      width: clamp(136px, 25vw, 232px);
+      height: clamp(32px, 4.5vw, 44px);
+    }
+
+    .hero-modal__tab span {
+      font-size: 1rem;
+    }
+
+    .hero-modal__title--explore,
+    .hero-modal__title--join {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+    }
+
+    .hero-modal__interest-grid {
+      gap: 32px;
+      margin-top: 24px;
+    }
+
+    .hero-modal__interest-copy {
+      margin: 24px 0 0;
+      gap: 28px;
+    }
+
+    .hero-modal__role-actions {
+      margin-top: 40px;
+      gap: 20px;
+    }
+
+    .hero-modal__role {
+      min-width: 220px;
+      height: 82px;
+      font-size: 1.4rem;
+    }
+  }
+
+  /* =========================
+     MOBILE (<= 640px)
+  ========================= */
+  @media (max-width: 640px) {
+    .hero-modal--explore,
+    .hero-modal--join {
+      width: calc(100% - 20px);
+      min-height: auto;
+      background-color: #f3f3f5;
+      border-radius: 12px;
+    }
+
+    .hero-modal__bg-shape {
+      display: none;
+    }
+
+    .hero-modal__content--explore {
+      padding: 64px 20px 28px;
+    }
+
+    .hero-modal__content--join {
+      padding: 60px 20px 28px;
+    }
+
+    .hero-modal__tab {
+      width: 160px;
+      height: 40px;
+      background: var(--gradient-2);
+      box-shadow: none;
+      border-radius: 12px;
+    }
+
+    .hero-modal__tab span {
+      font-size: 0.95rem;
+      color: var(--text-white);
+    }
+
+    .hero-modal__title--explore,
+    .hero-modal__title--join {
+      font-size: clamp(1.4rem, 7vw, 2.2rem);
+    }
+
+    .hero-modal__interest-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .hero-modal__interest-copy {
+      /* grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 18px; */
+      display: none;
+    }
+
+    .hero-modal__interest-card {
+      min-height: 130px;
+      padding: 20px 16px;
+    }
+
+    .hero-modal__interest-name {
+      font-size: clamp(1.8rem, 8vw, 2.6rem);
+    }
+
+    .hero-modal__role-actions {
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-modal__role {
+      width: 100%;
+      height: 70px;
+      font-size: 1.2rem;
+    }
+
+    .hero-modal__signin {
+      margin-top: 18px;
+      font-size: 0.85rem;
+    }
+  }
+
+  /* =========================
+     SMALL MOBILE (<= 380px)
+  ========================= */
+  @media (max-width: 380px) {
+    .hero {
+      --padding-section-xs: 2.75rem 20px;
+    }
+
+    .hero-modal__tab {
+      width: 140px;
+      height: 38px;
+    }
+
+    .hero-modal__tab span {
+      font-size: 0.85rem;
+    }
+
+    .hero-modal__content--explore {
+      padding-top: 56px;
+    }
+
+    .hero-modal__content--join {
+      padding-top: 52px;
+    }
+
+    .hero-modal__title--explore,
+    .hero-modal__title--join {
+      font-size: 1.2rem;
+    }
+
+    .hero-modal__interest-card {
+      min-height: 110px;
+    }
+
+    .hero-modal__role {
+      height: 60px;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  (() => {
+    const hero = document.querySelector<HTMLElement>(".hero");
+    const bg = document.querySelector<HTMLElement>(".hero__bg");
+    const title = document.querySelector<HTMLElement>(".hero__title");
+    const titleLines = gsap.utils.toArray<HTMLElement>(".hero__title-line");
+    const titleTexts = gsap.utils.toArray<HTMLElement>(".hero__title-text");
+    const description =
+      document.querySelector<HTMLElement>(".hero__description");
+    const actions = gsap.utils.toArray<HTMLElement>(".hero__button");
+    const stars = document.querySelector<HTMLElement>(".hero__stars");
+
+    if (!hero || !title || !description) return;
+
+    gsap.set(bg, { opacity: 0, scale: 1.04 });
+    gsap.set(stars, { opacity: 0 });
+    gsap.set(titleLines, { overflow: "hidden" });
+    gsap.set(titleTexts, {
+      yPercent: 110,
+      opacity: 0,
+      filter: "blur(10px)",
+      willChange: "transform, opacity, filter",
+    });
+    gsap.set(description, {
+      y: 24,
+      opacity: 0,
+      filter: "blur(6px)",
+    });
+    gsap.set(actions, {
+      y: 22,
+      opacity: 0,
+    });
+
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power2.out",
+      },
+    });
+
+    tl.to(bg, {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+    })
+      .to(
+        stars,
+        {
+          opacity: 1,
+          duration: 0.9,
+        },
+        0.15,
+      )
+      .to(
+        titleTexts,
+        {
+          yPercent: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.85,
+          stagger: 0.12,
+        },
+        0.2,
+      )
+      .to(
+        description,
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.65,
+        },
+        0.48,
+      )
+      .to(
+        actions,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          stagger: 0.08,
+        },
+        0.58,
+      );
+  })();
+</script>
+
+<script>
+  import gsap from "gsap";
+
+  (() => {
+    const layerEl = document.querySelector<HTMLElement>(".hero-modal-layer");
+    const modals = document.querySelectorAll<HTMLElement>(".hero-modal");
+    const openButtons =
+      document.querySelectorAll<HTMLElement>("[data-open-modal]");
+    const closeButtons =
+      document.querySelectorAll<HTMLElement>("[data-close-modal]");
+
+    if (!layerEl || modals.length === 0) return;
+
+    let currentModal: HTMLElement | null = null;
+    let lastFocused: HTMLElement | null = null;
+
+    function openModal(modalName: string, trigger?: HTMLElement) {
+      const target = document.querySelector<HTMLElement>(
+        `.hero-modal[data-modal="${modalName}"]`,
+      );
+
+      if (!layerEl || !target) return;
+
+      lastFocused = trigger ?? null;
+      currentModal = target;
+
+      layerEl.classList.add("is-open");
+      layerEl.setAttribute("aria-hidden", "false");
+      document.documentElement.style.overflow = "hidden";
+
+      modals.forEach((modal) => {
+        modal.classList.remove("is-active");
+        gsap.set(modal, { opacity: 0, y: 18, scale: 0.98 });
+      });
+
+      target.classList.add("is-active");
+
+      gsap.to(target, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.36,
+        ease: "power3.out",
+      });
+    }
+
+    function closeModal() {
+      if (!layerEl || !currentModal) return;
+
+      const modalToClose = currentModal;
+
+      gsap.to(modalToClose, {
+        opacity: 0,
+        y: 18,
+        scale: 0.985,
+        duration: 0.22,
+        ease: "power2.in",
+        onComplete: () => {
+          modalToClose.classList.remove("is-active");
+          layerEl.classList.remove("is-open");
+          layerEl.setAttribute("aria-hidden", "true");
+          document.documentElement.style.overflow = "";
+          currentModal = null;
+          lastFocused?.focus();
+        },
+      });
+    }
+
+    openButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modalName = button.dataset.openModal;
+        if (!modalName) return;
+        openModal(modalName, button);
+      });
+    });
+
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeModal();
+    });
+  })();
+</script>

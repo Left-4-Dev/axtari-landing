@@ -1,0 +1,222 @@
+﻿---
+import AssistantContent from "@components/sections/assistant/AssistantContent.astro";
+---
+
+<section class="assistant section">
+  <div class="assistant__container container">
+    <AssistantContent />
+  </div>
+</section>
+
+<style>
+  
+
+  
+  .assistant {
+    --assistant-text: #2f3448;
+    --assistant-text-soft: #5f667f;
+    --assistant-accent: #6f76ff;
+    --assistant-violet-1: #eec2fd;
+    --assistant-violet-2: #9d98fc;
+    --assistant-blue-1: #a0d5fd;
+    --assistant-blue-2: #9d98fc;
+    --assistant-shadow: rgba(109, 122, 255, 0.14);
+
+    --gradient-1-angle: 90deg;
+    --gradient-1-stop-1-color: #a0d5fd;
+    --gradient-1-stop-1-pos: 0%;
+    --gradient-1-stop-2-color: #9fb7f5;
+    --gradient-1-stop-2-pos: 65%;
+    --gradient-1-stop-3-color: #9d98ec;
+    --gradient-1-stop-3-pos: 100%;
+
+    --padding-section: 110px 0 120px;
+    text-transform: uppercase;
+  }
+
+  .assistant__container {
+    --max-width-container: 1200px;
+    z-index: 1;
+  }
+
+  /* =========================
+   LARGE DESKTOP (<= 1240px)
+========================= */
+  @media (max-width: 1240px) {
+    .assistant {
+      --padding-section-xl: 4rem 28px;
+      --max-width-container-xl: 1120px;
+    }
+  }
+
+  /* =========================
+   LAPTOP (<= 1024px)
+========================= */
+  @media (max-width: 1024px) {
+    .assistant {
+      --padding-section-lg: 3.5rem 32px;
+      --max-width-container-lg: 1000px;
+    }
+  }
+
+  /* =========================
+   TABLET (<= 900px)
+========================= */
+  @media (max-width: 900px) {
+    .assistant {
+      --padding-section-md: 3.25rem 36px;
+    }
+  }
+
+  /* =========================
+   MOBILE (<= 640px)
+========================= */
+  @media (max-width: 640px) {
+    .assistant {
+      --padding-section-sm: 3rem 28px;
+    }
+  }
+
+  /* =========================
+   SMALL MOBILE (<= 380px)
+========================= */
+  @media (max-width: 380px) {
+    .assistant {
+      --padding-section-xs: 2.75rem 20px;
+    }
+  }
+</style>
+
+<script>
+  import { gsap, ScrollTrigger } from "@lib/animations/gsap.setup";
+
+
+  export function initAssistantEntrance() {
+    const section = document.querySelector<HTMLElement>(".assistant");
+    if (!section) return;
+
+    const eyebrow = section.querySelector<HTMLElement>(".eyebrow");
+    const title = section.querySelector<HTMLElement>(".assistant__title");
+    const subtitle = section.querySelector<HTMLElement>(".assistant__subtitle");
+    const center = section.querySelector<HTMLElement>(".assistant__center");
+    const antenna = section.querySelector<HTMLElement>(".assistant__antenna");
+    const avatarShell = section.querySelector<HTMLElement>(
+      ".assistant__avatar-shell",
+    );
+    const leftCards = section.querySelectorAll<HTMLElement>(
+      ".assistant__rail--left .assistant-card",
+    );
+    const rightCards = section.querySelectorAll<HTMLElement>(
+      ".assistant__rail--right .assistant-card",
+    );
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top 72%",
+        once: true,
+      },
+      defaults: {
+        ease: "power3.out",
+      },
+    });
+
+    if (eyebrow) {
+      tl.fromTo(
+        eyebrow,
+        { autoAlpha: 0, y: 18, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.65 },
+      );
+    }
+
+    if (title) {
+      tl.fromTo(
+        title,
+        { autoAlpha: 0, y: 24, filter: "blur(8px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.8 },
+        "-=0.35",
+      );
+    }
+
+    if (subtitle) {
+      tl.fromTo(
+        subtitle,
+        { autoAlpha: 0, y: 20, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.65 },
+        "-=0.45",
+      );
+    }
+
+    if (center) {
+      tl.fromTo(
+        center,
+        { autoAlpha: 0, y: 26, scale: 0.94 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.75 },
+        "-=0.2",
+      );
+    }
+
+    if (antenna) {
+      tl.fromTo(
+        antenna,
+        { scaleY: 0, transformOrigin: "bottom center" },
+        { scaleY: 1, duration: 0.45, ease: "power2.out" },
+        "-=0.1",
+      );
+    }
+
+    if (avatarShell) {
+      tl.fromTo(
+        avatarShell,
+        { autoAlpha: 0, scale: 0.82, rotation: -4, filter: "blur(10px)" },
+        {
+          autoAlpha: 1,
+          scale: 1,
+          rotation: 0,
+          filter: "blur(0px)",
+          duration: 1.2,
+          ease: "back.out(1.35)",
+        },
+        "-=0.15",
+      );
+    }
+
+    if (leftCards.length) {
+      tl.fromTo(
+        leftCards,
+        { autoAlpha: 0, x: 42, y: 10, scale: 0.96, filter: "blur(8px)" },
+        {
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.8,
+          stagger: 0.12,
+        },
+        "-=0.55",
+      );
+    }
+
+    if (rightCards.length) {
+      tl.fromTo(
+        rightCards,
+        { autoAlpha: 0, x: -42, y: 10, scale: 0.96, filter: "blur(8px)" },
+        {
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          duration: 0.8,
+          stagger: 0.12,
+        },
+        "<+0.05",
+      );
+    }
+  }
+
+  window.addEventListener("load", () => {
+    initAssistantEntrance();
+  });
+</script>
