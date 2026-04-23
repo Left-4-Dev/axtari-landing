@@ -20,11 +20,19 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
 
+      - name: Setup Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Install, build, and upload your site
         uses: withastro/action@v3
-        with:
-          # Si usas pnpm, asegúrate de que el lockfile esté en el repo
-          package-manager: pnpm
+
 
   deploy:
     needs: build
