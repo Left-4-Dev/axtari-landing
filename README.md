@@ -1,46 +1,50 @@
-# Astro Starter Kit: Basics
+# 🏗️ Axtari Landing Page
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+¡Bienvenido al repositorio de la Landing Page oficial de **Axtari**! Este proyecto es una plataforma de alto rendimiento diseñada para conectar industrias con proveedores certificados, enfocada en la eficiencia, seguridad y escalabilidad.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 Tecnologías Principales
 
-## 🚀 Project Structure
+- **[Astro 6](https://astro.build/)**: Framework web para una carga ultra rápida y una arquitectura orientada a componentes.
+- **[GSAP (GreenSock)](https://greensock.com/)**: Motor de animaciones líder para experiencias visuales premium y fluidas.
+- **[TypeScript](https://www.typescriptlang.org/)**: Tipado estático para un código más robusto y mantenible.
+- **CSS3 (Custom System)**: Sistema modular de estilos basado en Design Tokens.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Arquitectura y Organización
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+El proyecto sigue una estructura modular inspirada en **Clean Architecture**:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **`src/components/sections/`**: Componentes de dominio específicos para cada sección de la landing.
+- **`src/components/ui/`**: Componentes atómicos y reutilizables (Botones, Cards, etc.).
+- **`src/data/`**: Centralización de contenido y configuración de datos puros.
+- **`src/lib/`**: Lógica de animaciones GSAP centralizada y utilidades de sistema.
+- **`src/styles/`**: Sistema de diseño dividido en Tokens, Tipografía y Layout Global.
 
-## 🧞 Commands
+## 📦 Instalación y Desarrollo Local
 
-All commands are run from the root of the project, from a terminal:
+Este proyecto utiliza **pnpm** para la gestión de dependencias.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/Left-4-Dev/axtari-landing.git
+   ```
 
-## 👀 Want to learn more?
+2. **Instalar dependencias:**
+   ```bash
+   pnpm install
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+3. **Iniciar el servidor de desarrollo:**
+   ```bash
+   pnpm dev
+   ```
+   El sitio estará disponible en `http://localhost:4321/`.
+
+## 🚢 Despliegue
+
+El proyecto cuenta con un flujo automatizado de **GitHub Actions** (`.github/workflows/deploy.yml`). 
+
+Cada vez que se realiza un `push` a la rama `main`, el sitio se construye y despliega automáticamente en **GitHub Pages**.
+
+---
+
+Desarrollado con ❤️ por el equipo de Axtari.
