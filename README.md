@@ -24,11 +24,13 @@ El proyecto sigue una estructura modular inspirada en **Clean Architecture**:
 Este proyecto utiliza **pnpm** para la gestión de dependencias.
 
 1. **Clonar el repositorio:**
+
    ```bash
    git clone https://github.com/Left-4-Dev/axtari-landing.git
    ```
 
 2. **Instalar dependencias:**
+
    ```bash
    pnpm install
    ```
@@ -41,10 +43,10 @@ Este proyecto utiliza **pnpm** para la gestión de dependencias.
 
 ## 🚢 Despliegue
 
-El proyecto cuenta con un flujo automatizado de **GitHub Actions** (`.github/workflows/deploy.yml`). 
+El proyecto cuenta con un flujo automatizado de **GitHub Actions** (`.github/workflows/deploy.yml`).
 
 Cada vez que se realiza un `push` a la rama `main`, el sitio se construye y despliega automáticamente en **GitHub Pages**.
 
 ---
 
-Desarrollado con ❤️ por el equipo de Axtari.
+Desarrollado con ❤️ por el equipo de Left4Dev.
