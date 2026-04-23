@@ -197,7 +197,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    backface-visibility: hidden;
   }
 
   .hero__stat-bg {
@@ -205,11 +204,13 @@
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    mix-blend-mode: soft-light;
+    
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      mix-blend-mode: soft-light; /* Mezcla en la imagen directamente */
+      opacity: 0.99; /* Hack para forzar renderizado en iOS */
     }
   }
 
